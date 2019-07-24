@@ -79,7 +79,7 @@ Caso você encontre o erro abaixo:
 
 ![](../.gitbook/assets/selection_214.png)
 
-Ele acontece porque o registry da Red Hat exige certificado SSL. Para resolver isso, instale o seguinte pacote:
+Ele acontece porque o link simbólico aponta para um arquivo inexistente. Para resolver isso, execute o comando abaixo:
 
 ```text
 rm -f /etc/docker/certs.d/registry.access.redhat.com/redhat-ca.crt
