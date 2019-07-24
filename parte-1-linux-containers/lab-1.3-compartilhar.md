@@ -89,7 +89,7 @@ Na raiz do diretório `~/workshop-openshift/lab1.3/`, vamos adicionar um arquivo
 ```text
 FROM fedora:27
 
-LABEL maintainer="dvercill@redhat.com"
+LABEL maintainer="do-not-reply@redhat.com"
 LABEL version="1.0"
 
 RUN mkdir /var/www
@@ -111,7 +111,7 @@ Para agilizar a criação do arquivos, podemos utilizar:
 cat <<EOF > ~/workshop-openshift/lab1.3/Dockerfile
 FROM fedora:27
 
-LABEL maintainer="dvercill@redhat.com"
+LABEL maintainer="do-not-reply@redhat.com"
 LABEL version="1.0"
 
 RUN mkdir /var/www
