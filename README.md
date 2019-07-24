@@ -2,7 +2,7 @@
 
 ## O que é isso?
 
-Esse material é usado para capacitação e transferência de conhecimento de clientes e parceiros da Red Hat Brasil em **OpenShift**, aplicável tanto ao [**Red Hat OpenShift Container Platform**](https://www.openshift.com/container-platform/index.html) \(enterprise\) quanto ao [**OpenShift Origin**](https://www.openshift.org/) \(community\).
+Esse material é usado para capacitação e transferência de conhecimento de clientes e parceiros da Red Hat Brasil em **OpenShift**, aplicável tanto ao [**Red Hat OpenShift Container Platform**](https://www.openshift.com/container-platform/index.html) \(enterprise\) quanto ao [**Openshift OKD**](https://www.okd.io/) \(community\).
 
 ## Por que dessa forma?
 
@@ -19,7 +19,7 @@ Este trabalho está licenciado sob a [**Licença Atribuição-NãoComercial-Comp
 Para conseguir aproveitar o material, nossa recomendação é:
 
 * _Reserve entre **4-8 horas** para discussão dos assuntos e execução das atividades._
-* _Acesso à** Internet é indispensável**._
+* _Acesso à **Internet é indispensável**._
 * _Caso opte por usar uma VM local recomendamos que os participantes utilizem **um PC capaz de rodar máquinas virtuais**:_
   * _**Processador dual-core de 2GHz**_
   * _**8GB de memória RAM**_
@@ -31,7 +31,7 @@ Para conseguir aproveitar o material, nossa recomendação é:
 Esse material é dividido em 2 partes:
 
 * [**Parte 1 - Linux Containers:**](parte-1-linux-containers/) _Material dedicado à discussão introdutória sobre a tecnologia de containers Linux._
-* [**Parte 2 - OpenShift \(Dev\)**](parte-2-openshift-para-devs/)**:** _Material dedicado à discussão sobre o OpenShift na perspectiva do desenvolvedor._
+* [**Parte 2 - OpenShift**](parte-2-openshift-para-devs/)**:** _Material dedicado à discussão sobre o OpenShift na perspectiva de desenvolvimento e também infraestrutura._
 
 ## Posso contribuir?
 

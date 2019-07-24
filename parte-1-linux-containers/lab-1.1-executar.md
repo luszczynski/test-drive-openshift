@@ -17,7 +17,7 @@ Para buscarmos informações sobre o ambiente local, usa-se:
 docker info
 ```
 
-![](../.gitbook/assets/gustavo-localhost-_016%20%281%29.png)
+![](../.gitbook/assets/gustavo-localhost-_016-1.png)
 
 ### 1.1.2 - Buscando Imagens dos Registries
 
@@ -82,7 +82,7 @@ Caso você encontre o erro abaixo:
 Ele acontece porque o registry da Red Hat exige certificado SSL. Para resolver isso, instale o seguinte pacote:
 
 ```text
-yum install http://mirror.centos.org/centos/7/os/x86_64/Packages/python-rhsm-certificates-1.19.10-1.el7_4.x86_64.rpm
+rm -f /etc/docker/certs.d/registry.access.redhat.com/redhat-ca.crt
 ```
 
 Agora faça novamente o pull da imagem `rhel-atomic`:
@@ -119,7 +119,7 @@ Vamos remover a imagem do rhel atomic baixada no lab anterior:
 docker images | grep rhel-atomic
 ```
 
-![](../.gitbook/assets/selection_303%20%281%29.png)
+![](../.gitbook/assets/selection_303-1.png)
 
 Agora que temos o ID da imagem, podemos apagá-la:
 
@@ -127,7 +127,7 @@ Agora que temos o ID da imagem, podemos apagá-la:
 
 Caso a imagem já esteja sendo utilizada por um container. o Docker não irá executar essa ação e retornará um erro informando qual o id do container que está utilizando a imagem que desejamos apagar.
 
-![](../.gitbook/assets/selection_083%20%281%29.png)
+![](../.gitbook/assets/selection_083-1.png)
 
 Para resolver, basta remover o container que está causando problemas para a gente.
 
@@ -135,7 +135,7 @@ Para resolver, basta remover o container que está causando problemas para a gen
 docker rm <id do container>
 ```
 
-![](../.gitbook/assets/selection_085%20%281%29.png)
+![](../.gitbook/assets/selection_085-1.png)
 
 ### 1.1.6 - Executando Containers
 
@@ -173,9 +173,9 @@ O parametro -p exporta a porta interna do container \(80\) para a nossa máquina
 
 ![](../.gitbook/assets/wordpress.gif)
 
-Agora podemos abrir nosso browser na página: 
+Agora podemos abrir nosso browser na página:
 
-[http://localhost:8080](http://<ip da sua VM>:8080)
+[http://localhost:8080](http://<ip%20da%20sua%20VM>:8080)
 
 > _nota_: caso esteja usando uma VM local acesse a URL utilizando o endereço IP da sua VM. Execute o comando `ip a s` dentro do shel da VM para saber o IP da rede interna do VirtualBox.
 >

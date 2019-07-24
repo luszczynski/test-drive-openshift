@@ -135,7 +135,7 @@ Para iniciarmos o processo de construção da nova imagem, usa-se:
 # docker build -t workshop-openshift .
 ```
 
-![](../.gitbook/assets/selection_222%20%281%29.png)
+![](../.gitbook/assets/selection_222-1.png)
 
 Valide se sua imagem está funcionando corretamente por meio do comando:
 
@@ -153,7 +153,7 @@ Verifique a sua imagem nova no registro local:
 # docker images | grep workshop-openshift
 ```
 
-![](../.gitbook/assets/selection_223%20%281%29.png)
+![](../.gitbook/assets/selection_223-1.png)
 
 Podemos ver que é a nossa imagem que foi construida recentemente conforme destacado na foto acima.
 

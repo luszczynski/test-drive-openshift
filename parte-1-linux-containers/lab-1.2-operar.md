@@ -47,7 +47,7 @@ Para visualizar os processos em execução dentro de um container, usamos:
 # docker top <id/nome>
 ```
 
-![](../.gitbook/assets/selection_027%20%281%29.png)
+![](../.gitbook/assets/selection_027-1.png)
 
 Também podemos inspecionar os metadados do container, ou de uma imagem, através de:
 
@@ -55,7 +55,7 @@ Também podemos inspecionar os metadados do container, ou de uma imagem, atravé
 # docker inspect <id/nome/tag>
 ```
 
-![](../.gitbook/assets/gustavo-localhost-_028%20%281%29.png)
+![](../.gitbook/assets/gustavo-localhost-_028-1.png)
 
 Tente obter o endereço IP de um container usando o comando abaixo:
 
@@ -63,7 +63,7 @@ Tente obter o endereço IP de um container usando o comando abaixo:
 docker inspect --format '{{ .NetworkSettings.IPAddress }}' <id do container>
 ```
 
-![](../.gitbook/assets/selection_220%20%281%29.png)
+![](../.gitbook/assets/selection_220-1.png)
 
 ### 1.2.2 - Execução Ad-Hoc
 
@@ -129,7 +129,7 @@ Para monitorar a quantidade de recursos que um container está consumindo em um 
 docker stats
 ```
 
-![](../.gitbook/assets/selection_221%20%281%29.png)
+![](../.gitbook/assets/selection_221-1.png)
 
 E podemos visualizar somente de um container rodando o comando
 
