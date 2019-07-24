@@ -2,7 +2,7 @@
 
 ## Lab 2.0 - Objetivos
 
-* Preparar o ambiente local para os próximos exercícios
+* Preparar o ambiente local para os próximos exercícios do test drive
 
 ## Tarefas
 
