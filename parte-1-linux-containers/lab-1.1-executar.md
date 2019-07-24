@@ -150,13 +150,13 @@ docker run -it centos:7 /bin/bash
 No exemplo anterior você deve ter percebido que além de iniciar o container você entrou no isolamento. Para sair usa-se a sequência _CTRL+P+Q_. Para iniciar o container de forma _detached_, usa-se:
 
 ```text
-# docker run -itd centos:7 /bin/bash
+docker run -itd centos:7 /bin/bash
 ```
 
 Caso queira entrar em um container já em execução, para fazer _attach_ no processo já em execução, usa-se:
 
 ```text
-# docker attach <nome/ID>
+docker attach <nome/ID>
 ```
 
 ![](../.gitbook/assets/selection_218.png)
@@ -166,7 +166,7 @@ Caso queira entrar em um container já em execução, para fazer _attach_ no pro
 Uma das vantagens do uso de containers é a possibilidade de abstração da complexidade de implantação de um determinado serviço. Vamos rodar agora uma imagem do wordpress e ver o trabalho necessário para colocar esse CMS no ar.
 
 ```text
-docker run --rm -p 80:8080 wordpress
+docker run --rm -p 8080:80 wordpress
 ```
 
 O parametro -p exporta a porta interna do container \(80\) para a nossa máquina na porta 8080. Esse parâmetro será explicado melhor nos próximos exercícios.
@@ -177,8 +177,6 @@ Agora podemos abrir nosso browser na página:
 
 [http://localhost:8080](http://<ip%20da%20sua%20VM>:8080)
 
-> _nota_: caso esteja usando uma VM local acesse a URL utilizando o endereço IP da sua VM. Execute o comando `ip a s` dentro do shel da VM para saber o IP da rede interna do VirtualBox.
->
 > Se estiver usando uma VM na nuvem, use seu ip público para acessar o serviço.
 
 ![](../.gitbook/assets/selection_047.png)

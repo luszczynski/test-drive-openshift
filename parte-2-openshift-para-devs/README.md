@@ -1,4 +1,4 @@
-# Parte 2 - OpenShift para devs
+# Parte 2 - OpenShift
 
 ## Afinal, o que é o OpenShift?
 

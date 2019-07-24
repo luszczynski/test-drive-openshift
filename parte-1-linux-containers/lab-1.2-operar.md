@@ -28,7 +28,7 @@ for i in `seq 3`; do docker run -d busybox /bin/sh -c "while true; do echo Hello
 Para buscar mais informações sobre os containers em execução, usa-se:
 
 ```text
-# docker ps
+docker ps
 ```
 
 ![](../.gitbook/assets/selection_219.png)
@@ -36,7 +36,7 @@ Para buscar mais informações sobre os containers em execução, usa-se:
 No exemplo anterior não são listados containers terminados. Para visualizar a listagem completa, usa-se:
 
 ```text
-# docker ps -a
+docker ps -a
 ```
 
 ![](../.gitbook/assets/selection_026.png)
@@ -44,7 +44,7 @@ No exemplo anterior não são listados containers terminados. Para visualizar a 
 Para visualizar os processos em execução dentro de um container, usamos:
 
 ```text
-# docker top <id/nome>
+docker top <id/nome>
 ```
 
 ![](../.gitbook/assets/selection_027-1.png)
@@ -52,7 +52,7 @@ Para visualizar os processos em execução dentro de um container, usamos:
 Também podemos inspecionar os metadados do container, ou de uma imagem, através de:
 
 ```text
-# docker inspect <id/nome/tag>
+docker inspect <id/nome/tag>
 ```
 
 ![](../.gitbook/assets/gustavo-localhost-_028-1.png)
@@ -70,7 +70,7 @@ docker inspect --format '{{ .NetworkSettings.IPAddress }}' <id do container>
 Também podemos conectar em um container em execução e executar processos adicionais usando:
 
 ```text
-# docker exec -it <container-id> /bin/sh
+docker exec -it <container-id> /bin/sh
 ```
 
 ![](../.gitbook/assets/selection_029.png)
@@ -80,7 +80,7 @@ Também podemos conectar em um container em execução e executar processos adic
 Containers são essencialmente efêmeros. Entretanto, podemos mapear diretórios a eles e ter mecanismos de persistência de dados. Esse mecanismo é usado através do comando:
 
 ```text
-# docker run -it -v /tmp/:/tmp_from_host:z centos:7
+docker run -it -v /tmp/:/tmp_from_host:z centos:7
 ```
 
 > `/tmp`: diretório no FS do Host
@@ -98,7 +98,7 @@ No exemplo acima, o diretório /tmp/host do container será mapeado para o diret
 Por padrão, os containers utilizam de redes privadas locais no host hospedeiro. Dessa forma se faz necessário usar mapeamento de portas para expor serviços de rede, como uma aplicação web:
 
 ```text
-# docker run -it -p 8080:80 httpd
+docker run -it -p 8080:80 httpd
 ```
 
 No exemplo acima, a porta 80 do container \(httpd\) será exposta na porta 8080 do host hospedeiro
@@ -118,7 +118,7 @@ curl http://localhost:8080
 Ao invés de mapear manualmente, podemos usar portas aleatórias:
 
 ```text
-# docker run -it -P httpd
+docker run -it -P httpd
 ```
 
 ### 1.2.5 Monitorando o uso de recursos do container

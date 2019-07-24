@@ -10,9 +10,9 @@
 
 Para conseguirmos executar os próximos exercícios precisamos de um ambiente com o OpenShift instalado e disponível. Atualmente temos algumas opções disponíveis:
 
-* [**OpenShift Origin Minishift**](https://www.openshift.org/minishift/): _Solução que permite rodar um ambiente local de OpenShift \(upstream\) em containers._
+* [**OpenShift OKD Minishift**](https://www.openshift.org/minishift/): _Solução que permite rodar um ambiente local de OpenShift \(upstream\) em containers._
 * [**Red Hat Container Development Kit \(CDK\)**](https://developers.redhat.com/products/cdk/overview/): _Equivalente ao anterior mas para a versão suportada do OpenShift._
-* [**oc cluster up**](https://github.com/openshift/origin/blob/master/docs/cluster_up_down.md): _Sobe um ambiente openshift utilizando apenas Conatiners._
+* [**oc cluster up**](https://github.com/openshift/origin/blob/master/docs/cluster_up_down.md): _Sobe um ambiente openshift utilizando apenas Containers._
 
 Consulte o instrutor sobre qual opção usar!
 

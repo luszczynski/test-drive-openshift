@@ -131,8 +131,8 @@ EOF
 Para iniciarmos o processo de construção da nova imagem, usa-se:
 
 ```text
-# cd ~/workshop-openshift/lab1.3
-# docker build -t workshop-openshift .
+cd ~/workshop-openshift/lab1.3
+docker build -t workshop-openshift .
 ```
 
 ![](../.gitbook/assets/selection_222-1.png)
@@ -150,7 +150,7 @@ A saída desse comando é algo como:
 Verifique a sua imagem nova no registro local:
 
 ```text
-# docker images | grep workshop-openshift
+docker images | grep workshop-openshift
 ```
 
 ![](../.gitbook/assets/selection_223-1.png)
@@ -164,18 +164,18 @@ Para publicar uma imagem em um registro remoto, muitas das vezes é necessário 
 > _note_: caso não possua uma conta no Docker Hub, acesse [https://hub.docker.com/register](https://hub.docker.com/register) e crie um conta pessoal.
 
 ```text
-# docker login docker.io
+docker login docker.io
 ```
 
 Depois de autenticados, precisamos colocar um tag na nossa imagem usando a convenção `registry/username/image:tag`:
 
 ```text
-# docker tag workshop-openshift docker.io/<username>/workshop-openshift
+docker tag workshop-openshift docker.io/<username>/workshop-openshift
 ```
 
 E depois já podemos enviar nossa imagem:
 
 ```text
-# docker push docker.io/<username>/workshop-openshift
+docker push docker.io/<username>/workshop-openshift
 ```
 
