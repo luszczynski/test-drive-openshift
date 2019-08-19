@@ -8,7 +8,7 @@
   * [1.4 - Docker parte 3](parte-1-linux-containers/lab-1.3-compartilhar.md)
 * [Parte 2 - OpenShift](parte-2-openshift-para-devs/README.md)
   * [2.1 - Prepararação](parte-2-openshift-para-devs/lab-2.0-preparar.md)
-  * [2.2 - Criação do ambiente](parte-2-openshift-para-devs/lab-2.1-show-me-the-code/2.1.1-acesso-ao-ambiente.md)
+  * [2.2 - Acesso ao ambiente](parte-2-openshift-para-devs/lab-2.1-show-me-the-code/2.1.1-acesso-ao-ambiente.md)
   * [2.3 - Deploy imagem do Docker Hub](parte-2-openshift-para-devs/lab-2.1-show-me-the-code/2.1.2-deploy-imagem-do-docker-hub.md)
   * [2.4 - Tolerância a falhas](parte-2-openshift-para-devs/lab-2.1-show-me-the-code/2.1.4-tolerancia-a-falhas.md)
   * [2.5 - Source to Image \(S2I\)](parte-2-openshift-para-devs/lab-2.1-show-me-the-code/2.1.5-source-to-image-s2i.md)
