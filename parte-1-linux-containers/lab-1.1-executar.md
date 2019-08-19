@@ -35,7 +35,7 @@ docker search ubuntu
 
 Nesse caso, ele irá buscar as imagens do centos no Dockerhub \(docker.io\) que já vem pré-configurado com o Docker.
 
-![](https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/gustavo-localhost-_017.png)
+![](https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/docker-search.png)
 
 Você também pode filtrar pelo número de estrelas \(stars\) que um repo possui.
 
@@ -45,7 +45,7 @@ Para isso basta passar o parametro --filter
 docker search centos --filter=stars=10
 ```
 
-![](https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_081.png)
+![](https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/docker-search-filter.png)
 
 No cenário acima, só existirão resultados que tenham mais que 10 estrelas.
 
@@ -57,7 +57,7 @@ Além de nome, imagens possuem _tags_ \(sufixo separado por ':'\) que podem iden
 docker pull centos:7
 ```
 
-![](https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_216.png)
+![](https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/docker-pull.png)
 
 O comando acima é equivalente a:
 
@@ -77,7 +77,7 @@ docker pull registry.access.redhat.com/rhel-atomic
 
 Caso você encontre o erro abaixo:
 
-![](https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_214.png)
+![](https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/docker-pull-rhel.png)
 
 Ele acontece porque o link simbólico aponta para um arquivo inexistente. Para resolver isso, execute o comando abaixo:
 
@@ -91,7 +91,7 @@ Agora faça novamente o pull da imagem `rhel-atomic`:
 docker pull registry.access.redhat.com/rhel-atomic
 ```
 
-![](https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_082.png)
+![](https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/docker-pull-atomic.png)
 
 No exemplo acima, ele buscará a imagem no registry `registry.access.redhat.com`
 
