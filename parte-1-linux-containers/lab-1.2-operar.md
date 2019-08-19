@@ -31,7 +31,7 @@ Para buscar mais informações sobre os containers em execução, usa-se:
 docker ps
 ```
 
-![](https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_219.png)
+![](https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/docker-ps.png)
 
 No exemplo anterior não são listados containers terminados. Para visualizar a listagem completa, usa-se:
 
@@ -39,7 +39,7 @@ No exemplo anterior não são listados containers terminados. Para visualizar a 
 docker ps -a
 ```
 
-![](https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_026.png)
+![](https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/docker-ps-a.png)
 
 Para visualizar os processos em execução dentro de um container, usamos:
 
@@ -47,7 +47,7 @@ Para visualizar os processos em execução dentro de um container, usamos:
 docker top <id/nome>
 ```
 
-![](https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_027-1.png)
+![](https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/docker-top.png)
 
 Também podemos inspecionar os metadados do container, ou de uma imagem, através de:
 
