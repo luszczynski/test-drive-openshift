@@ -135,7 +135,7 @@ cd ~/workshop-openshift/lab1.3
 docker build -t workshop-openshift .
 ```
 
-![](../.gitbook/assets/selection_222-1.png)
+![](https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/docker-build.png)
 
 Valide se sua imagem está funcionando corretamente por meio do comando:
 
@@ -145,7 +145,7 @@ docker run --rm workshop-openshift
 
 A saída desse comando é algo como:
 
-![](../.gitbook/assets/selection_297.png)
+![](https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/docker-run-rm.png)
 
 Verifique a sua imagem nova no registro local:
 
@@ -153,7 +153,7 @@ Verifique a sua imagem nova no registro local:
 docker images | grep workshop-openshift
 ```
 
-![](../.gitbook/assets/selection_223-1.png)
+![](https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/docker-images-grep-2.png)
 
 Podemos ver que é a nossa imagem que foi construida recentemente conforme destacado na foto acima.
 
