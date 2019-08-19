@@ -55,7 +55,7 @@ Também podemos inspecionar os metadados do container, ou de uma imagem, atravé
 docker inspect <id/nome/tag>
 ```
 
-![](https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/gustavo-localhost-_028-1.png)
+![](https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/docker-inspect.png)
 
 Tente obter o endereço IP de um container usando o comando abaixo:
 
@@ -63,7 +63,7 @@ Tente obter o endereço IP de um container usando o comando abaixo:
 docker inspect --format '{{ .NetworkSettings.IPAddress }}' <id do container>
 ```
 
-![](https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_220-1.png)
+![](https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/docker-inspect-top.png)
 
 ### 1.2.2 - Execução Ad-Hoc
 
@@ -73,7 +73,7 @@ Também podemos conectar em um container em execução e executar processos adic
 docker exec -it <container-id> /bin/sh
 ```
 
-![](https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_029.png)
+![](https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/docker-run-3.png)
 
 ### 1.2.3 - Adicionando Persistência através de Volumes
 
@@ -129,7 +129,7 @@ Para monitorar a quantidade de recursos que um container está consumindo em um 
 docker stats
 ```
 
-![](https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_221-1.png)
+![](https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/docker-stats.png)
 
 E podemos visualizar somente de um container rodando o comando
 
