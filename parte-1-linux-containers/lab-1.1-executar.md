@@ -103,7 +103,7 @@ Para verificar quais imagens estão disponíveis localmente, usa-se:
 docker images
 ```
 
-![](https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_215.png)
+![](https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/docker-images.png)
 
 ### 1.1.5 - Removendo Imagens Locais
 
@@ -119,11 +119,11 @@ Vamos remover a imagem do rhel atomic baixada no lab anterior:
 docker images | grep rhel-atomic
 ```
 
-![](https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_303-1.png)
+![](https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/docker-images-grep.png)
 
 Agora que temos o ID da imagem, podemos apagá-la:
 
-![](https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_304.png)
+![](https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/docker-rmi.png)
 
 Caso a imagem já esteja sendo utilizada por um container. o Docker não irá executar essa ação e retornará um erro informando qual o id do container que está utilizando a imagem que desejamos apagar.
 
