@@ -145,7 +145,7 @@ A execução de um container significa processar os metadados da imagem e criar 
 docker run -it centos:7 /bin/bash
 ```
 
-![](https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_217.png)
+![](https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/docker-rm-1.png)
 
 No exemplo anterior você deve ter percebido que além de iniciar o container você entrou no isolamento. Para sair usa-se a sequência _CTRL+P+Q_. Para iniciar o container de forma _detached_, usa-se:
 
@@ -159,7 +159,7 @@ Caso queira entrar em um container já em execução, para fazer _attach_ no pro
 docker attach <nome/ID>
 ```
 
-![](https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_218.png)
+![](https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/docker-run-2.png)
 
 ### 1.1.7 - Executando imagem do Wordpress
 
@@ -179,5 +179,5 @@ Agora podemos abrir nosso browser na página:
 
 > Se estiver usando uma VM na nuvem, use seu ip público para acessar o serviço.
 
-![](https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_047.png)
+![](https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/wordpress-localhost.png)
 
