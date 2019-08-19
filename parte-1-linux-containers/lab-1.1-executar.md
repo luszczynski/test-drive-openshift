@@ -145,7 +145,7 @@ A execução de um container significa processar os metadados da imagem e criar 
 docker run -it centos:7 /bin/bash
 ```
 
-![](https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/docker-rm-1.png)
+![](https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/docker-run-1.png)
 
 No exemplo anterior você deve ter percebido que além de iniciar o container você entrou no isolamento. Para sair usa-se a sequência _CTRL+P+Q_. Para iniciar o container de forma _detached_, usa-se:
 
