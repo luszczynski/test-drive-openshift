@@ -127,7 +127,7 @@ Agora que temos o ID da imagem, podemos apagá-la:
 
 Caso a imagem já esteja sendo utilizada por um container. o Docker não irá executar essa ação e retornará um erro informando qual o id do container que está utilizando a imagem que desejamos apagar.
 
-![](https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_083-1.png)
+![](https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/docker-rm-erro.png)
 
 Para resolver, basta remover o container que está causando problemas para a gente.
 
@@ -135,7 +135,7 @@ Para resolver, basta remover o container que está causando problemas para a gen
 docker rm <id do container>
 ```
 
-![](https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_085-1.png)
+![](https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/docker-rm.png)
 
 ### 1.1.6 - Executando Containers
 
