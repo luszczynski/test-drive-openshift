@@ -30,8 +30,8 @@ Para conseguir aproveitar o material, nossa recomendação é:
 
 Esse material é dividido em 2 partes:
 
-* [**Parte 1 - Linux Containers:**](parte-1-linux-containers/) _Material dedicado à discussão introdutória sobre a tecnologia de containers Linux._
-* [**Parte 2 - OpenShift**](parte-2-openshift-para-devs/)**:** _Material dedicado à discussão sobre o OpenShift na perspectiva de desenvolvimento e também infraestrutura._
+* [**Parte 1 - Linux Containers:**](parte-1-containers/) _Material dedicado à discussão introdutória sobre a tecnologia de containers Linux._
+* [**Parte 2 - OpenShift**](parte-2-openshift/)**:** _Material dedicado à discussão sobre o OpenShift na perspectiva de desenvolvimento e também infraestrutura._
 
 ## Posso contribuir?
 
