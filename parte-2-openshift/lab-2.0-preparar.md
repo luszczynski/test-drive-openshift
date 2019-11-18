@@ -13,7 +13,7 @@ Para conseguirmos executar os próximos exercícios precisamos de um ambiente co
 
 * [**OpenShift Origin (OKD)**](https://www.openshift.org/minishift/): _Projeto upstream do openshift, para instalação de cluster Openshift via Ansible \(sem suporte\)._
 * [**Red Hat Container Development Kit \(CDK\)**](https://developers.redhat.com/products/cdk/overview/): _Equivalente ao anterior mas para execução local de versão básica do Openshift para desenvolvimento._
-* [**oc cluster up**](https://github.com/openshift/origin/blob/master/docs/cluster_up_down.md): _Sobe um ambiente openshift utilizando apenas Conatiners \(para desenvolvimento\)._
+* [**oc cluster up**](https://github.com/openshift/origin/blob/master/docs/cluster_up_down.md): _Sobe um ambiente openshift utilizando apenas containers \(para desenvolvimento\)._
 
 #### OpenShift 4.x
 
