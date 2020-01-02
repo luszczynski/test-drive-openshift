@@ -30,10 +30,15 @@ Para conseguir aproveitar o material, nossa recomendação é:
 
 Esse material é dividido em 2 partes:
 
-* [**Parte 1 - Linux Containers:**](parte-1-linux-containers/) _Material dedicado à discussão introdutória sobre a tecnologia de containers Linux._
-* [**Parte 2 - OpenShift**](parte-2-openshift-para-devs/)**:** _Material dedicado à discussão sobre o OpenShift na perspectiva de desenvolvimento e também infraestrutura._
+* [**Parte 1 - Linux Containers:**](parte-1-containers/) _Material dedicado à discussão introdutória sobre a tecnologia de containers Linux._
+* [**Parte 2 - OpenShift**](parte-2-openshift/)**:** _Material dedicado à discussão sobre o OpenShift na perspectiva de desenvolvimento e também infraestrutura._
 
 ## Posso contribuir?
 
 **Aceitamos contribuições de todas as formas!** Você pode fazer uso da funcionalidade de "Issues" direto do repositório fonte no [**Github**](https://github.com/redhat-sa-brazil/workshop-openshift). Uma outra alternativa é através das funcionalidades de colaboração do próprio [**GitBook**](https://redhat-sa-brazil.gitbooks.io/workshop-openshift). Fique a vontade de usar qualquer um dos dois!
+
+
+## Observação
+
+**Para o S2I com o Quarkus** funcionar importar o template template-openjdk11-rhel8-s2i.yaml para o namespace **openshift**. Após isso importar também a secret para a service account default em cada projeto para fazer pulling da imagem do **registry.redhat.io**.
 
