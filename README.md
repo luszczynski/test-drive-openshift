@@ -37,3 +37,8 @@ Esse material é dividido em 2 partes:
 
 **Aceitamos contribuições de todas as formas!** Você pode fazer uso da funcionalidade de "Issues" direto do repositório fonte no [**Github**](https://github.com/redhat-sa-brazil/workshop-openshift). Uma outra alternativa é através das funcionalidades de colaboração do próprio [**GitBook**](https://redhat-sa-brazil.gitbooks.io/workshop-openshift). Fique a vontade de usar qualquer um dos dois!
 
+
+## Observação
+
+**Para o S2I com o Quarkus.** Ao final importar o template template-openjdk11-rhel8-s2i.yaml para o namespace **openshift**. Após isso importar também a secret para a service account default em cada projeto para fazer pulling da imagem do **registry.redhat.io**.
+
