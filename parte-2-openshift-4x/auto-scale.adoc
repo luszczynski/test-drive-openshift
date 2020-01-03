@@ -55,5 +55,14 @@ image:auto-scale.png[]
 
 A aplicação pode demorar em torno de uns 5 minutos para voltar as instâncias originais.
 
+== Removendo o Auto Scale
+
+Ao final desse lab, precisamos remover o auto scale. Para isso, basta apagar o `HPA` com o comando abaixo:
+
+[source,bash,role=copypaste]
+----
+oc delete hpa workshop-ocp-git
+----
+
 [[mais-informações]]
-=== Mais informações
+== Mais informações

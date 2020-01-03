@@ -4,6 +4,8 @@
 :toc:
 :toc-title: Conteúdo
 
+== Introdução
+
 É possível colocar suas aplicações que estão sem acesso em modo _idle_ no Openshift. Assim que houver algum tipo de acesso, o Openshift percebe isso e inicia as aplicações automaticamente.
 
 Para entrar em modo idle, é necessário intervenção manual. Para sair do modo idle, o Openshift faz isso automaticamente.
@@ -15,22 +17,24 @@ Nas versões futuras do OCP já estará disponível colocar a aplicação em idl
 
 Para iniciar o modo idle, precisamos primeiro identificar qual o serviço da nossa aplicação. Para isso executamos:
 
-[source,text]
+[source,bash,role=copypaste]
 ----
 oc get svc
 ----
 
 E logo em seguida solicitamos que a aplicação seja colocada em modo idle.
 
-[source,text]
+[source,bash,role=copypaste]
 ----
-oc idle <nome do serviço>
+oc idle workshop-ocp-git
 ----
 
 image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/idle.gif[image]
 
-Depois que a aplicação está em modo idle, a Web Console nos avisa sobre esse fato.
+Depois de colocar em idle a nossa app, a web console irá mostrar que não temos nenhum pod mais rodando
 
-image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_296.png[image]
+image:idle.png[]
 
-Logo que houver algum acesso, o Openshift inicia a aplicação automaticamente.
+Logo que houver algum acesso, o Openshift inicia a aplicação automaticamente. Para testar, clique no icone da url da aplicação
+
+image:idle-abre-app.png[]

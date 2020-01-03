@@ -5,18 +5,21 @@
 :toc-title: Conteúdo
 
 [[deploy-de-um-mysql-persistente-através-de-um-template-no-openshift-4.x]]
-== Deploy de um MYSQL persistente
-=== Selecionando o Banco do Catalogo
-Acesse o catalogo e selecione o MySQL (`+Add` -> `From Catalog` -> `Databases`-> `Mysql [Ephemeral]` -> `Instantiate Template`)
+== Deploy de um MySQL persistente
+
+=== Selecionando o Banco do Catálogo
+
+Acesse o catálogo e selecione o MySQL (`+Add` -> `From Catalog` -> `Databases`-> `Mysql` -> `Instantiate Template`)
 
 image:database-1.gif[image]
 
-=== Customizando Informacoes
+=== Customizando Informações
+
 Agora preencha as informações conforme abaixo:
 
 image:database-2.png[image]
 
-Verifique o tamanho do storage e clique em "Create"
+Verifique o tamanho do storage e clique em `Create`
 
 image:database-3.png[image]
 
@@ -24,26 +27,28 @@ Após aguardar alguns minutos, o resultado final, será o container do mysql rod
 
 image:database-4.png[image]
 
-[[ corrigindo-problema-autenticacao ]]
-=== Corrigindo o sistema de autenticacao
+[[corrigindo-problema-autenticacao]]
+=== Corrigindo o sistema de autenticação
 
 O Mysql 8 precisa que a forma de autenticação seja alterada para que nosso codigo funcione. Assim, execute o seguinte comando no mysql depois de conectar no terminal:
 
-[source,bash]
+[source,bash,role=copypaste]
+----
 mysql -u root
 ALTER USER 'redhat' IDENTIFIED WITH mysql_native_password BY 'redhat';
+----
 
 image:database-5.gif[image]
 
-
 [[alteração-da-aplicação-para-apontar-para-o-banco-de-dados-persistente]]
-== Conectando a App ao Banco
+== Conectando a aplicação ao Banco
+
 === Preparando o codigo
 
 Vamos mostrar uma lista de cidades cadastradas no banco de dados com essa aplicação. +
 Para isso o primeiro passo será conectar a nossa aplicação já existente neste banco de dados, para isso precisamos adicionar o trecho de código abaixo ao arquivo `index.php` já existente. 
 
-[source,php]
+[source,php,role=copypaste]
 ----
 <?php
 echo "<h1>Openshift Workshop v2.0</h1> ";
@@ -73,7 +78,10 @@ image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/git
 [[popule-o-banco-de-dados-a-partir-da-sua-máquina-local]]
 
 == Populando o Banco
+
 === A partir da sua máquina local
+
+INFO: Execute esse labs somente se instruído pelo instrutor. Se o instrutor avisar para pular essa etapa, vá para <<a-partir-da-console>>
 
 Para criar a nossa tabela que a nossa aplicação está consumindo os dados, vamos utilizar o recurso de *port-forward*. Este recurso permite que uma porta TCP remota possa ser acessada como se estivesse disponível localmente através do uso de túnels.
 
@@ -112,7 +120,8 @@ Neste momento temos o MYSQL disponível ``localmente'', podemos conectar a ele c
 mysql -u redhat -h 127.0.0.1 -P 3306 --password=redhat --execute="USE workshop; CREATE TABLE cidade (id INT NOT NULL, nome VARCHAR(50) NOT NULL, PRIMARY KEY (id)); INSERT INTO cidade (id,nome) VALUES(1,'Rio de Janeiro'); INSERT INTO cidade (id,nome) VALUES(2,'Brasilia'); INSERT INTO cidade (id,nome) VALUES(3,'Recife');"
 ----
 
-=== A partir da console
+[[a-partir-da-console]]
+=== A partir da Web Console
 Voce pode também utilizar a console conforme demonstrado no item anterior <<corrigindo-problema-autenticacao>> e executar os seguintes comandos na console.
 
 
@@ -123,7 +132,7 @@ mysql -u redhat -h 127.0.0.1 -P 3306 --password=redhat --execute="USE workshop; 
 
 image:database-6.gif[image]
 
-== Acessando a Aplicacao
+== Acessando a aplicação
 
 Ao acessar novamente a interface de nossas aplicação a mesma deverá estar mostrando a lista de cidades incluídas neste passo.
 
@@ -134,18 +143,18 @@ Assim que todos os exercícios tiverem terminados, podemos parar o port-forward.
 image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_164.png[image]
 
 
-== Organizando a Aplicacao na WebConsole
+== Organizando a aplicacao na Web Console
 
 O Openshift 4 vem com algumas funções novas que permitem organizar sua aplicação para tornar-se mais intuitiva para operadores ou mesmo para outros desenvolvedores que participam do projeto. Vamos inserir o banco de dados dentro do contexto da aplicação e criar um link entre a App e o Banco para demonstrar o fluxo da informação.
 
-=== Inserindo o DB na Aplicação
+=== Inserindo o DB na aplicação
 
 Para isso, basta arrastar o BD para a aplicacao do Workshop conforme demonstrado abaixo:
 
 image:database-7.gif[image]
 
 
-=== Demonstrando o fluxo da comunicacao
+=== Demonstrando o fluxo da comunicação
 
 Ao passar com o mouse sobre o pod da aplicacao, uma seta deve aparecer. Arraste-a para o BD.
 
