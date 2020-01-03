@@ -3,7 +3,6 @@
 :toc:
 :imagesdir: images
 
-
 [[criar-nova-aplicação-no-github]]
 == Criar nova aplicação no github
 

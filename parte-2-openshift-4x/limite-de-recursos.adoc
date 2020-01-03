@@ -1,6 +1,7 @@
 [[limite-de-recursos]]
 = Limite de Recursos
 :imagesdir: images
+:toc:
 
 O Openshift permite que você limite a quantidade de recursos que serão disponibilizados para sua aplicação. Antes de continuarmos esse assunto, é preciso esclarecer duas nomenclaturas
 

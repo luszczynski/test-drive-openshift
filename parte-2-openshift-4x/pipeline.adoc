@@ -1,6 +1,7 @@
 [[pipeline]]
 = Pipeline
 :imagesdir: images
+:toc:
 
 [[pipeline-1]]
 == Pipeline

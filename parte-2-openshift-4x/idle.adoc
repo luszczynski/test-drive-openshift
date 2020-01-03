@@ -1,6 +1,7 @@
 [[idle]]
 = Idle
 :imagesdir: images
+:toc:
 
 É possível colocar suas aplicações que estão sem acesso em modo _idle_ no Openshift. Assim que houver algum tipo de acesso, o Openshift percebe isso e inicia as aplicações automaticamente.
 

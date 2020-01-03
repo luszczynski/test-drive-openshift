@@ -21,9 +21,9 @@ modules:
   #- criacao-do-ambiente
   - deploy-imagem-external-registry
   - tolerancia-a-falha
-  - source-to-image
   - usando-dockerfile
   - binary-deployment
+  - source-to-image
   - health-check
   - integracao-continua-webhook
   - agregacao-de-logs

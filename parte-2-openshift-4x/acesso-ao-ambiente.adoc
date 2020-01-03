@@ -1,14 +1,11 @@
 [[acesso-ao-ambiente]]
 = Acesso ao ambiente
 :imagesdir: images
-
-[[objetivos]]
-== Objetivos
-
-* Configurar ambiente no Openshift para os próximos exercícios
+:toc:
+:toc-title: 
 
 [[ambiente-openshift]]
-=== Ambiente OpenShift
+== Ambiente OpenShift
 
 Para conseguirmos executar os próximos exercícios precisamos de um ambiente com o Openshift instalado e disponível. Atualmente utilizamos um cluster compartilhado que roda na AWS representado pela figura abaixo:
 
@@ -16,20 +13,25 @@ image:https://raw.githubusercontent.com/guaxinim/starter-guides/ocp-3.11/images/
 
 Um número predefinido de usuários foi previamente criado no cluster para o test drive.
 
+== Etherpad
+
+O Etherpad é um bloco de notas compartilhado. Utilizaremos ele para compartilhar conteúdo e também controlar o usuário de cada um.
+
 Antes de continuar, acesse o Etherpad através do link abaixo:
 
 {{ ETHERPAD_URL }}
 
 Escolha um usuário dos predefinidos e coloque o seu `nome`, `email` e `cargo` na frente para indicar sua escolha. Essa conta será utilizada por você durante todo o test drive. Por exemplo:
 
-....
+[source,text]
+----
 user10=Luke Skywalker (luke.skywalker@starwars.com - Jedi)
-....
+----
 
 Se o usuário já tiver um nome na frente significa que alguém já escolheu. Nesse caso escolha outro que esteja disponível.
 
 [[linha-de-comando]]
-=== Linha de comando
+== Linha de comando
 
 Iremos utilizar um terminal que roda no browser. Para isso, utilize o `Google Chrome` ou o `Firefox`. Nem pense em usar o Edge por favor ;)
 
@@ -41,7 +43,9 @@ Agora você precisa logar no OpenShift com o usuário escolhido. Esse login te d
 
 image:terminal.png[Web Console]
 
-Para efetuar o login além do comando oc você precisa especificar o endereço do servidor onde o Openshift está instalado, isso pode ser feito através do seguinte abaixo:
+=== Login no Openshift pela CLI
+
+Para efetuar o login, além do comando `oc`, você precisa especificar o endereço do servidor onde o Openshift está instalado. Isso pode ser feito através do seguinte comando:
 
 [source,bash,role=copypaste]
 ----
@@ -79,6 +83,8 @@ Using project "userXX".
 
 Se não aparecer o projeto com seu nome de usuário. Você pode criar um através do comando:
 
+IMPORTANT: No comando abaixo, não se esqueça de trocar o nome do projeto `userXX` para o do seu usuário. Ex: user3.
+
 [source,bash,role=copypaste]
 ----
 oc new-project userXX
@@ -86,31 +92,22 @@ oc new-project userXX
 
 Parabéns, você está autenticado no servidor do Openshift. O Openshift master possui um OAuth server embutido. Através dele, desenvolvedores e administradores obtém tokens OAuth para se autenticarem diretamente à API. Por padrão cada token tem duração de 24 horas. Para mais informações sobre o comando de login e sua configuração acesse a https://docs.openshift.com/container-platform/latest/cli_reference/get_started_cli.html#basic-setup-and-login[Documentação Oficial do Openshift].
 
-*Usando um Projeto*
+== Usando um projeto
 
 Projetos são separações lógicas que permitem organizar as aplicações em execução no nosso cluster. Um projeto permite que vários usuários gerenciem o conteúdo e isolamento dos recursos.
 
 Cada projeto tem seus próprios recursos, políticas (quem pode fazer o quê e onde), e restrições (cotas e limites, etc). Projetos atuam como uma "caixa" que envolve os seus serviços e endpoints em uso (ou do seu time).
 
-Se você não tem ainda um projeto criado com o seu nome, a primeira coisa que precisa fazer é criar o projeto. Você pode fazer isso através do comando:
-
-NOTE: No seguinte comando, troque o `userXX` pelo usuário que você escolheu.
+Para ver os projetos que você tem acesso, execute:
 
 [source,bash,role=copypaste]
 ----
-oc new-project userXX
-----
-
-Você verá a seguinte mensagem de confirmação:
-
-[source,text]
-----
-Now using project "userXX" on server "{{ OPENSHIFT_MASTER_URL }}".
+oc get projects
 ----
 
 Se você tiver vários projetos, a primeira coisa a ser feita é mudar para o projeto _userXX_. De agora em diante tenha certeza que você estará nesse projeto. Isso pode ser feito através do comando:
 
-NOTE: No seguinte comando, troque o `userXX` pelo usuário que você escolheu.
+IMPORTANT: No seguinte comando, troque o `userXX` pelo usuário que você escolheu.
 
 [source,bash,role=copypaste]
 ----
@@ -124,7 +121,7 @@ Você verá a seguinte mensagem de confirmação:
 Now using project "userXX" on server "{{ OPENSHIFT_MASTER_URL }}".
 ----
 
-*A Web Console*
+== A Web Console
 
 O OpenShift vem com uma console web que irá permitir aos usuários executar várias tarefas via browser. Para acessar a console abra a seguinte URL:
 
