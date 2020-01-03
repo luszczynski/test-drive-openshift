@@ -61,7 +61,7 @@ oc login {{ OPENSHIFT_MASTER_URL }} --insecure-skip-tls-verify=true
 
 Assim que enviar o comando `oc login`, você terá que fornecer a o usuário e senha para efetuar o login. Utilize o usuário escolhido anteriormente com a senha fornecida pelo instrutor.
 
-NOTE: Lembre-se de trocar o `userXX` pelo seu usuário
+IMPORTANT: Lembre-se de trocar o `userXX` pelo seu usuário
 
 [source,text]
 ----
