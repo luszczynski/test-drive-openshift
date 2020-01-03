@@ -2,6 +2,7 @@
 = Binary Deployment
 :imagesdir: images
 :toc:
+:toc-title: Conteúdo
 
 O Openshift permite que imagens docker sejam construídas automaticamente, informando somente o repositório do código-fonte por meio do Source-to-Image como você pode testar no Lab 2.1.5. Mas existem casos que você já tem o binário da sua aplicação compilado e pronto em um repositório como o Nexus. O Openshift também possibilita que possamos executar o processo do source-to-image utilizando esse binário.
 

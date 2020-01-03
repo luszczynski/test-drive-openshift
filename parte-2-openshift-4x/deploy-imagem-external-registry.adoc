@@ -2,6 +2,7 @@
 = Deploy imagem do Docker Hub
 :imagesdir: images
 :toc:
+:toc-title: Conteúdo
 
 Vamos agora implantar uma imagem existente no Quay. O Quay.io é um registry externo semelhante ao Docker Hub.
 

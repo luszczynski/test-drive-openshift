@@ -2,6 +2,7 @@
 = Source to Image (S2I)
 :toc:
 :imagesdir: images
+:toc-title: Conteúdo
 
 [[criar-nova-aplicação-no-github]]
 == Criar nova aplicação no github

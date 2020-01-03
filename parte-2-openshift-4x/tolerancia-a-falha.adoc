@@ -2,6 +2,7 @@
 = Tolerância à falhas
 :imagesdir: images
 :toc:
+:toc-title: Conteúdo
 
 O Openshift garante que a quantidade de instâncias (Pods) definidas para uma aplicação seja respeitada. O responsável por fazer este controle é o `Replication Controller` ou o `Replica Set`.
 

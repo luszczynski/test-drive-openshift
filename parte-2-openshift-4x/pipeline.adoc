@@ -2,6 +2,7 @@
 = Pipeline
 :imagesdir: images
 :toc:
+:toc-title: Conteúdo
 
 [[pipeline-1]]
 == Pipeline
