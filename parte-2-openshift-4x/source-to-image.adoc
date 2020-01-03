@@ -1,5 +1,6 @@
 [[source-to-image-s2i]]
 = Source to Image (S2I)
+:imagesdir: images
 
 [[criar-nova-aplicação-no-github]]
 == Criar nova aplicação no github

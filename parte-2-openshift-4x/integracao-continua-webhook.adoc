@@ -1,5 +1,6 @@
 [[integração-contínua-webhook]]
 = Integração Contínua (Webhook)
+:imagesdir: images
 
 Podemos automatizar o processo de build do nosso container toda vez que for feito push no nosso repositório git. Para isso, iremos configurar um `webhook`. Por meio dele, o servidor git avisará o Openshift sempre que um commit (push) novo ocorrer.
 

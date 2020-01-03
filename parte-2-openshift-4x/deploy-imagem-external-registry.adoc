@@ -2,7 +2,6 @@
 = Deploy imagem do Docker Hub
 :imagesdir: images
 
-
 Vamos agora implantar uma imagem existente no Quay. O Quay.io é um registry externo semelhante ao Docker Hub.
 
 A imagem que vamos utilizar, foi criada usando Java e o framework Quarkus. Ela é extremamente pequena e roda consumindo poucos megas.

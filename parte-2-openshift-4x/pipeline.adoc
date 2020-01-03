@@ -1,5 +1,6 @@
 [[pipeline]]
 = Pipeline
+:imagesdir: images
 
 [[pipeline-1]]
 == Pipeline

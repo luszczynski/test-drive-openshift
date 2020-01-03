@@ -1,5 +1,6 @@
 [[acesso-ao-ambiente]]
 = Acesso ao ambiente
+:imagesdir: images
 
 [[acesso-ao-ambiente-openshift-local]]
 == Acesso ao ambiente Openshift Local

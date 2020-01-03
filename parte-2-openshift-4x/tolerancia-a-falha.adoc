@@ -1,5 +1,6 @@
 [[tolerância-a-falhas]]
 = Tolerância a falhas
+:imagesdir: images
 
 O Openshift garante que a quantidade de instâncias (PODs) definidas para uma aplicação seja respeitada. O responsável por fazer este controle é o Replication Controller.
 
