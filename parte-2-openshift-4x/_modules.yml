@@ -11,11 +11,14 @@ modules:
     vars: 
     exit_sign: Próximo
   deploy-imagem-external-registry:
-    name: "Deploy imagem de um Registry externo"
+    name: "Deploy de imagem de um Registry externo"
     vars: 
   tolerancia-a-falha:
     name: "Tolerancia a Falha"
     vars: 
+    requires: 
+      - acesso-ao-ambiente
+      - deploy-imagem-external-registry
   source-to-image:
     name: "Source To Image"
     vars: 

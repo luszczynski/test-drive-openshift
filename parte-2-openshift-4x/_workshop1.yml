@@ -18,7 +18,7 @@ vars:
 modules:
   activate:
   - acesso-ao-ambiente
-  - criacao-do-ambiente
+  #- criacao-do-ambiente
   - deploy-imagem-external-registry
   - tolerancia-a-falha
   - source-to-image

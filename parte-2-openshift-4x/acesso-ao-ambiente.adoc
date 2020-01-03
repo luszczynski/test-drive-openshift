@@ -1,15 +1,16 @@
 [[acesso-ao-ambiente]]
 = Acesso ao ambiente
+:imagesdir: images
 
 [[objetivos]]
 == Objetivos
 
-* Acessar o ambiente do Openshift para os próximos exercícios
+* Configurar ambiente no Openshift para os próximos exercícios
 
 [[ambiente-openshift]]
 === Ambiente OpenShift
 
-Para conseguirmos executar os próximos exercícios precisamos de um ambiente com o Openshift instalado e disponível. Atualmente utilizamos máquinas virtuais na AWS onde temos um cluster Openshift instalado representado pela figura abaixo:
+Para conseguirmos executar os próximos exercícios precisamos de um ambiente com o Openshift instalado e disponível. Atualmente utilizamos um cluster compartilhado que roda na AWS representado pela figura abaixo:
 
 image:https://raw.githubusercontent.com/guaxinim/starter-guides/ocp-3.11/images/common-environment-ocp-architecture.png[image]
 
@@ -17,7 +18,7 @@ Um número predefinido de usuários foi previamente criado no cluster para o tes
 
 Antes de continuar, acesse o Etherpad através do link abaixo:
 
-link:ETHERPAD[{{ ETHERPAD_URL }}]
+{{ ETHERPAD_URL }}
 
 Escolha um usuário dos predefinidos e coloque o seu `nome`, `email` e `cargo` na frente para indicar sua escolha. Essa conta será utilizada por você durante todo o test drive. Por exemplo:
 
@@ -30,13 +31,15 @@ Se o usuário já tiver um nome na frente significa que alguém já escolheu. Ne
 [[linha-de-comando]]
 === Linha de comando
 
-Iremos utilizar um terminal que roda no browser. Para isso, utilize o `Google Chrome` ou o `Firefox`. Nem pense em usar o Edge por favor :)
+Iremos utilizar um terminal que roda no browser. Para isso, utilize o `Google Chrome` ou o `Firefox`. Nem pense em usar o Edge por favor ;)
 
 O link de acesso para o terminal via web está abaixo:
 
 {{ TERMINAL_URL }}
 
-Agora você precisa logar no OpenShift com o usuário escolhido, antes de login clique em `Allow selected permissions`. Agora você pode continuar nos próximos passos.
+Agora você precisa logar no OpenShift com o usuário escolhido. Esse login te dará acesso ao terminal. O instrutor irá orientar a respeito do usuário e senha. Depois de logado, você verá uma tela semelhante a essa:
+
+image:terminal.png[Web Console]
 
 Para efetuar o login além do comando oc você precisa especificar o endereço do servidor onde o Openshift está instalado, isso pode ser feito através do seguinte abaixo:
 
@@ -49,7 +52,7 @@ Você pode ver o seguinte aviso:
 
 _The server uses a certificate signed by an unknown authority. You can bypass the certificate check, but any data you send to the server could be intercepted by others. Use insecure connections? (y/n):_
 
-Digite _Y_ para aceita uma conexão potencialmente insegura. O motivo dessa mensagem é porque o Openshift instalado está usando um certificado TLS auto-assinado para esse workshop. Em um cenário real o certificado do Openshift deve ser fornecido por uma entidade conhecida (Exemplo: Thawte, Verisign, StartSSL, etc.) ou assinado por uma CA confiável pelo sistema. Para evitar a mensagem é possível fornecer o parâmetro `--insecure-skip-tls-verify=true`
+Digite `Y` para aceita uma conexão potencialmente insegura. O motivo dessa mensagem é porque o Openshift instalado está usando um certificado TLS auto-assinado para esse workshop. Em um cenário real o certificado do Openshift deve ser fornecido por uma entidade conhecida (Exemplo: Thawte, Verisign, StartSSL, etc.) ou assinado por uma CA confiável pelo sistema. Para evitar a mensagem é possível fornecer o parâmetro `--insecure-skip-tls-verify=true`
 
 [source,bash,role=copypaste]
 ----
@@ -57,6 +60,8 @@ oc login {{ OPENSHIFT_MASTER_URL }} --insecure-skip-tls-verify=true
 ----
 
 Assim que enviar o comando `oc login`, você terá que fornecer a o usuário e senha para efetuar o login. Utilize o usuário escolhido anteriormente com a senha fornecida pelo instrutor.
+
+NOTE: Lembre-se de trocar o `userXX` pelo seu usuário
 
 [source,text]
 ----
@@ -74,7 +79,7 @@ Using project "userXX".
 
 Se não aparecer o projeto com seu nome de usuário. Você pode criar um através do comando:
 
-[source,text]
+[source,bash,role=copypaste]
 ----
 oc new-project userXX
 ----
@@ -83,14 +88,15 @@ Parabéns, você está autenticado no servidor do Openshift. O Openshift master 
 
 *Usando um Projeto*
 
-Projetos são separações lógicas de alto nível para organizar as aplicações em execução. Um projeto permite uma comunidade de usuários gerenciar o conteúdo e isolamento das mesmas. +
-Cada projeto tem seus próprios recursos, políticas (quem pode fazer o quê e onde), e restrições (cotas e limites, etc). Projetos atuam como uma ``caixa'' que envolve os seus serviços e endpoints em uso (ou do seu time).
+Projetos são separações lógicas que permitem organizar as aplicações em execução no nosso cluster. Um projeto permite que vários usuários gerenciem o conteúdo e isolamento dos recursos.
+
+Cada projeto tem seus próprios recursos, políticas (quem pode fazer o quê e onde), e restrições (cotas e limites, etc). Projetos atuam como uma "caixa" que envolve os seus serviços e endpoints em uso (ou do seu time).
 
 Se você não tem ainda um projeto criado com o seu nome, a primeira coisa que precisa fazer é criar o projeto. Você pode fazer isso através do comando:
 
-ATENÇÃO: No seguinte comando, troque o `userXX` pelo usuário que você escolheu.
+NOTE: No seguinte comando, troque o `userXX` pelo usuário que você escolheu.
 
-[source,text]
+[source,bash,role=copypaste]
 ----
 oc new-project userXX
 ----
@@ -104,9 +110,9 @@ Now using project "userXX" on server "{{ OPENSHIFT_MASTER_URL }}".
 
 Se você tiver vários projetos, a primeira coisa a ser feita é mudar para o projeto _userXX_. De agora em diante tenha certeza que você estará nesse projeto. Isso pode ser feito através do comando:
 
-ATENÇÃO: No seguinte comando, troque o `userXX` pelo usuário que você escolheu.
+NOTE: No seguinte comando, troque o `userXX` pelo usuário que você escolheu.
 
-[source,text]
+[source,bash,role=copypaste]
 ----
 oc project userXX
 ----
@@ -120,7 +126,7 @@ Now using project "userXX" on server "{{ OPENSHIFT_MASTER_URL }}".
 
 *A Web Console*
 
-O OpenShift vem com uma console web que irá permitir aos usuários executar várias tarefas via browser. Para acessar a console acesse a seguinte URL:
+O OpenShift vem com uma console web que irá permitir aos usuários executar várias tarefas via browser. Para acessar a console abra a seguinte URL:
 
 {{ OPENSHIFT_MASTER_URL }}
 
@@ -133,28 +139,24 @@ Username: userXX
 Password: xxxx
 ----
 
-image:https://raw.githubusercontent.com/guaxinim/starter-guides/ocp-3.11/images/ocp-login.png[OpenShift Login Screen]
+image:openshift-login.png[Openshift Login Screen]
 
-Depois de se autenticar na console web, você verá uma lista de itens para adicionar ao projeto. Esse é o catálogo de serviços. É uma imagem semelhante a figura abaixo:
+Depois de se autenticar na console web, você verá a seguinte tela.
 
-image:https://raw.githubusercontent.com/guaxinim/starter-guides/ocp-3.11/images/explore-webconsole1sc.png[Web Console]
+image:openshift-projects.png[Web Console]
 
-Clique no projeto _userXX_ no lado direito da tela. Ao clicar no projeto você será levado para a página de Overview e verá a lista de todas as rotas, serviços, deployments e pods que estão em execução.
+Altere a console para o modo de developer conforme imagem abaixo:
 
-image:https://raw.githubusercontent.com/guaxinim/starter-guides/ocp-3.11/images/explore-webconsole2.png[Explore Project]
+image:open-developer.png[Web Console]
 
-Se o cluster possuir os componentes de métricas instalado você verá uma mensagem de erro na tela semelhante a tela abaixo (isso é mostrado quando o cluster usa um certificado auto-assinado):
+Caso você veja um erro de permissão, selecione o projeto que você criou nos passos anteriores.
 
-image:https://raw.githubusercontent.com/guaxinim/starter-guides/ocp-3.11/images/explore-webconsole2-error.png[Web Console]
-
-Clique no link _Open metrics URL_, e aceite o certificado.
-
-image:https://raw.githubusercontent.com/guaxinim/starter-guides/ocp-3.11/images/explore-acceptcertificate.png[Accept Certificates]
-
-Ainda precisamos aceitar outro certificado auto-assinado que é o certificado das métricas agregadas. Se não aceitarmos as métricas agregadas não irão aparecer na console web.
-
-image:https://raw.githubusercontent.com/guaxinim/starter-guides/ocp-3.11/images/explore-hawkular.png[Hawkular Web]
+image:erro-acesso.png[]
 
 Durante os labs iremos utilizar tanto a linha de comando quanto a console web.
+
+A sua tela deve estar conforme abaixo:
+
+image:web-console-developer.png[]
 
 Have fun!
