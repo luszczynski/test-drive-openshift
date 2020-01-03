@@ -11,6 +11,8 @@ Neste laboratório vamos testar esse recurso.
 [[scale-up]]
 == Scale up
 
+=== Usando a Web Console
+
 O nosso primeiro passo é fazer o `scale up` da nossa aplicação.
 
 CAUTION: Não escale para muitos pods pois isso pode causar a queda do ambiente, já que o Openshift está rodando em ambiente compartilhado e as cotas de cada usuário estão generosas.
@@ -29,10 +31,21 @@ No final, sua aplicação deve estar conforme imagem abaixo:
 
 image:2-replicas.png[]
 
+=== Usando o CLI
+
+Para escalar para 2 instâncias, podemos utilizar a linha de comando conforme abaixo:
+
+[source,bash,role=copypaste]
+----
+oc scale dc/workshop-openshift --replicas=2
+----
+
 [[garantia-do-número-de-réplicas]]
 == Garantia do número de réplicas
 
-Para testar o comportamento vamos deletar um Pod em execução, o intuito é simular uma falha.
+=== Usando a Web Console
+
+Para testar o comportamento vamos deletar um Pod em execução. O intuito é simular uma falha.
 
 Clique em cima da bola da sua aplicação, depois em `Resources` e clique em um dos dois pods que são mostrados na tela.
 
@@ -46,11 +59,15 @@ Confirme a deleção:
 
 image:delete-pod-confirm.png[]
 
-INFO: Este comportamento evita aquele caso clássico de precisar ligar para alguém de operações para reiniciar a aplicação em um caso de falha
+Volte para a tela inicial clicando em `Topology` do lado esquerdo do menu.
 
 Quando o POD é deletado, o Openshift o recupera automaticamente como pode ser visto na imagem abaixo. Nesse exemplo, um POD novo é criado (cor azul claro) e outro está sendo finalizado (cor azul escuro) mas sempre mantendo a quantidade de 2 instâncias rodando.
 
 image:pod-deleting-creating.png[]
+
+TIP: Este comportamento evita aquele caso clássico de precisar ligar para alguém de operações para reiniciar a aplicação em um caso de falha
+
+=== Usando o CLI
 
 Também podemos deletar um POD usando a linha de comando:
 
@@ -65,18 +82,11 @@ image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/git
 [[limpeza-do-ambiente]]
 == Limpeza do ambiente
 
-Agora podemos apagar essa aplicação já que não a utilizaremos mais. O comando abaixo executa essa limpeza:
+Agora podemos apagar essa aplicação já que não a utilizaremos mais nos labs posteriores. O comando abaixo executa essa limpeza:
 
 [source,bash,role=copypaste]
 ----
 oc delete all -l app=workshop-openshift
-----
-
-Para saber o nome do seu projeto no Openshift, basta executar:
-
-[source,bash,role=copypaste]
-----
-oc get projects
 ----
 
 image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/delete-all.gif[image]
@@ -86,4 +96,4 @@ Ao fim desse lab, sua tela do Openshift deve estar conforme imagem abaixo:
 image:web-console-developer.png[]
 
 [[mais-informações]]
-=== Mais informações:
+== Mais informações:

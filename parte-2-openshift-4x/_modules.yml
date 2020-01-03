@@ -41,20 +41,26 @@ modules:
     name: "Banco de Dados MySql"
     vars: 
   pipeline:
-    name: "Pipelines"
+    name: "Pipelines com Jenkins"
     vars: 
+  pipeline-tekton:
+    name: "Pipelines com Tekton (Coming soon)"
   limite-de-recursos:
     name: "Limite de Recursos"
     vars: 
   auto-scale:
     name: "Auto Scale"
     vars: 
+  auto-scale-knative:
+    name: "Auto Scale com Knative (Coming soon)"
   rollback:
     name: "Rollback"
     vars: 
   idle:
     name: "Idle"
     vars: 
+  idle-knative: 
+    name: "Idle com Knative (Coming soon)"
   image-stream:
     name: "Image Stream"
     vars: 

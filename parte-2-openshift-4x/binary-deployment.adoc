@@ -4,49 +4,55 @@
 :toc:
 :toc-title: Conteúdo
 
-O Openshift permite que imagens docker sejam construídas automaticamente, informando somente o repositório do código-fonte por meio do Source-to-Image como você pode testar no Lab 2.1.5. Mas existem casos que você já tem o binário da sua aplicação compilado e pronto em um repositório como o Nexus. O Openshift também possibilita que possamos executar o processo do source-to-image utilizando esse binário.
+== Introdução
 
-Iremos criar um JBoss EAP 7 com um aplicação chamada contador.
+O Openshift permite que imagens docker sejam construídas automaticamente, informando somente o repositório do código-fonte por meio do Source-to-Image como você poderá testar no lab seguinte. Mas existem casos que você já tem o binário da sua aplicação compilado e pronto em um repositório como o Nexus. O Openshift também permite executar o processo do source-to-image utilizando esse binário, só que ao invés de utilizar o código-fonte, ele utilizará o seu binário.
+
+Para demonstrar isso, iremos criar um JBoss EAP 7 com um aplicação chamada contador.
 
 [[importando-a-image-stream-do-eap-7]]
 == Importando a Image Stream do EAP 7
 
 Uma https://docs.openshift.com/container-platform/3.11/architecture/core_concepts/builds_and_image_streams.html#image-streams[Image Stream] e suas tags associadas fornecem uma abstração para fazer referência a imagens de containers dentro do OpenShift. A `Image Stream` permite que você veja quais imagens estão disponíveis e garante que você está usando a imagem específica que você precisa mesmo se a imagem no repositório for alterada.
 
-Importe a definição de Image Stream do EAP 7.0:
+Vamos importar a definição de Image Stream do EAP 7.0:
 
-[source,text]
+[source,bash,role=copypaste]
 ----
 oc create -f https://raw.githubusercontent.com/jboss-openshift/application-templates/master/eap/eap70-image-stream.json
 ----
 
-Crie os `secrets` usados pelos templates do EAP 7.0
+O comando acima cria uma `Image Stream` do EAP 7 dentro do nosso projeto. Para confirmar que tudo ocorreu conforme o esperado, execute:
 
-[source,text]
-----
-oc create -f https://raw.githubusercontent.com/jboss-openshift/application-templates/master/secrets/eap7-app-secret.json
-----
-
-Verifique se o `Image Stream` está presente em seu projeto/namespace
-
-[source,text]
+[source,bash,role=copypaste]
 ----
 oc get is | grep eap7
 ----
 
+== Criando os Secrets
+
+Crie os `secrets` usados pelos templates do EAP 7.0
+
+[source,bash,role=copypaste]
+----
+oc create -f https://raw.githubusercontent.com/jboss-openshift/application-templates/master/secrets/eap7-app-secret.json
+----
+
+INFO: Iremos abordar com mais detalhes o que são os secrets em labs posteriores
+
 [[download-da-app-de-exemplo]]
-== Download da app de exemplo
+== Download da app contador
 
 Vamos criar agora uma pasta para trabahar nessa demonstração:
 
-[source,text]
+[source,bash,role=copypaste]
 ----
 mkdir -p ~/binary-deployment/deployments && cd ~/binary-deployment
 ----
 
 Para testar essa funcionalidade, vamos fazer o download de uma aplicação de exemplo já existente. Iremos baixar o arquivo de deployment (contador.war) e salvar na pasta deployments. Para isso execute o seguinte comando:
 
-[source,text]
+[source,bash,role=copypaste]
 ----
 curl -L https://github.com/luszczynski/contador/blob/master/contador.war?raw=true \
  -o ~/binary-deployment/deployments/contador.war
@@ -55,11 +61,11 @@ curl -L https://github.com/luszczynski/contador/blob/master/contador.war?raw=tru
 image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/show-contador.gif[image]
 
 [[criando-binary-deployment-no-openshift]]
-== Criando binary deployment no Openshift
+== Criando binary deployment
 
 Agora precisamos falar para o Openshift criar um novo build usando o JBoss EAP e dizendo para ele para não usar o código-fonte e sim o binário da aplicação.
 
-[source,bash]
+[source,bash,role=copypaste]
 ----
 oc new-build \
  --image-stream=jboss-eap70-openshift:1.7 \
@@ -67,22 +73,24 @@ oc new-build \
  --name=binary-deployment
 ----
 
-Esse comando irá criar um BuildConfig que nada mais é que um arquivo descritor explicando como o Openshift deve construir a imagem docker. O detalhe nesse caso é o parametro –binary=true. Ele instrui que o BuildConfig use o binário ao invés do código-fonte da aplicação.
+Esse comando irá criar um `BuildConfig` que nada mais é que um arquivo descritor explicando como o Openshift deve construir a imagem docker. O detalhe nesse caso é o parametro `--binary=true`. Ele instrui que o `BuildConfig` use o binário ao invés do código-fonte da aplicação.
 
 image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/bc-binary.gif[image]
 
 Se olharmos os BuildConfig que acabamos de criar, podemos perceber que ele é do tipo binário. Para ver os buildconfigs executamos:
 
-[source,text]
+[source,bash,role=copypaste]
 ----
 oc get bc
 ----
 
 image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_057.png[image]
 
+== Iniciando o Build
+
 Nosso próximo passo é executar o build que acabamos de criar:
 
-[source,text]
+[source,bash,role=copypaste]
 ----
 oc start-build binary-deployment --from-dir=.
 ----
@@ -93,22 +101,35 @@ Isso tudo acontece porque essa imagem do JBoss usa S2I e portanto sabe o que faz
 
 image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/start-build.gif[image]
 
-Após executar o comando acima, um novo build é iniciado. Para visualizar, acesse:
+Após executar o comando acima, um novo build é iniciado.
 
-1.  No menu lateral, clique em *Builds* -> *Builds*
-2.  Na tabela seguinte, clique em *binary-deployment*
+Para visualizar, clique no menu lateral em `Builds` e selecione o build `binary-deployment`.
 
-image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/access-build.gif[image]
+image:binary-build.png[]
 
-Assim que o build concluir, ele irá apresentar o status como *completed*
+Agora clique em `Builds`
 
-image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_058.png[image]
+image:binary-build-builds.png[]
+
+E depois selecione o build que deseja visualizar o log:
+
+image:binary-build-selected.png[]
+
+Por fim, clique em `Logs`
+
+image:binary-build-logs.png[]
+
+E você verá essa tela:
+
+image:binary-build-logs-final.png[]
+
+== Criando a nossa aplicação
 
 Agora podemos criar nossa aplicação com base na nova imagem gerado por esse build.
 
 Para isso, executamos:
 
-[source,text]
+[source,bash,role=copypaste]
 ----
 oc new-app binary-deployment
 ----
@@ -117,30 +138,30 @@ image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/git
 
 Preciamos por último criar uma rota para que nossa aplicação possa ser acessada por fora do Openshift.
 
-[source,text]
+[source,bash,role=copypaste]
 ----
-oc expose svc binary-deployment
+oc expose svc binary-deployment --path=/contador
 ----
 
-Esse comando expõe o seu app, criando uma rota para o mesmo. A url gerada pode ser conferida em Applications > Routes
+Esse comando expõe o seu app, criando uma rota para o mesmo. Para abrir a url, basta clicar no icone abaixo:
 
-image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/binaryapproute.png[image]
+image:binary-build-url.png[]
 
 Acesse a url disponibilizada para acessar a aplicação. O contexto da aplicação é `/contador`. Para acessá-la, pegue a rota com o comando abaixo:
 
-[source,bash]
+[source,bash,role=copypaste]
 ----
 oc get route binary-deployment
 ----
 
-Abra a url no browser e adicione no final o `/contador`.
+Abra a url no browser e se necessário adicione no final o `/contador`.
 
 image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/binaryapp.png[image]
 
 [[limpeza-do-lab]]
 == Limpeza do lab
 
-[source,bash]
+[source,bash,role=copypaste]
 ----
 oc delete all -l app=binary-deployment
 ----

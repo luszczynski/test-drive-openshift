@@ -16,7 +16,7 @@ https://github.com/<seu-usuario-do-github>/workshop-ocp.git
 
 Vamos criar um Dockerfile com base na https://access.redhat.com/containers/#/registry.access.redhat.com/rhscl/php-70-rhel7[imagem oficial do PHP para Openshift]. É importante salientar que, existem boas práticas na construção de https://docs.openshift.com/container-platform/3.11/creating_images/guidelines.html#general-container-image-guidelines[imagens Docker] e também em https://docs.openshift.com/container-platform/3.11/creating_images/guidelines.html#openshift-specific-guidelines[imagens para o Openshift].
 
-Abaixo segue o conteúdo do arquivo:
+Abaixo segue o conteúdo do `Dockerfile`:
 
 [source,text,role=copypaste]
 ----
@@ -53,7 +53,7 @@ git push
 ----
 
 [[executando-o-dockerfile-com-openshift]]
-== Executando o Dockerfile com Openshift pela Web Console
+== Construindo o Dockerfile pela Web Console
 
 Na web console de developer, clique em `Add` no menu lateral esquerdo e em seguida em `From Dockerfile`
 
@@ -83,7 +83,7 @@ E no seu browser deverá aparecer:
 
 image:app-dockerfile.png[]
 
-== Executando o Dockerfile com Openshift pela CLI
+== Construindo o Dockerfile pela CLI
 
 Para criar uma aplicação com base no Dockerfile, precisamos executar o seguinte comando:
 
@@ -112,4 +112,4 @@ oc delete all -l app=workshop-ocp-git
 ----
 
 [[mais-informações]]
-=== Mais informações:
+== Mais informações:
