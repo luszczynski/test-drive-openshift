@@ -1,5 +1,6 @@
 [[health-checks]]
 = Health Checks
+:toc:
 :imagesdir: images
 
 Componentes de software ficam indisponíveis por varias razões, como por exemplo falha de comunicação, erro de configuração, problemas com dependências externas como banco de dados ou broker de mensagens. O Openshift possui dois recursos bastante poderosos para fazer o `health checks` de aplicações. O primeiro que iremos abordar é o `Liveness` e em seguida o `Readiness`.
@@ -7,7 +8,7 @@ Componentes de software ficam indisponíveis por varias razões, como por exempl
 [[liveness]]
 == Liveness
 
-O `liveness` verifica se o container ainda está em execução (de forma sadia). Se a verificação falhar, este container é morto e fica sujeito à política de restart que por padrão é ``always''.
+O `liveness` verifica se o container ainda está em execução (de forma sadia). Se a verificação falhar, este container é morto e fica sujeito à política de restart que por padrão é `always`.
 
 Ou seja, por padrão sempre que ocorrer alguma falha, o container é reiniciado.
 
@@ -31,7 +32,7 @@ O `readiness` define quando que o container está pronto para receber requisiç�
 
 Para testarmos o liveness e o readiness vamos criar dois novos contextos na nossa aplicação. Segue o conteúdo dos dois arquivos abaixo:
 
-`liveness.php`
+liveness.php
 
 [source,php]
 ----
@@ -46,7 +47,7 @@ if (file_exists($filename)) {
 ?>
 ----
 
-`readiness.php`
+readiness.php
 
 [source,php]
 ----
@@ -86,11 +87,11 @@ git push
 
 O Openshift não tem como saber que nosso código foi alterado no repositório github pois não configuramos os `webhooks`. Isso será feito na próxima lição. Enquanto isso, vamos criar um novo build da nossa aplicação de maneira manual.
 
-1.  Selecione no menu vertical esquerdo a opção *Builds* -> *Builds*
+1.  Selecione no menu vertical esquerdo a opção *Builds*
 2.  Clique no *workshop-ocp* na tabela apresentada
-3.  No menu superior direito, clique em *Start Build*
+3.  No menu superior direito, clique em *Actions* -> *Start Build*
 
-image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/new-build.gif[image]
+image:start-new-build.gif[image]
 
 Assim que o build terminar, podemos verificar se aplicação está na sua nova versão. Para isso, basta abrir o contexto `/liveness.php` e `/readiness.php`
 
@@ -129,9 +130,7 @@ image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/git
 
 Também podemos configurar o `liveness`e `readiness` por meio da linha de comando.
 
-____________________________________________________________________________________________________________________________________________________________________________________
-Só execute os comandos abaixo de criação de `liveness` e `readiness` caso você não tenha feito os passos de criação desses monitoramento pela web console conforme passos anteriores
-____________________________________________________________________________________________________________________________________________________________________________________
+CAUTION:  Só execute os comandos abaixo de criação de `liveness` e `readiness` caso você não tenha feito os passos de criação desses monitoramento pela web console conforme passos anteriores
 
 Antes, veja qual o nome do deploymentconfig usando o comando:
 
@@ -151,48 +150,39 @@ Substitua ele no comando abaixo para o `readiness`:
 
 [source,bash]
 ----
-oc set probe dc/workshop-ocp \
- --readiness \
- --get-url=http://:8080/readiness.php
+oc set probe dc/workshop-ocp --readiness --get-url=http://:8080/readiness.php
 ----
 
-Para saber o nome do seu projeto no Openshift, basta executar:
 
-[source,text]
-----
-oc get projects
-----
-
-image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/readiness-cmd.gif[image]
+image:oc-set-readiness.gif[image]
 
 Para o `liveness`:
 
 [source,text]
 ----
-oc set probe dc/workshop-ocp \
- --initial-delay-seconds=20 \
- --liveness \
- --get-url=http://:8080/liveness.php
+oc set probe dc/workshop-ocp --initial-delay-seconds=20 --liveness --get-url=http://:8080/liveness.php
 ----
 
-Para saber o nome do seu projeto no Openshift, basta executar:
+image:oc-set-liveness.gif[image]
 
-[source,text]
+==== Visualizando o efeito na Console
+
+Para visualizar o efeito na console, vamos matar o pod. Pode usar o comando abaixo.
+
+[source,bash]
 ----
-oc get projects
+oc delete pod -l app=workshop-ocp-git
 ----
 
-image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/liveness-cmd.gif[image]
 
-Perceba que adicionamos um delay inicial para o health check do liveness. Fizemos isso para evitar que o Openshift fique matando o container enquanto o mesmo estiver ``subindo''.
+Perceba que adicionamos um delay inicial para o health check do liveness. Fizemos isso para evitar que o Openshift fique matando o container enquanto o mesmo estiver "subindo".
 
 O Openshift informa para nós por meio da console web que a aplicação não está pronta para receber requisição por meio da cor azul clara. Se o circulo ficar azul claro, quer dizer que o seu POD não passou no teste de readiness.
 
-__________________________________________________________________________________________________________________________________
-Caso o círculo do container apareça laranja, isso quer dizer que o teste de readiness ficou mais de 5 minutos sem passar no teste.
-__________________________________________________________________________________________________________________________________
+IMPORTANT: Caso o círculo do container apareça laranja, isso quer dizer que o teste de readiness ficou mais de 5 minutos sem passar no teste.
 
-image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/readiness.gif[image]
+
+image:testing-readiness.gif[image]
 
 O container ficar azul claro rapidamente e logo em seguida volta a ficar azul escuro. Isso quer dizer que por um breve período de tempo, ele não passou no readiness probe.
 
@@ -214,23 +204,6 @@ image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/git
 
 Na console, agora o container ficará azul claro assim que o Openshift perceber que o readiness probe falhou.
 
-[[debug-do-container]]
-=== Debug do container
-
-O Openshift permite que você faça um debug do seu container caso ele não passe no teste de readiness. Para testar essa funcionalidade, basta clicar dentro do círculo azul do container que está com problema e logo em seguida clicar em `Debug in Terminal`.
-
-_______________________________________________________________________________________________________________________________________________________________________________________
-É importante que você tenha somente uma instância da aplicação rodando para quando clicar dentro do círculo ele vá para a página certa. Para garantir isso, execute o seguinte comando:
-_______________________________________________________________________________________________________________________________________________________________________________________
-
-[source,text]
-----
-oc scale dc/workshop-ocp --replicas=1
-----
-
-Essa opção `Debug in Terminal` é condicional. Ela só aparece na Web Console quando o seu container está com problema.
-
-image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/debug.gif[image]
 
 [[testando-o-liveness-da-nossa-aplicação]]
 == Testando o liveness da nossa aplicação
@@ -258,7 +231,7 @@ oc get events
 ----
 
 [[mais-informações]]
-=== Mais informações
+== Mais informações
 
-* https://docs.openshift.com/container-platform/3.11/dev_guide/application_health.html
+* https://docs.openshift.com/container-platform/4.2/nodes/containers/nodes-containers-health.html
 * https://developers.redhat.com/blog/2018/12/21/asp_dotnet_core_kubernetes_health_check_openshift/[https://developers.redhat.com/blog/2018/12/21/asp_dotnet_core_kubernetes_health_check_openshift]
