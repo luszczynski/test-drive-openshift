@@ -1,6 +1,9 @@
 [[source-to-image-s2i]]
 = Source to Image (S2I)
+:toc:
+
 :imagesdir: images
+
 
 [[criar-nova-aplicação-no-github]]
 == Criar nova aplicação no github
@@ -26,9 +29,7 @@ echo $_SERVER['SERVER_ADDR'];
 ?>
 ----
 
-_______________________________________________________________________________________________________________
-Essa linha com o conteudo $_SERVER é opcional, ela irá mostrar na tela o IP do pod em que está sendo executada.
-_______________________________________________________________________________________________________________
+CAUTION:  Essa linha com o conteudo $_SERVER é opcional, ela irá mostrar na tela o IP do pod em que está sendo executada.
 
 image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_240.png[image]
 
@@ -42,9 +43,7 @@ image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/git
 
 Os passos mostrados acima também podem ser feitos pela linha de comando conforme abaixo:
 
-______________________________________________________________________________________________________________________________________________
-Atenção. Só execute os comandos do `git` abaixo caso vocẽ *não* tenha criado os arquivos pela web console conforme mostrado nas imagens acima.
-______________________________________________________________________________________________________________________________________________
+CAUTION:  Atenção. Só execute os comandos do `git` abaixo caso vocẽ *não* tenha criado os arquivos pela web console conforme mostrado nas imagens acima.
 
 Faça o clone deste novo repositório e crie a página inicial `index.php`
 
@@ -71,50 +70,46 @@ Agora que já temos uma aplicação, podemos prosseguir.
 [[deploy-utilizando-s2i]]
 == Deploy utilizando S2I
 
-Browse Catalog
+=== Usando o Catalogo
 
-image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_245.png[image]
+image:browse-catalog.png[image]
 
 Selecione PHP
 
-image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/s2i-parte2.gif[image]
+image:s2i-deploy.gif[image]
 
-* Selecione no menu superior `Add to project`
-* Selecione o template `PHP` no submenu `Browser Catalog`.
-* Selecione o template `PHP` na versão `7.0`.
-* Preencha o campo `Name` com o valor `workshop-ocp`
-* Preencha o campo `Git Repository URL` com o valor `https://github.com/<seu-usuario-do-github>/workshop-ocp.git`
+* Selecione no menu esquerdo `+Add`
+* Filtre o template `PHP` no submenu `From Catalog`.
+* Selecione `Create Application`
+* Selecione o template `PHP` na versão `7.2`.
+* Preencha o campo `Git Repo URL` com o valor `https://github.com/<seu-usuario-do-github>/workshop-ocp.git`
+* Preencha o campo `Name` com o valor `workshop-ocp` ou aceite os valores padroes
+* Deixe o item `Create a route to the application` marcada
 
-______________________________________________________________________________________________________________________
---
-______________________________________________________________________________________________________________________
-Repare que no campo Git Repository URL você deve trocar o <seu-usuario-do-github> pelo usuário da sua conta do github.
-______________________________________________________________________________________________________________________
 
---
-______________________________________________________________________________________________________________________
+CAUTION: Repare que no campo Git Repository URL você deve trocar o <seu-usuario-do-github> pelo usuário da sua conta do github.
 
-Um novo build será executado assim que for clicado em `Create`
+=== Acompanhando o Build
 
-image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_298.png[image]
+Um novo build será executado assim que for clicado em `Create`. Para acompanhar clique no incone indicado na imagem abaixo:
 
-Caso você encontre o erro abaixo durante o build:
+image:build-running-1.png[image]
 
-image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/captura-de-tela-de-2018-02-22-14-15-01.png[image]
+O build deve estar sendo executado e a tela abaixo é o resultado
 
-E execute novamente o build clicando em
+image:build-running-2.png[image]
 
-1.  `Builds` -> `Builds`
-2.  Clique em `Workshop ocp`
-3.  No canto direito clique em `Start Build`
+=== Acessando a Aplicacao
 
-Assim que finalizado o build, acesse a url gerada em Applications > Routes e verifique a aplicação em funcionamento.
+Para acessar a aplicacao, escolha `Topology` no menu esquerdo e clique no icone da aplicacao que está sendo construída. Entao, no menu que se abre, role até o final onde deverá haver a rota criada para a aplicação. Clique na rota para acessar a aplicação.
 
-image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/phproute.png[image]
+image:open-app-details-click-route.png[image]
 
 O resultado deve ser algo similar a isso:
 
 image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_248.png[image]
+
+=== Usando a linha de comando
 
 Você também pode usar a linha de comando para fazer o S2I.
 
@@ -125,12 +120,14 @@ oc new-app https://github.com/<seu-usuario-do-github>/workshop-ocp.git
 
 Nesse caso, o Openshfit irá tentar adivinhar qual a linguagem que você utilizou na sua aplicação.
 
-[[escalar-para-4-pods]]
-== Escalar para 4 PODs
+[[escalar]]
+== Escalar os Pods
 
-Através da seta para cima na lateral do círculo do pod, clique até escalar a aplicação para 4 pods.
+A partir do menu esquerdo `Topology`, acesse os detalhes da aplicação, e em `Overview` vlique na seta para cima na lateral do círculo do pod, clique até escalar a aplicação para 2 ou mais pods.
 
-image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/scale-4.gif[image]
+image:scale-to-4.gif[image]
+
+TIP: Este procedimento simples mostra a facilidade para escalar uma aplicação recém criada.
 
 [[source-to-image-utilizando-o-quarkus]]
 = Source-to-Image utilizando o Quarkus
@@ -217,9 +214,9 @@ oc delete all -l application=quarkus-app
 ----
 
 [[mais-informações]]
-=== Mais informações:
+== Mais informações:
 
-* https://docs.openshift.com/container-platform/3.11/using_images/s2i_images/index.html
-* https://docs.openshift.com/container-platform/3.11/creating_images/s2i.html
+* https://docs.openshift.com/container-platform/4.2/builds/understanding-image-builds.html#build-strategy-s2i_understanding-image-builds
+* https://docs.openshift.com/container-platform/4.2/openshift_images/create-images.html
 * https://blog.openshift.com/create-s2i-builder-image/
 * https://github.com/openshift/source-to-image
