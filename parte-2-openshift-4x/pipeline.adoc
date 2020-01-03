@@ -4,12 +4,11 @@
 :toc:
 :toc-title: Conteúdo
 
-[[pipeline-1]]
-== Pipeline
+== Introdução
 
 O Openshift possui integração nativa com o Jenkins, o que nos permite criar pipelines de forma simples.
 
-Para isso, precisamos criar um `BuildConfig.`
+== Criando o Jenkinsfile no GitHub
 
 Crie um arquivo chamado `jenkins-pipeline.groovy` dentro do seu repositório do github. Para isso, siga o procedimento, já demonstrado nos labs anteriores, de criação do novo arquivo pela Web Console do Github. O conteúdo do arquivo segue abaixo:
 
@@ -38,16 +37,21 @@ No final, seu repositório deve estar conforme imagem abaixo:
 
 image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_282.png[image]
 
-Pela console, clique em `Add to Project > Import YAML / JSON` e cole o conteúdo abaixo:
+== Criando o BuildConfig
 
-________________________________________________________________________________________
-AVISO: Repare que existe um campo que deve ser alterado com o nome do usuário do github.
-________________________________________________________________________________________
+Precisamos criar um `BuildConfig.` que aponte para o `Jenkinsfile` do nosso repositório no github.
 
-[source,yaml]
+Pela Web Console, clique em `+Add` -> `YAML` conforme imagem abaixo:
+
+image:pipeline-import-yaml.png[]
+
+WARNING: Repare que existe um campo no código abaixo que *deve ser alterado com o nome do usuário do github*.
+
+
+[source,yaml,role=copypaste]
 ----
 kind: "BuildConfig"
-apiVersion: "v1"
+apiVersion: "build.openshift.io/v1"
 metadata:
   name: "workshop-pipeline"
   annotations:
@@ -56,42 +60,49 @@ spec:
   source:
     type: "Git"
     git:
-      uri: "http://github.com/<usuario-do-github>/workshop-ocp.git"
+      uri: "http://github.com/<usuario-do-github>/workshop-ocp.git" <1>
   strategy:
     type: "JenkinsPipeline"
     jenkinsPipelineStrategy:
       jenkinsfilePath: "jenkins-pipeline.groovy"
 ----
+<1> Altere o valor dessa url para estar de acordo com seu github
 
-No Openshift, siga os passos a seguir:
+No Openshift, depois de ter colado o código acima, clique em `Create`
 
-image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/import-yaml.png[image]
+image:pipeline-create-yaml.png[]
 
-Depois cole o conteúdo do arquivo e altere o nome do usuário do github.
+== Deploy do Jenkins
 
-image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/paste-yaml.png[image]
+Vamos fazer o deploy do Jenkins no nosso projeto. Para isso, clique em `+Add` -> `From Catalog` -> `Jenkins (Ephemeral)`
 
-Clique em `Create`
+image:add-from-catalog.png[]
 
-__________________________________________________________________________________________________________________________________
-Observe que logo ao fim da execução deste passo, o Jenkins (master/slave) será provisionado automaticamente no projeto em questão.
-__________________________________________________________________________________________________________________________________
+E agora digita na busca `Jenkins` e clique em `Jenkins (Ephemeral)`
 
-image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/jenkins-dc.png[image]
+image:select-jenkins.png[]
 
-No menu lateral esquerdo, selecione a opção `Builds` > `Pipelines` e selecione a opção `Start pipeline`
+Clique agora em `Instantiate Template` e deixe os campos com seus valores defaults (sem alterar nada) e clique em `Create`.
 
-image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/builds-pipelines.png[image]
+image:jenkins-form.png[]
 
-Depois clique em `Start pipeline`
+Agora volte para página da Topologia clicando em `Topology` no menu lateral esquerdo. Aguarde até que o circulo do Jenkins fique azul escuro.
 
-image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/start-pipeline.png[image]
+TIP: O Jenkins pode demorar até uns 8 minutos para subir. Aproveite e busque uma xícara de café.
 
-Você pode visualizar o log por meio da opção:
+image:jenkins-ready.png[]
 
-image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/view-log.png[image]
+== Iniciando o pipeline
 
-Quando você clicar no log, ele te pedirá para logar usando suas credenciais do Openshift.
+Vamos iniciar nosso pipeline. Clique em `Builds` -> `Workshop-pipeline`
+
+image:pipeline-open.png[]
+
+Agora inicie o build clicando em `Actions` -> `Start Build`
+
+image:pipeline-start-build.png[]
+
+
 
 image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/jenkins-login.png[image]
 
