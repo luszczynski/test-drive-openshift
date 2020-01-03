@@ -29,9 +29,12 @@ modules:
   - agregacao-de-logs
   - utilizando-banco-de-dados-mysql
   - pipeline
+  - pipeline-tekton
   - limite-de-recursos 
   - auto-scale
+  - auto-scale-knative
   - rollback
   - idle
+  - idle-knative
   - image-stream
   - configmap-e-secrets		
