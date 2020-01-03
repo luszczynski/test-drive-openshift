@@ -102,30 +102,6 @@ image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/git
 [[configuração-no-openshift]]
 == Configuração no Openshift
 
-[[usando-a-web-console]]
-=== Usando a Web Console
-
-Precisamos agora informar o Openshift para monitorar esses dois contextos novos da aplicação. Precisamos abrir o deployment da aplicação:
-
-image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/open-deployment.gif[image]
-
-Clique em `Actions` e `Edit Health Checks`
-
-image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/live-read-config.gif[image]
-
-E logo em seguida, edite o health check clicando em `add liveness` e `add readiness`
-
-image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/read-config.png[image]
-
-Abaixo segue a configuração do readiness
-
-image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_256.png[image]
-
-E o liveness
-
-image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/live-config.png[image]
-
-[[usando-a-linha-de-comando]]
 === Usando a linha de comando
 
 Também podemos configurar o `liveness`e `readiness` por meio da linha de comando.
