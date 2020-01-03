@@ -1,0 +1,120 @@
+[[usando-dockerfile]]
+= Usando Dockerfile
+
+Além do Source to Image, o Openshift permite realiza o build de `Dockerfile` para você. Basta adicionar o seu `Dockerfile`em um repositório git e informar ao Openshift que iremos utilizar a estratégia de build do tipo docker. Para esse exemplo, iremos *utilizar o mesmo repositório criado no lab anterior* conforme exemplo abaixo**:**
+
+[source,text]
+----
+https://github.com/<seu-usuario-do-github>/workshop-ocp.git
+----
+
+[[criando-nosso-dockerfile]]
+== Criando nosso Dockerfile
+
+Vamos criar um Dockerfile com base na https://access.redhat.com/containers/#/registry.access.redhat.com/rhscl/php-70-rhel7[imagem oficial do PHP para Openshift]. É importante salientar que, existem boas práticas na construção de https://docs.openshift.com/container-platform/3.11/creating_images/guidelines.html#general-container-image-guidelines[imagens Docker] e também emhttps://docs.openshift.com/container-platform/3.11/creating_images/guidelines.html#openshift-specific-guidelines[imagens para o Openshift].
+
+Abaixo segue o conteúdo do arquivo:
+
+[source,text]
+----
+FROM registry.access.redhat.com/rhscl/php-70-rhel7
+
+RUN echo "<h1>Meu Dockerfile</h1>" > /opt/app-root/src/index.php
+
+CMD ["container-entrypoint", "/usr/libexec/s2i/run"]
+----
+
+image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_240.png[image]
+
+O conteúdo do arquivo fica assim:
+
+_______________________________________________________________________
+Repare que o nome do arquivo deve ser `Dockerfile` com o *D* maiúsculo.
+_______________________________________________________________________
+
+image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_249.png[image]
+
+Realize o commit
+
+image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_242.png[image]
+
+Nosso repositório agora tem um novo arquivo:
+
+image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_250.png[image]
+
+Também podemos salvar esse arquivo com nome de *Dockerfile* na raiz do nosso git executando:
+
+[source,bash]
+----
+git add Dockerfile
+git commit -m "Dockerfile adicionado"
+git push
+----
+
+[[executando-o-dockerfile-com-openshift]]
+== Executando o Dockerfile com Openshift
+
+Para criar uma aplicação com base no Dockerfile, precisamos executar o seguinte comando:
+
+[source,bash]
+----
+oc new-app \
+ --name=dockerfile-app \
+ --strategy=docker \
+ https://github.com/<seu-usuario-do-github>/workshop-ocp.git
+----
+
+Para saber o nome do seu projeto no Openshift, basta executar:
+
+[source,text]
+----
+oc get projects
+----
+
+O valor default para o parametro *strategy* é *source.* Isso indica que, por padrão, o Openshift irá analisar o repositório git tentando compilar o código fonte da aplicação e usar o source-to-image. No nosso caso, queremos que ele use somente o Dockerfile e ignore o código fonte. Por isso informamos o parametro *–strategy=docker*
+
+Assim que executamos o comando, o Openshift inicia o novo build.
+
+Na versão 3.11 do Openshift, o build é mostrado conforme imagem abaixo:
+
+image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_044.png[image]
+
+A diferença desse build para o source-to-image executando anteriormente, é que nesse caso o Openshift está construindo nossa imagem Docker usando Dockerfile. Se acessarmos o log do build, podemos ver ae execução do nosso código.
+
+Para acessar o log: Build > dockerfile-app > View Log.
+
+image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_046.png[image]
+
+Para finalizar, crie uma rota no Openshift para podermos acessar nossa aplicação:
+
+[source,text]
+----
+oc expose svc dockerfile-app
+----
+
+Esse comando expõe o seu app, criando uma rota para o mesmo. A url gerada pode ser conferida em Applications > Routes
+
+image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/dockerapproute.png[image]
+
+Acesse a url disponibilizada para acessar a aplicação:
+
+image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/dockerapp.png[image]
+
+[[limpando-nosso-lab]]
+== Limpando nosso lab
+
+_________________________________________________________________________________________________________________________
+*Remova o arquivo Dockerfile do repositório Git para evitar que os próximos labs utilizem o build com estratégia Docker!*
+_________________________________________________________________________________________________________________________
+
+Vamos apagar nossa aplicação criada com base no Dockerfile. Dessa forma, deixaremos nosso Openshift limpo, organizado e pronto para o próximo lab.
+
+[source,text]
+----
+oc delete all -l app=dockerfile-app
+----
+
+[[mais-informações]]
+=== Mais informações:
+
+* https://docs.openshift.com/container-platform/3.11/creating_images/guidelines.html

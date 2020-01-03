@@ -1,0 +1,96 @@
+[[deploy-imagem-do-docker-hub]]
+= Deploy imagem do Docker Hub
+
+Vamos agora implantar uma imagem existente no Docker Hub. Para executar a imagem. siga os passos abaixo:
+
+*Openshift 3.11*
+
+image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/deployimage.gif[image]
+
+[[escolha-a-imagem]]
+== Escolha a imagem
+
+Você pode usar a imagem de exemplo abaixo:
+
+[source,text]
+----
+quay.io/gluszczy/workshop-openshift
+----
+
+Se a imagem escolhida rodar como root, o Openshift te avisa na console (por meio de uma tarja laranja) que ela pode eventualmente não executar conforme o esperado. A imagem abaixo ilustra esse exemplo.
+
+image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/img-root.gif[image]
+
+Caso queira usar a linha de comando, execute:
+
+`oc new-app --docker-image=quay.io/gluszczy/workshop-openshift`
+
+image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/peek-2017-12-07-09-29.gif[image]
+
+Caso você tenha errado na criação da sua aplicação, para deletar execute o seguinte comando no terminal:
+
+[source,bash]
+----
+oc delete all -l app=workshop-openshift
+----
+
+[[crie-a-rota-para-expor-a-aplicação-externamente]]
+== Crie a rota para expor a aplicação externamente
+
+Na interface web, na aba overview, clique na seta para baixo ao lado de Deployment Config e selecione a opção _*create route.*_
+
+image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_227.png[image]
+
+E depois clique em *Create Route*
+
+image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_228.png[image]
+
+Depois de criado, a url irá aparece na tela de overview
+
+image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_229.png[image]
+
+*Command line*
+
+Também podemos usar a linha de comando para criar a nossa rota. Para isso, basta executar:
+
+`oc expose svc workshop-openshift
+
+image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/svc.gif[image]
+
+[[explorando-a-gui-do-pod]]
+== Explorando a GUI do POD
+
+Para ver detalhes do container que acabamos de criar, basta clicar em cima do circulo azul e depois navegar pelas abas `Details, Environment, Metrics, Logs, Terminal e Events`
+
+image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/overview.gif[image]
+
+*Detalhes do POD*
+
+image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_230.png[image]
+
+1.  Ip do POD
+2.  Node no qual o POD está executando
+3.  Imagem utilizada
+4.  Porta exposta pelo POD
+
+*Environment*
+
+image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_234.png[image]
+
+*Logs do POD*
+
+image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_231.png[image]
+
+*Terminal do POD*
+
+image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_232.png[image]
+
+*Eventos do POD*
+
+image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_233.png[image]
+
+[[mais-informações]]
+=== Mais informações:https://blog.openshift.com/deploying-images-from-dockerhub/[]
+
+* https://blog.openshift.com/getting-any-docker-image-running-in-your-own-openshift-cluster/
+* https://blog.openshift.com/deploying-images-from-dockerhub/

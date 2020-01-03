@@ -1,0 +1,61 @@
+config:
+  renderer: asciidoc
+
+modules:
+  criacao-do-ambiente:
+    name: "Criação do Ambiente"
+    vars: 
+    requires:
+  acesso-ao-ambiente:
+    name: "Acesso ao Ambiente"
+    vars: 
+    exit_sign: Próximo
+  deploy-imagem-external-registry:
+    name: "Deploy imagem de um Registry externo"
+    vars: 
+  tolerancia-a-falha:
+    name: "Tolerancia a Falha"
+    vars: 
+  source-to-image:
+    name: "Source To Image"
+    vars: 
+  usando-dockerfile:
+    name: "Usando Dockerfile"
+    vars: 
+  binary-deployment:
+    name: "Binary Deployment"
+    vars: 
+  health-check:
+    name: "Health Check"
+    vars: 
+  integracao-continua-webhook:
+    name: "Integracao Continua com Webhook"
+    vars: 
+  agregacao-de-logs:
+    name: "Agregação de Logs"
+    vars: 
+  utilizando-banco-de-dados-mysql:
+    name: "Banco de Dados MySql"
+    vars: 
+  pipeline:
+    name: "Pipelines"
+    vars: 
+  limite-de-recursos:
+    name: "Limite de Recursos"
+    vars: 
+  auto-scale:
+    name: "Auto Scale"
+    vars: 
+  rollback:
+    name: "Rollback"
+    vars: 
+  idle:
+    name: "Idle"
+    vars: 
+  image-stream:
+    name: "Image Stream"
+    vars: 
+  configmap-e-secrets:
+    name: "Configmap e Secrets"
+    vars: 
+  

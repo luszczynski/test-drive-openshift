@@ -1,0 +1,37 @@
+id: "openshift"
+name: "OpenShift Workshop"
+
+content:
+  url: https://raw.githubusercontent.com/siamaksade/workshopper-template/master
+
+vars:
+  ETHERPAD_URL: "https://my-etherpad.com"
+  TERMINAL_URL: "http://my-terminal"
+  OPENSHIFT_WILDCARD_URL: ""
+  OPENSHIFT_MASTER_URL: "https://master.brasilia-8694.open.redhat.com/"
+  OPENSHIFT_DOCS_BASE: "https://docs.openshift.com/container-platform/3.7"
+  OPENSHIFT_USERNAME: "developer"
+  OPENSHIFT_PASSWORD: "password"
+  JAVA_APP: true
+  USER: ""
+
+modules:
+  activate:
+  - acesso-ao-ambiente
+  - criacao-do-ambiente
+  - deploy-imagem-external-registry
+  - tolerancia-a-falha
+  - source-to-image
+  - usando-dockerfile
+  - binary-deployment
+  - health-check
+  - integracao-continua-webhook
+  - agregacao-de-logs
+  - utilizando-banco-de-dados-mysql
+  - pipeline
+  - limite-de-recursos 
+  - auto-scale
+  - rollback
+  - idle
+  - image-stream
+  - configmap-e-secrets		
