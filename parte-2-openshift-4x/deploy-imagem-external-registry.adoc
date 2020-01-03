@@ -4,14 +4,16 @@
 :toc:
 :toc-title: Conteúdo
 
-Vamos agora implantar uma imagem existente no Quay. O Quay.io é um registry externo semelhante ao Docker Hub.
+Vamos agora implantar uma imagem existente no Quay. O quay.io é um registry externo semelhante ao Docker Hub.
 
-A imagem que vamos utilizar, foi criada usando Java e o framework Quarkus. Ela é extremamente pequena e roda consumindo poucos megas.
+A imagem que vamos utilizar, foi criada usando Java e o framework Quarkus. Ela é extremamente pequena e roda consumindo poucos recursos.
 
 Para executar a imagem no Openshift, siga os passos abaixo:
 
 [[escolha-a-imagem]]
-== Escolha a imagem
+== Usando uma imagem do Quarkus
+
+=== Deploy pela Web Console
 
 Iremos utilizar a imagem do exemplo abaixo:
 
@@ -24,7 +26,7 @@ Para criar um container com base em uma image externa ao Openshift, selecione a 
 
 image:deploy-image-01.png[]
 
-Depois preencha o campo `Image Name` com o valor `quay.io/gluszczy/workshop-openshift` e clique na lupa a direita para que seja feita a busca dos metadados da imagem.
+Depois preencha o campo `Image Name` com o valor da sua imagem, no nosso caso o valor é `quay.io/gluszczy/workshop-openshift` e depois clique na lupa a direita para que seja feita a busca dos metadados necessários.
 
 Logo em seguida clique em `Create` no fim da tela.
 
@@ -32,9 +34,11 @@ O gif abaixo resume o passo que deve ser feito.
 
 image:deploy-image.gif[]
 
-Se a imagem escolhida rodar como root, o Openshift te avisa na console (por meio de uma tarja laranja) que ela pode eventualmente não executar conforme o esperado. A imagem abaixo ilustra esse exemplo.
+Se a imagem escolhida rodar como root, o Openshift te avisa na console (por meio de uma tarja laranja) que ela pode eventualmente não executar conforme o esperado. 
 
 image:image-root.png[]
+
+=== Deploy pela CLI
 
 Caso queira usar a linha de comando, execute:
 
@@ -42,6 +46,8 @@ Caso queira usar a linha de comando, execute:
 ----
 oc new-app --docker-image=quay.io/gluszczy/workshop-openshift
 ----
+
+=== Limpeza do ambiente
 
 Caso você tenha errado na criação da sua aplicação, para deletá-la execute o seguinte comando no terminal:
 
@@ -73,7 +79,7 @@ image:app-overview.png[]
 image:app-overview2.png[]
 
 [[mais-informações]]
-=== Mais informações
+== Mais informações
 
 * https://blog.openshift.com/deploying-images-from-dockerhub/
 * https://blog.openshift.com/getting-any-docker-image-running-in-your-own-openshift-cluster/
