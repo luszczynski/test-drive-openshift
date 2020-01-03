@@ -1,5 +1,6 @@
 [[integração-contínua-webhook]]
 = Integração Contínua (Webhook)
+:toc: 
 :imagesdir: images
 
 Podemos automatizar o processo de build do nosso container toda vez que for feito push no nosso repositório git. Para isso, iremos configurar um `webhook`. Por meio dele, o servidor git avisará o Openshift sempre que um commit (push) novo ocorrer.
@@ -7,17 +8,17 @@ Podemos automatizar o processo de build do nosso container toda vez que for feit
 [[configuração-webhook]]
 == Configuração webhook
 
-Acesse a parte de builds.
+Acesse a opcao `Builds` no menu esquerdo.
 
-image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/menu_261.png[image]
+image:webhook-1.png[image]
 
-Depois selecione `workshop-ocp`
+Depois selecione `workshop-ocp-git` ou equivalente
 
-image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_262.png[image]
+image:webhook-2.png[image]
 
-Clique em `Configuration` e copie o link clicando no icone a direita
+Role a tela abaixo e localize o webhook para GitHub
 
-image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_264.png[image]
+image:webhook-3.png[image]
 
 No _Github.com_:
 
@@ -69,9 +70,7 @@ image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/git
 
 Podemos fazer o processo de commit e push por meio da linha de comando do git:
 
-__________________________________________________________________________________
-Só execute esse passo caso você não tenha feito o commit usando a página do github
-__________________________________________________________________________________
+CAUTION: Só execute esse passo caso você não tenha feito o commit usando a página do github
 
 [source,bash]
 ----
@@ -88,6 +87,4 @@ Observe que não ocorre indisponibilidade durante o deployment
 [[mais-informações]]
 === Mais informações
 
-* https://docs.openshift.com/container-platform/3.11/dev_guide/migrating_applications/web_hooks_action_hooks.html
-* https://docs.openshift.com/container-platform/3.11/dev_guide/builds/triggering_builds.html
-* https://docs.openshift.com/container-platform/3.11/getting_started/developers_console.html#developers-console-configure-auto-builds
+* https://docs.openshift.com/container-platform/4.2/builds/triggering-builds-build-hooks.html
