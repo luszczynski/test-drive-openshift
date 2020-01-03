@@ -1,7 +1,6 @@
 [[source-to-image-s2i]]
 = Source to Image (S2I)
 :toc:
-
 :imagesdir: images
 
 
@@ -21,7 +20,7 @@ image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/git
 
 Crie o arquivo `index.php` com o seguinte conteúdo
 
-[source,php]
+[source,php,role=copypaste]
 ----
 <?php
 echo "<h1>Openshift Workshop v1.0</h1> ";
@@ -47,14 +46,14 @@ CAUTION:  Atenção. Só execute os comandos do `git` abaixo caso vocẽ *não* 
 
 Faça o clone deste novo repositório e crie a página inicial `index.php`
 
-[source,text]
+[source,bash,role=copypaste]
 ----
 git clone https://github.com/<seu-usuario-do-github>/workshop-ocp.git && cd workshop-ocp
 ----
 
 Faça o commit do código para o servidor git.
 
-[source,bash]
+[source,bash,role=copypaste]
 ----
 git add index.php
 git commit -am "first commit"
@@ -86,7 +85,6 @@ image:s2i-deploy.gif[image]
 * Preencha o campo `Name` com o valor `workshop-ocp` ou aceite os valores padroes
 * Deixe o item `Create a route to the application` marcada
 
-
 CAUTION: Repare que no campo Git Repository URL você deve trocar o <seu-usuario-do-github> pelo usuário da sua conta do github.
 
 === Acompanhando o Build
@@ -113,7 +111,7 @@ image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/git
 
 Você também pode usar a linha de comando para fazer o S2I.
 
-[source,text]
+[source,bash,role=copypaste]
 ----
 oc new-app https://github.com/<seu-usuario-do-github>/workshop-ocp.git
 ----
@@ -138,7 +136,7 @@ Crie um novo repositório no seu github de nome: *quarkus-app*
 
 Crie o projeto do quarkus `getting-started` a partir do terminal através do comando maven:
 
-[source,text]
+[source,bash,role=copypaste]
 ----
 mvn io.quarkus:quarkus-maven-plugin:1.0.0.CR1:create \
     -DprojectGroupId=org.acme \
@@ -149,26 +147,26 @@ mvn io.quarkus:quarkus-maven-plugin:1.0.0.CR1:create \
 
 Acesse a pasta do projeto que foi criada:
 
-[source,text]
+[source,bash,role=copypaste]
 ----
 cd getting-started
 ----
 
 Como iremos utilizar o cliente git para acessar o github, configure seu email e nome/sobrenome de acordo com seu usuário no github:
 
-[source,text]
+[source,bash,role=copypaste]
 ----
 git config --global user.email "<meuemail@email.com>"
 ----
 
-[source,text]
+[source,bash,role=copypaste]
 ----
 git config --global user.name "<Nome e Sobrenome>"
 ----
 
 Defina a pasta como um projeto git e adicione todos os arquivos através dos comandos:
 
-[source,text]
+[source,bash,role=copypaste]
 ----
 git init
 git add .
@@ -176,19 +174,19 @@ git add .
 
 Agora faça o commit dos arquivos:
 
-[source,text]
+[source,bash,role=copypaste]
 ----
 git commit -m "first commit"
 ----
 
 Adicione o endereço do seu repositório que acabou de criar e faça o push:
 
-[source,text]
+[source,bash,role=copypaste]
 ----
 git remote add origin https://github.com/seu_usuario/quarkus-app.git
 ----
 
-[source,text]
+[source,bash,role=copypaste]
 ----
 git push -u origin master
 ----
@@ -208,7 +206,7 @@ Clique na URL gerada para acessá-la.
 
 Para limpar nosso ambiente, execute o seguinte comando:
 
-[source,text]
+[source,bash,role=copypaste]
 ----
 oc delete all -l application=quarkus-app
 ----
