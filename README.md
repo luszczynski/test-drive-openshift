@@ -51,3 +51,9 @@ podman run -it --rm -p 8080:8080 -v $(pwd)/parte-2-openshift-4x:/app-data \
               -e WORKSHOPS_URLS="file:///app-data/_workshop1.yml" \
               quay.io/osevg/workshopper
 ```
+
+### Convert Markdown to Asciidoc
+
+```bash
+doc=configmap-e-secrets; podman run -v `pwd`:/source jagregory/pandoc --atx-headers --normalize --verbose --wrap=none --reference-links -s -S -t asciidoc -o parte-2-openshift-4x/$doc.adoc parte-2-openshift-4x/$doc.md
+```
