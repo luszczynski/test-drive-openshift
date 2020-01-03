@@ -42,3 +42,12 @@ Esse material é dividido em 2 partes:
 
 **Para o S2I com o Quarkus** funcionar importar o template template-openjdk11-rhel8-s2i.yaml para o namespace **openshift**. Após isso importar também a secret para a service account default em cada projeto para fazer pulling da imagem do **registry.redhat.io**.
 
+## Workshopper
+
+```bash
+podman run -it --rm -p 8080:8080 -v $(pwd)/parte-2-openshift-4x:/app-data \
+              -e CONTENT_URL_PREFIX="file:///app-data" \
+              -e LOG_TO_STDOUT=true \
+              -e WORKSHOPS_URLS="file:///app-data/_workshop1.yml" \
+              quay.io/osevg/workshopper
+```
