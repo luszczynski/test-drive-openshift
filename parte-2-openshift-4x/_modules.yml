@@ -14,7 +14,7 @@ modules:
     name: "Deploy de imagem de um Registry externo"
     vars: 
   tolerancia-a-falha:
-    name: "Tolerancia a Falha"
+    name: "Tolerância à Falha"
     vars: 
     requires: 
       - acesso-ao-ambiente

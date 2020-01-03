@@ -1,5 +1,5 @@
 id: "openshift"
-name: "OpenShift Workshop"
+name: "Openshift Workshop"
 
 content:
   url: https://raw.githubusercontent.com/siamaksade/workshopper-template/master
