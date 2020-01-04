@@ -69,9 +69,15 @@ Agora abra a URL da nossa aplicação e adicione no final da url `/forkbomb.php`
 [[acompanhando-o-consumo-de-recursos]]
 == Acompanhando o consumo de recursos
 
-Podemos acompanhar o uso de recursos da aplicação pela Web Console.
+Podemos acompanhar o uso de recursos da aplicação pela Web Console do Openshift.
 
+Clique sob o circulo do `workshop-ocp-git` conforme imagem abaixo:
 
+image:limite-recursos.png[]
+
+Você deverá cair na página que mostra o uso de recursos da nossa aplicação.
+
+image:limite-recursos-grafico.png[]
 
 O uso de CPU e memória não devem passar do que limitamos no início desse lab.
 
