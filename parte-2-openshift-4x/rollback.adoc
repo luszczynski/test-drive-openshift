@@ -4,28 +4,69 @@
 :toc:
 :toc-title: Conteúdo
 
-O Openshift controla todas as versões da sua aplicações e de seus respectivos artefatos. Toda vez que é lançada uma nova versão da aplicação ou quando é realizada alguma alteração como por exemplo a quantidade de recursos do container, o Openshift mantém o histórico de todas elas em uma tabela dentro da página de deployments.
+== Introdução
 
-Na página inicial, o número que aparece perto do container seguido de um # é a versão atual da aplicação.
+O Openshift controla todas as versões da sua aplicações e de seus respectivos artefatos. Toda vez que é lançada uma nova versão da aplicação ou quando é realizada alguma alteração como por exemplo a quantidade de recursos do container, o Openshift mantém o histórico de todas elas.
 
-image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_034.png[image]
+== Histórico de versões
 
-Nesse exemplo, estamos na nossa sexta versão da aplicação.
+Para ver todo o histórico das versões executamos:
 
-Para visualizar todas as versões podemos fazer isso da seguinte forma:
+[source,bash,role=copypaste]
+----
+oc rollout history dc/workshop-ocp-git
+----
 
-image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/abrir-deployment.gif[image]
+Teremos um resultado semelhante ao abaixo:
 
-Na tela seguinte, temos o histórico de todas as versões do nosso container.
+[source,bash]
+----
+REVISION	STATUS		CAUSE
+1		Complete	config change
+2		Complete	image change
+3		Complete	config change
+4		Complete	config change
+5		Complete	manual change
+6		Complete	manual change
+7		Complete	manual change
+8		Complete	image change
+9		Complete	image change
+10		Complete	config change
+----
 
-image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_035.png[image]
+== Alterando nossa aplicação
+
+Vamos trocar a nossa aplicação para versão 3.0. Para isso, altera a página `index.php` no github e mude o conteúdo de `Openshift Workshop v2.0` para `Openshift Workshop v3.0`.
+
+Isso irá dispará o webhook que configuramos em labs anteriores e começará um novo build da nossa aplicação. Assim que finalizar, abra o link da aplicação e valide se ela foi alterada para a versão 3.0.
+
+Se buscarmos de novo o histórico de versões, devemos ter uma nova versão:
+
+[source,bash]
+----
+REVISION	STATUS		CAUSE
+1		Complete	config change
+2		Complete	image change
+3		Complete	config change
+4		Complete	config change
+5		Complete	manual change
+6		Complete	manual change
+7		Complete	manual change
+8		Complete	image change
+9		Complete	image change
+10		Complete	config change   <-- Versão antiga (v2.0)
+11		Complete	image change    <-- Versão nova (v3.0)
+----
 
 [[executando-o-rollback]]
 == Executando o rollback
 
-Para fazer o rollback, basta acessar a versão que queremos e depois clicar no botão *Rollback*
+Vamos fazer o rollback para versão 2.0. Para isso iremos utilizar o comando abaixo:
 
-image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/rollback.gif[image]
+[source,bash,role=copypaste]
+----
+oc rollout undo dc/workshop-ocp-git --to-revision=10
+----
 
 [[mais-informações]]
-=== Mais informações
+== Mais informações
