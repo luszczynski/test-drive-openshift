@@ -4,6 +4,8 @@
 :toc:
 :toc-title: Conteúdo
 
+== Introdução
+
 Vamos agora implantar uma imagem existente no Quay. O quay.io é um registry externo semelhante ao Docker Hub.
 
 A imagem que vamos utilizar, foi criada usando Java e o framework Quarkus. Ela é extremamente pequena e roda consumindo poucos recursos.
@@ -40,6 +42,8 @@ image:image-root.png[]
 
 === Deploy pela CLI
 
+INFO: Só execute o comando abaixo caso não tenha feito o deploy pela web console no passo anterior.
+
 Caso queira usar a linha de comando, execute:
 
 [source,bash,role=copypaste]
@@ -56,6 +60,8 @@ Caso você tenha errado na criação da sua aplicação, para deletá-la execute
 oc delete all -l app=workshop-openshift
 ----
 
+Agora basta executar novamente o deploy ou usando CLI ou a Web Console
+
 [[explorando-a-gui-do-pod]]
 == Explorando a Web Console
 
@@ -69,12 +75,14 @@ Você verá sua aplicação no centro da tela.
 
 image:app-overview.png[]
 
-1. Aqui contém os dados do seu `Pod`
+1. Por meio dessa parte você tem acesso aos dados do `Pod`
 2. Caso o Openshift faça o `Build` da sua imagem, iria aparecer nessa parte.
-3. O `Service` faz o balanceamento interno entre os containers e também serve como um camada de service discovery
-4. A `Route` permite acesso externo a sua aplicação
+3. O `Service` faz o balanceamento interno entre os containers e também serve como um camada de `service discovery`
+4. Um objeto `Route` permite acesso externo a sua aplicação
 
 === App Overview
+
+Na tela de overview você tem uma visão geral da sua aplicação. Nela você pode ver quantos pods estão rodando, qual a versão atual, qual projeto e labels utilizados e também outros detalhes de deployment dessa aplicação
 
 image:app-overview2.png[]
 

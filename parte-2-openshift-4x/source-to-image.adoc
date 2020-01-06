@@ -28,7 +28,7 @@ echo $_SERVER['SERVER_ADDR'];
 ?>
 ----
 
-CAUTION:  Essa linha com o conteudo $_SERVER é opcional, ela irá mostrar na tela o IP do pod em que está sendo executada.
+CAUTION: Essa linha com o conteudo $_SERVER é opcional, ela irá mostrar na tela o IP do pod em que está sendo executada.
 
 image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_240.png[image]
 

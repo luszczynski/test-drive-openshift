@@ -4,7 +4,9 @@
 :toc:
 :toc-title: Conteúdo
 
-O Openshift garante que a quantidade de instâncias (Pods) definidas para uma aplicação seja respeitada. O responsável por fazer este controle é o `Replication Controller` ou o `Replica Set`.
+== Introdução
+
+O Openshift garante que a quantidade de instâncias (Pods) definidas para uma aplicação seja respeitada mesmo que um problema aconteça. O responsável por fazer este controle é o `Replication Controller` ou o `Replica Set`.
 
 Neste laboratório vamos testar esse recurso.
 
@@ -17,7 +19,7 @@ O nosso primeiro passo é fazer o `scale up` da nossa aplicação.
 
 CAUTION: Não escale para muitos pods pois isso pode causar a queda do ambiente, já que o Openshift está rodando em ambiente compartilhado e as cotas de cada usuário estão generosas.
 
-Para isso, clique em `Topology` no menu lateral esquerdo e depois clique em cima da pod conforme, depois em `Overview` e por fim clique na seta que aponta para cima para escalar para 2 instâncias.
+Para isso, clique em `Topology` no menu lateral esquerdo e depois clique em cima da pod conforme imagem abaixo, depois em `Overview` e por fim clique na seta que aponta para cima para escalar para 2 instâncias.
 
 image:scale-up.png[]
 
@@ -33,7 +35,7 @@ image:2-replicas.png[]
 
 === Usando o CLI
 
-Para escalar para 2 instâncias, podemos utilizar a linha de comando conforme abaixo:
+O mesmo que fizemos na Web Console pode também ser feito usando a linha de comando. Para escalar para 2 instâncias, execute:
 
 [source,bash,role=copypaste]
 ----
@@ -45,7 +47,7 @@ oc scale dc/workshop-openshift --replicas=2
 
 === Usando a Web Console
 
-Para testar o comportamento vamos deletar um Pod em execução. O intuito é simular uma falha.
+Para testar o comportamento vamos deletar um `Pod` em execução. O intuito é simular uma falha.
 
 Clique em cima da bola da sua aplicação, depois em `Resources` e clique em um dos dois pods que são mostrados na tela.
 
@@ -61,7 +63,7 @@ image:delete-pod-confirm.png[]
 
 Volte para a tela inicial clicando em `Topology` do lado esquerdo do menu.
 
-Quando o POD é deletado, o Openshift o recupera automaticamente como pode ser visto na imagem abaixo. Nesse exemplo, um POD novo é criado (cor azul claro) e outro está sendo finalizado (cor azul escuro) mas sempre mantendo a quantidade de 2 instâncias rodando.
+Quando o POD é deletado, o Openshift o recupera automaticamente como pode ser visto na imagem abaixo. Nesse exemplo, um Pod novo é criado (cor azul claro) e outro está sendo finalizado (cor azul escuro) mas sempre mantendo a quantidade de 2 instâncias rodando.
 
 image:pod-deleting-creating.png[]
 
@@ -69,7 +71,7 @@ TIP: Este comportamento evita aquele caso clássico de precisar ligar para algu�
 
 === Usando o CLI
 
-Também podemos deletar um POD usando a linha de comando:
+Também podemos deletar um Pod usando a linha de comando:
 
 [source,bash,role=copypaste]
 ----
