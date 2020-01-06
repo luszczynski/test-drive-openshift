@@ -37,7 +37,7 @@ Para testarmos o <<liveness,liveness>> e o <<readiness,readiness>> vamos criar d
 
 liveness.php
 
-[source,php]
+[source,php,role=copypaste]
 ----
 <?php
 $filename = '/tmp/liveness';
@@ -52,7 +52,7 @@ if (file_exists($filename)) {
 
 readiness.php
 
-[source,php]
+[source,php,role=copypaste]
 ----
 <?php
 $filename = '/tmp/readiness';
@@ -75,7 +75,7 @@ Os códigos dos dois probes verificam se existe um arquivo no `/tmp` dentro do c
 
 Também podemos atualizar nosso repositório pela linha de comando do git.
 
-[source,bash]
+[source,bash,role=copypaste]
 ----
 git add .
 git commit -m "health check adicionado"
@@ -111,14 +111,16 @@ Também podemos configurar o `liveness` e `readiness` por meio da linha de coman
 
 Antes, veja qual o nome do deploymentconfig usando o comando:
 
-[source,bash]
+[source,bash,role=copypaste]
 ----
 oc get dc
 ----
 
 Substitua ele no comando abaixo para configurar o `readiness`:
 
-[source,bash]
+CAUTION: No comando abaixo o parametro `--get-url=http://:8080/readiness.php` está correto apesar de não parecer. *Não altere seu valor*.
+
+[source,bash,role=copypaste]
 ----
 oc set probe dc/workshop-ocp-git --readiness --get-url=http://:8080/readiness.php
 ----
@@ -127,7 +129,9 @@ image:oc-set-readiness.gif[image]
 
 Para o `liveness`:
 
-[source,text]
+CAUTION: No comando abaixo o parametro `--get-url=http://:8080/liveness.php` está correto apesar de não parecer. *Não altere seu valor*.
+
+[source,bash,role=copypaste]
 ----
 oc set probe dc/workshop-ocp-git --initial-delay-seconds=20 --liveness --get-url=http://:8080/liveness.php
 ----
@@ -138,7 +142,7 @@ image:oc-set-liveness.gif[image]
 
 Para visualizar o efeito na console, vamos matar o pod. Pode usar o comando abaixo.
 
-[source,bash]
+[source,bash,role=copypaste]
 ----
 oc delete pod -l app=workshop-ocp-git
 ----
@@ -160,7 +164,7 @@ O container ficar azul claro rapidamente e logo em seguida volta a ficar azul es
 
 Para testarmos o readiness, vamos executar um comando que cria um arquivo na pasta tmp.
 
-[source,bash]
+[source,bash,role=copypaste]
 ----
 # Veja o nome do seu pod
 oc get po
@@ -180,7 +184,7 @@ Na console, agora o container ficará azul claro assim que o Openshift perceber 
 
 O mesmo passo executado no passo anterior pode ser feito para o liveness.
 
-[source,bash]
+[source,bash,role=copypaste]
 ----
 # Veja o nome do seu pod
 oc get po
@@ -195,7 +199,7 @@ Assim que o Openshift perceber que o container parou de responder no contexto do
 
 Você pode ver que o container foi reiniciado por meio dos eventos do projeto. Para isso faça:
 
-[source,bash]
+[source,bash,role=copypaste]
 ----
 oc get events
 ----
