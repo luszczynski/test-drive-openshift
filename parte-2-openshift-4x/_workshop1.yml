@@ -2,7 +2,7 @@ id: "openshift"
 name: "Openshift Workshop"
 
 content:
-  url: https://raw.githubusercontent.com/siamaksade/workshopper-template/master
+  url: https://raw.githubusercontent.com/luszczynski/test-drive-openshift/master/parte-2-openshift-4x
 
 vars:
   ETHERPAD_URL: "https://my-etherpad.com"

@@ -56,7 +56,18 @@ podman run -it --rm -p 8080:8080 -v $(pwd)/parte-2-openshift-4x:/app-data \
 
 ### Install on Openshift
 
+```bash
+oc new-project workshopper --display-name="Workshopper"
+oc new-app quay.io/osevg/workshopper --name=workshopper \
+      -e WORKSHOPS_URLS="https://raw.githubusercontent.com/luszczynski/test-drive-openshift/master/parte-2-openshift-4x/_workshop1.yml" \
+      -e ISSUES_URL=https://github.com/luszczynski/test-drive-openshift/issues \
+      -e OPENSHIFT_MASTER_URL= \
+      -e ETHERPAD_URL= \
+      -e TERMINAL_URL= \
+      -e LOG_TO_STDOUT=true -n workshopper
 
+oc expose svc/workshopper -n workshopper
+```
 
 ### Convert Markdown to Asciidoc
 
