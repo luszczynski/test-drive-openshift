@@ -8,6 +8,16 @@
 
 O Openshift permite realiza o build de `Dockerfile` para você. Basta adicionar o seu `Dockerfile` em um repositório git e informar ao Openshift que iremos utilizar a estratégia de build do tipo docker. Para esse exemplo, iremos *utilizar o mesmo repositório criado no lab anterior* conforme exemplo abaixo:
 
+== Criando novo repositório no github
+
+Crie um repositório no github com o nome `workshop-ocp`
+
+image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_237.png[image]
+
+Depois informe o nome do repositório:
+
+image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_239.png[image]
+
 [source,text]
 ----
 https://github.com/<seu-usuario-do-github>/workshop-ocp.git
@@ -45,7 +55,13 @@ Nosso repositório agora tem um novo arquivo:
 
 image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_250.png[image]
 
+NOTE: Ignore o arquivo `index.php` que você deve ter visto na imagem acima. Ele será criado em um outro lab posterior
+
+=== Usando a git pela linha de comando
+
 Também podemos salvar esse arquivo com nome de *Dockerfile* na raiz do nosso git executando comandos pelo bash:
+
+NOTE: Só execute estes passos caso você não tenha criado os arquivos <<criando-nosso-dockerfile,usando a própria interface do GitHub>>.
 
 [source,bash,role=copypaste]
 ----
@@ -87,8 +103,11 @@ image:app-dockerfile.png[]
 
 == Construindo o Dockerfile pela CLI
 
+NOTE: Só execute o <<dockerfile-command,comando abaixo>> caso você não tenha feito <<executando-o-dockerfile-com-openshift,a construção do Dockerfile pela Web Console>>
+
 Para criar uma aplicação com base no Dockerfile, precisamos executar o seguinte comando:
 
+[[dockerfile-command]]
 [source,bash,role=copypaste]
 ----
 oc new-app \
@@ -114,4 +133,4 @@ oc delete all -l app=workshop-ocp-git
 ----
 
 [[mais-informações]]
-== Mais informações:
+== Mais informações

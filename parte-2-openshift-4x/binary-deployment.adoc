@@ -6,7 +6,7 @@
 
 == Introdução
 
-O Openshift permite que imagens docker sejam construídas automaticamente, informando somente o repositório do código-fonte por meio do Source-to-Image como você poderá testar no lab seguinte. Mas existem casos que você já tem o binário da sua aplicação compilado e pronto em um repositório como o Nexus. O Openshift também permite executar o processo do source-to-image utilizando esse binário, só que ao invés de utilizar o código-fonte, ele utilizará o seu binário.
+O Openshift permite que imagens docker sejam construídas automaticamente, informando somente o repositório do código-fonte por meio do Source-to-Image como você pode ver no lab anterior. Mas existem casos que você já tem o binário da sua aplicação compilado e pronto em um repositório como o Nexus. O Openshift também permite executar o processo do source-to-image utilizando esse binário, só que ao invés de utilizar o código-fonte, ele utilizará o seu binário.
 
 Para demonstrar isso, iremos criar um JBoss EAP 7 com um aplicação chamada contador.
 
@@ -38,7 +38,7 @@ Crie os `secrets` usados pelos templates do EAP 7.0
 oc create -f https://raw.githubusercontent.com/jboss-openshift/application-templates/master/secrets/eap7-app-secret.json
 ----
 
-INFO: Iremos abordar com mais detalhes o que são os secrets em labs posteriores
+NOTE: Iremos abordar com mais detalhes o que são os secrets em labs posteriores
 
 [[download-da-app-de-exemplo]]
 == Download da app contador
@@ -170,5 +170,4 @@ oc delete all -l app=binary-deployment
 == Mais informações:
 
 * https://blog.openshift.com/binary-deployments-openshift-3/
-* https://docs.openshift.com/container-platform/3.11/architecture/core_concepts/deployments.html#replication-controllers
 * https://blog.openshift.com/binary-input-sources-openshift-3-2/

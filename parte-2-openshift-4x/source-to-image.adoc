@@ -4,21 +4,14 @@
 :imagesdir: images
 :toc-title: Conteúdo
 
+== Introdução
+
+Usaremos uma aplicação php como exemplo para demonstrar as funcionalidades do Openshift. O primeiro passo que executaremos é a criação de um repositório no github.
+
 [[criar-nova-aplicação-no-github]]
 == Criar nova aplicação no github
 
-Usaremos uma aplicação php como exemplo, sinta-se à vontade para usar a sua linguagem de preferência, mas +
-tenha em mente que depois conectaremos a um banco de dados e utilizaremos variáveis de ambiente.
-
-Crie um repositório no github com o nome `workshop-ocp`
-
-image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_237.png[image]
-
-Depois informe o nome do repositório:
-
-image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_239.png[image]
-
-Crie o arquivo `index.php` com o seguinte conteúdo
+Crie o arquivo `index.php` no GitHub com o seguinte conteúdo
 
 [source,php,role=copypaste]
 ----
@@ -28,7 +21,7 @@ echo $_SERVER['SERVER_ADDR'];
 ?>
 ----
 
-CAUTION: Essa linha com o conteudo $_SERVER é opcional, ela irá mostrar na tela o IP do pod em que está sendo executada.
+NOTE: Essa linha com o conteudo $_SERVER é opcional, ela irá mostrar na tela o IP do pod em que está sendo executada.
 
 image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_240.png[image]
 
@@ -40,9 +33,11 @@ Clique em `commit new file` para criar o arquivo.
 
 image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_242.png[image]
 
+=== Usando a linha de comando
+
 Os passos mostrados acima também podem ser feitos pela linha de comando conforme abaixo:
 
-CAUTION:  Atenção. Só execute os comandos do `git` abaixo caso vocẽ *não* tenha criado os arquivos pela web console conforme mostrado nas imagens acima.
+CAUTION:  Atenção. Só execute os comandos do `git` abaixo caso vocẽ *não* tenha criado os arquivos pela web console conforme <<criar-nova-aplicação-no-github,mostrado nas imagens acima>>.
 
 Faça o clone deste novo repositório e crie a página inicial `index.php`
 

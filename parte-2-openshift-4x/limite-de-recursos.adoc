@@ -84,7 +84,5 @@ O uso de CPU e memória não devem passar do que limitamos no início desse lab.
 [[mais-informações]]
 == Mais informações
 
-* https://docs.openshift.com/container-platform/3.11/admin_guide/quota.html
-* https://docs.openshift.com/container-platform/3.11/admin_guide/multiproject_quota.html
-* https://docs.openshift.com/container-platform/3.11/dev_guide/compute_resources.html
-* https://docs.openshift.com/container-platform/3.11/admin_guide/overcommit.html
+* https://docs.openshift.com/container-platform/4.2/applications/quotas/quotas-setting-per-project.html
+* https://docs.openshift.com/container-platform/4.2/applications/quotas/quotas-setting-across-multiple-projects.html

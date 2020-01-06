@@ -17,7 +17,7 @@ Neste laboratório vamos testar esse recurso.
 
 O nosso primeiro passo é fazer o `scale up` da nossa aplicação.
 
-CAUTION: Não escale para muitos pods pois isso pode causar a queda do ambiente, já que o Openshift está rodando em ambiente compartilhado e as cotas de cada usuário estão generosas.
+CAUTION: Não escale para muitos pods pois isso pode causar problemas no ambiente, já que o Openshift está rodando em ambiente compartilhado e as cotas de cada usuário estão generosas.
 
 Para isso, clique em `Topology` no menu lateral esquerdo e depois clique em cima da pod conforme imagem abaixo, depois em `Overview` e por fim clique na seta que aponta para cima para escalar para 2 instâncias.
 
@@ -53,7 +53,9 @@ Clique em cima da bola da sua aplicação, depois em `Resources` e clique em um 
 
 image:pods.png[]
 
-Na tela a seguir, clique em `Actions` e depois em `Delete Pod`.
+TIP: Na tela a seguir, antes de apagar nosso pod, repare que temos acesso ao uso de recursos da nossa aplicação Quarkus. Vale a pena notar que a memória fica em torno de 50 Megabytes (não de heap mas de toda memória). Não se esqueça que é uma aplicação Java.
+
+Clique em `Actions` e depois em `Delete Pod`.
 
 image:delete-pod.png[]
 

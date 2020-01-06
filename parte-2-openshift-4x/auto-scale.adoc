@@ -43,7 +43,7 @@ Você pode acompanhar o uso de recursos e o auto scale por meio do comando:
 oc get hpa
 ----
 
-INFO: Como existe um terminal já sendo utilizado pelo `ab`, será necessário abrir outro terminal para acompanhar o que está acontendo.
+NOTE: Como existe um terminal já sendo utilizado pelo `ab`, será necessário abrir outro terminal para acompanhar o que está acontendo.
 
 == Acompanhando pela Web Console
 

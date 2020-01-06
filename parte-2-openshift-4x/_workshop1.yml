@@ -22,8 +22,9 @@ modules:
   - deploy-imagem-external-registry
   - tolerancia-a-falha
   - usando-dockerfile
-  - binary-deployment
   - source-to-image
+  - binary-deployment
+  - helm-chart-deployment
   - health-check
   - integracao-continua-webhook
   - agregacao-de-logs

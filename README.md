@@ -44,6 +44,8 @@ Esse material é dividido em 2 partes:
 
 ## Workshopper
 
+### Local
+
 ```bash
 podman run -it --rm -p 8080:8080 -v $(pwd)/parte-2-openshift-4x:/app-data \
               -e CONTENT_URL_PREFIX="file:///app-data" \
@@ -51,6 +53,10 @@ podman run -it --rm -p 8080:8080 -v $(pwd)/parte-2-openshift-4x:/app-data \
               -e WORKSHOPS_URLS="file:///app-data/_workshop1.yml" \
               quay.io/osevg/workshopper
 ```
+
+### Install on Openshift
+
+
 
 ### Convert Markdown to Asciidoc
 
@@ -63,12 +69,12 @@ doc=configmap-e-secrets; podman run -v `pwd`:/source jagregory/pandoc --atx-head
 ```bash
 oc new-project etherpad --display-name "Shared Etherpad"
 
-oc new-app mysql-persistent --param MYSQL_USER=ether --param MYSQL_PASSWORD=ether --param MYSQL_DATABASE=ether --param VOLUME_CAPACITY=4Gi --param MYSQL_VERSION=5.7
+oc new-app mysql-persistent --param MYSQL_USER=ether --param MYSQL_PASSWORD=ether --param MYSQL_DATABASE=ether --param VOLUME_CAPACITY=2Gi --param MYSQL_VERSION=5.7 -n etherpad
 
 sleep 15
 
 # oc new-app -f etherpad-template.yaml -p DB_USER=ether -p DB_PASS=ether -p DB_DBID=ether -p DB_PORT=3306 -p DB_HOST=mysql -p ADMIN_PASSWORD=secret
-oc new-app -f https://raw.githubusercontent.com/wkulhanek/docker-openshift-etherpad/master/etherpad-template.yaml -p DB_USER=ether -p DB_PASS=ether -p DB_DBID=ether -p DB_PORT=3306 -p DB_HOST=mysql -p ADMIN_PASSWORD=secret
+oc new-app -f https://raw.githubusercontent.com/wkulhanek/docker-openshift-etherpad/master/etherpad-template.yaml -p DB_USER=ether -p DB_PASS=ether -p DB_DBID=ether -p DB_PORT=3306 -p DB_HOST=mysql -p ADMIN_PASSWORD=secret -n etherpad
 ```
 
 * https://github.com/wkulhanek/docker-openshift-etherpad

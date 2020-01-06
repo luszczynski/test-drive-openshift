@@ -42,7 +42,7 @@ image:image-root.png[]
 
 === Deploy pela CLI
 
-INFO: Só execute o comando abaixo caso não tenha feito o deploy pela web console no passo anterior.
+NOTE: Só execute o comando abaixo caso não tenha feito o deploy pela web console no passo anterior.
 
 Caso queira usar a linha de comando, execute:
 

@@ -4,6 +4,8 @@
 :imagesdir: images
 :toc-title: Conteúdo
 
+== Introdução
+
 Componentes de software ficam indisponíveis por varias razões, como por exemplo falha de comunicação, erro de configuração, problemas com dependências externas como banco de dados ou broker de mensagens. O Openshift possui dois recursos bastante poderosos para fazer o `health checks` de aplicações. O primeiro que iremos abordar é o `Liveness` e em seguida o `Readiness`.
 
 [[liveness]]
@@ -31,7 +33,7 @@ O `readiness` define quando que o container está pronto para receber requisiç�
 [[preparando-a-aplicação]]
 == Preparando a aplicação
 
-Para testarmos o liveness e o readiness vamos criar dois novos contextos na nossa aplicação. Segue o conteúdo dos dois arquivos abaixo:
+Para testarmos o <<liveness,liveness>> e o <<readiness,readiness>> vamos criar dois novos contextos na nossa aplicação. Segue o conteúdo dos dois arquivos abaixo:
 
 liveness.php
 
@@ -89,7 +91,7 @@ git push
 O Openshift não tem como saber que nosso código foi alterado no repositório github pois não configuramos os `webhooks`. Isso será feito na próxima lição. Enquanto isso, vamos criar um novo build da nossa aplicação de maneira manual.
 
 1.  Selecione no menu vertical esquerdo a opção *Builds*
-2.  Clique no *workshop-ocp* na tabela apresentada
+2.  Clique no *workshop-ocp-git* na tabela apresentada
 3.  No menu superior direito, clique em *Actions* -> *Start Build*
 
 image:start-new-build.gif[image]
@@ -105,9 +107,7 @@ image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/git
 
 === Usando a linha de comando
 
-Também podemos configurar o `liveness`e `readiness` por meio da linha de comando.
-
-CAUTION:  Só execute os comandos abaixo de criação de `liveness` e `readiness` caso você não tenha feito os passos de criação desses monitoramento pela web console conforme passos anteriores
+Também podemos configurar o `liveness` e `readiness` por meio da linha de comando.
 
 Antes, veja qual o nome do deploymentconfig usando o comando:
 
@@ -116,20 +116,12 @@ Antes, veja qual o nome do deploymentconfig usando o comando:
 oc get dc
 ----
 
-Para saber o nome do seu projeto no Openshift, basta executar:
-
-[source,text]
-----
-oc get projects
-----
-
-Substitua ele no comando abaixo para o `readiness`:
+Substitua ele no comando abaixo para configurar o `readiness`:
 
 [source,bash]
 ----
-oc set probe dc/workshop-ocp --readiness --get-url=http://:8080/readiness.php
+oc set probe dc/workshop-ocp-git --readiness --get-url=http://:8080/readiness.php
 ----
-
 
 image:oc-set-readiness.gif[image]
 
@@ -137,7 +129,7 @@ Para o `liveness`:
 
 [source,text]
 ----
-oc set probe dc/workshop-ocp --initial-delay-seconds=20 --liveness --get-url=http://:8080/liveness.php
+oc set probe dc/workshop-ocp-git --initial-delay-seconds=20 --liveness --get-url=http://:8080/liveness.php
 ----
 
 image:oc-set-liveness.gif[image]
@@ -177,10 +169,11 @@ oc get po
 oc exec <nome-do-pod> touch /tmp/readiness
 ----
 
+TIP: Depois de criado o arquivo `/tmp/readiness` pode ser que demore um pouco para que o Openshift perceba que a aplicação está falhando no teste de readiness. Isso é normal já que ele testa a aplicação a cada 20 segundos e espera que ela falhe pelo menos 3 vezes para depois tirar do balanceamento
+
 image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/readiness-file.gif[image]
 
 Na console, agora o container ficará azul claro assim que o Openshift perceber que o readiness probe falhou.
-
 
 [[testando-o-liveness-da-nossa-aplicação]]
 == Testando o liveness da nossa aplicação

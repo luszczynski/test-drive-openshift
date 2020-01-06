@@ -4,6 +4,8 @@
 :imagesdir: images
 :toc-title: Conteúdo
 
+== Introdução
+
 Podemos automatizar o processo de build do nosso container toda vez que for feito push no nosso repositório git. Para isso, iremos configurar um `webhook`. Por meio dele, o servidor git avisará o Openshift sempre que um commit (push) novo ocorrer.
 
 [[configuração-webhook]]
@@ -71,7 +73,7 @@ image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/git
 
 Podemos fazer o processo de commit e push por meio da linha de comando do git:
 
-CAUTION: Só execute esse passo caso você não tenha feito o commit usando a página do github
+CAUTION: Só execute esse passo caso você não tenha feito o commit <<usando-a-web-console,usando a página do github>>
 
 [source,bash]
 ----
@@ -83,7 +85,11 @@ git push
 [[acompanhe-o-rolling-deployment]]
 == Acompanhe o rolling deployment
 
-Observe que não ocorre indisponibilidade durante o deployment
+Após o commit ter sido feito, repare que um novo build é iniciado automaticamente sem interveção nossa. Isso pode ser visto pela imagem:
+
+image:build-running-1.png[image]
+
+Observe também que não ocorre indisponibilidade durante a troca de versão.
 
 [[mais-informações]]
 === Mais informações

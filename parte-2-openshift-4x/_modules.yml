@@ -28,6 +28,8 @@ modules:
   binary-deployment:
     name: "Binary Deployment"
     vars: 
+  helm-chart-deployment:
+    name: "Helm Chart Deployment (Coming Soon)"
   health-check:
     name: "Health Check"
     vars: 

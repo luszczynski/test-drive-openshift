@@ -81,7 +81,7 @@ image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/git
 
 === A partir da sua máquina local
 
-INFO: Execute esse labs somente se instruído pelo instrutor. Se o instrutor avisar para pular essa etapa, vá para <<a-partir-da-console>>
+NOTE: Execute esse labs somente se instruído pelo instrutor. Se o instrutor avisar para pular essa etapa, vá para <<a-partir-da-console>>
 
 Para criar a nossa tabela que a nossa aplicação está consumindo os dados, vamos utilizar o recurso de *port-forward*. Este recurso permite que uma porta TCP remota possa ser acessada como se estivesse disponível localmente através do uso de túnels.
 
