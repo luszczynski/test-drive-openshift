@@ -56,7 +56,7 @@ No terminal que você acaba de ter acesso, existe um binário chamado `oc` que j
 
 [source,bash,role=copypaste]
 ----
-oc login {{ OPENSHIFT_MASTER_URL }}
+oc login {{ OPENSHIFT_API_URL }}
 ----
 
 Você pode ver o seguinte aviso:
@@ -67,7 +67,7 @@ Digite `Y` para aceita uma conexão potencialmente insegura. O motivo dessa mens
 
 [source,bash,role=copypaste]
 ----
-oc login {{ OPENSHIFT_MASTER_URL }} --insecure-skip-tls-verify=true
+oc login {{ OPENSHIFT_API_URL }} --insecure-skip-tls-verify=true
 ----
 
 Assim que enviar o comando `oc login`, você terá que fornecer o usuário e senha para efetuar o login. Utilize o usuário escolhido anteriormente com a senha fornecida pelo instrutor.

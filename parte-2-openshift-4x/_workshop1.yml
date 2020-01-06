@@ -9,6 +9,7 @@ vars:
   TERMINAL_URL: "http://my-terminal"
   OPENSHIFT_WILDCARD_URL: ""
   OPENSHIFT_MASTER_URL: "https://master.brasilia-8694.open.redhat.com/"
+  OPENSHIFT_API_URL: "https://api.cluster-brasilia-d6ec.brasilia-d6ec.example.opentlc.com:6443"
   OPENSHIFT_DOCS_BASE: "https://docs.openshift.com/container-platform/3.7"
   OPENSHIFT_USERNAME: "developer"
   OPENSHIFT_PASSWORD: "password"

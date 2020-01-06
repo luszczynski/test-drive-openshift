@@ -28,17 +28,13 @@ Para criar um container com base em uma image externa ao Openshift, selecione a 
 
 image:deploy-image-01.png[]
 
-Depois preencha o campo `Image Name` com o valor da sua imagem, no nosso caso o valor é `quay.io/gluszczy/workshop-openshift` e depois clique na lupa a direita para que seja feita a busca dos metadados necessários.
+Depois preencha o campo `Image Name` com o valor da sua imagem, no nosso caso o valor é `quay.io/gluszczy/workshop-openshift` e depois clique na `lupa` a direita para que seja feita a busca dos metadados necessários.
 
 Logo em seguida clique em `Create` no fim da tela.
 
 O gif abaixo resume o passo que deve ser feito.
 
 image:deploy-image.gif[]
-
-Se a imagem escolhida rodar como root, o Openshift te avisa na console (por meio de uma tarja laranja) que ela pode eventualmente não executar conforme o esperado. 
-
-image:image-root.png[]
 
 === Deploy pela CLI
 
@@ -85,6 +81,14 @@ image:app-overview.png[]
 Na tela de overview você tem uma visão geral da sua aplicação. Nela você pode ver quantos pods estão rodando, qual a versão atual, qual projeto e labels utilizados e também outros detalhes de deployment dessa aplicação
 
 image:app-overview2.png[]
+
+== Imagem e Segurança
+
+NOTE: Os detalhes abaixo não devem ser executados. Servem só para ilustrar como o Openshift lida com imagem que rodem como `root`.
+
+Se a imagem escolhida rodar como root, o Openshift te avisa na Web Console (por meio de uma tarja laranja) que ela pode eventualmente não executar conforme o esperado. 
+
+image:image-root.png[]
 
 [[mais-informações]]
 == Mais informações
