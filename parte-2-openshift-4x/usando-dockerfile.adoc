@@ -6,11 +6,11 @@
 
 == Introdução
 
-O Openshift permite realiza o build de `Dockerfile` para você. Basta adicionar o seu `Dockerfile` em um repositório git e informar ao Openshift que iremos utilizar a estratégia de build do tipo docker. Para esse exemplo, iremos *utilizar o mesmo repositório criado no lab anterior* conforme exemplo abaixo:
+O Openshift permite realiza o build de `Dockerfile` para você. Basta adicionar o seu `Dockerfile` em um repositório git e informar ao Openshift que iremos utilizar a estratégia de build do tipo docker.
 
 == Criando novo repositório no github
 
-Crie um repositório no github com o nome `workshop-ocp`
+Crie um repositório no github com o nome de `workshop-ocp`
 
 image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_237.png[image]
 
@@ -129,7 +129,7 @@ Vamos apagar nossa aplicação criada com base no Dockerfile. Dessa forma, deixa
 
 [source,bash,role=copypaste]
 ----
-oc delete all -l app=workshop-ocp-git
+oc delete all -l app=workshop-ocp-git && oc delete secrets workshop-ocp-git-generic-webhook-secret workshop-ocp-git-github-webhook-secret
 ----
 
 [[mais-informações]]
