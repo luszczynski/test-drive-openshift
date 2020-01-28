@@ -7,7 +7,7 @@
 
 == Introdução
 
-O proposito deste test drive é apresentar uma das melhores soluções de containers que existem no mercado. Assim como fazemos um test drive em um carro para avaliar o conforme, a dirigibilidade e a potência do motor, assim faremos com o Openshift. Portanto, nosso objetivo é que vocês possam "degustar" de um pouco do potencial que essa solução de conteiner tem para oferecer para seu ambiente e aplicação.
+O propósito deste test drive é apresentar uma das melhores soluções de containers que existem no mercado. Assim como fazemos um test drive em um carro para avaliar o conforme, a dirigibilidade e a potência do motor, assim faremos com o Openshift. Portanto, nosso objetivo é que vocês possam "degustar" de um pouco do potencial que essa solução de conteiner tem para oferecer para seu ambiente e aplicação.
 
 [[ambiente-openshift]]
 == Ambiente OpenShift
@@ -40,13 +40,13 @@ Se o usuário já tiver um nome na frente significa que alguém já o escolheu. 
 [[linha-de-comando]]
 == Linha de comando
 
-Iremos utilizar um terminal que roda no web browser. Para isso, utilize o `Google Chrome` ou o `Firefox`. Nem pense em usar o Microsoft Edge por favor ;)
+Utilizaremos um terminal que roda no web browser. Para isso, utilize o `Google Chrome` ou o `Firefox`. Nem pense em usar o Microsoft Edge por favor ;)
 
 O link de acesso para o terminal está abaixo:
 
 {{ TERMINAL_URL }}[Terminal,window="_blank"]
 
-Para ter acesso ao terminal, você precisa logar no Openshift com o usuário escolhido no Etherpad. O instrutor irá orientar a respeito da senha. Depois de logado, você verá uma tela semelhante a essa:
+Para ter acesso ao terminal, você precisa logar no Openshift com o usuário escolhido no Etherpad. O instrutor orientará a respeito da senha. Depois de logado, você verá uma tela semelhante a essa:
 
 image:terminal.png[Web Console]
 
@@ -88,7 +88,7 @@ Login successful.
 Using project "userXX".
 ----
 
-Após o login, deve aparecer o seu projeto que também terá o mesmo nome que o seu usuário. se não aparecer o projeto, você pode criar um através do comando:
+Após o login, deve aparecer o seu projeto que também terá o mesmo nome que o seu usuário. Se não aparecer o projeto, você pode criar um através do comando:
 
 IMPORTANT: No comando abaixo, não se esqueça de trocar o nome do projeto `userXX` para o do seu usuário. Ex: user3.
 
@@ -130,7 +130,7 @@ Now using project "userXX" on server "{{ OPENSHIFT_MASTER_URL }}".
 
 == A Web Console
 
-O Openshift vem com uma console web que irá permitir aos usuários executar várias tarefas via browser. Para acessar a console abra a seguinte URL:
+O Openshift vem com uma console web que permitirá aos usuários executar várias tarefas via browser. Para acessar a console abra a seguinte URL:
 
 {{ OPENSHIFT_MASTER_URL }}[Web Console,window="_blank"]
 

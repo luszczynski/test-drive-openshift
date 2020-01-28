@@ -17,7 +17,7 @@ Para executar a imagem no Openshift, siga os passos abaixo:
 
 === Deploy pela Web Console
 
-Iremos utilizar a imagem do exemplo abaixo:
+Utilizaremos a imagem do exemplo abaixo:
 
 [source,text,role=copypaste]
 ----
@@ -63,7 +63,7 @@ Agora basta executar novamente o deploy ou usando CLI ou a Web Console
 
 === App Resources
 
-Para ver a nossa aplicação recém criada, clique no menu lateral esquerdo em `Topology`.
+Para ver a nossa aplicação recém-criada, clique no menu lateral esquerdo em `Topology`.
 
 image:topology.png[]
 
@@ -72,8 +72,8 @@ Você verá sua aplicação no centro da tela.
 image:app-overview.png[]
 
 1. Por meio dessa parte você tem acesso aos dados do `Pod`
-2. Caso o Openshift faça o `Build` da sua imagem, iria aparecer nessa parte.
-3. O `Service` faz o balanceamento interno entre os containers e também serve como um camada de `service discovery`
+2. Caso o Openshift faça o `Build` da sua imagem, seria exibido nessa parte.
+3. O `Service` faz o balanceamento interno entre os containers e também serve como uma camada de `service discovery`
 4. Um objeto `Route` permite acesso externo a sua aplicação
 
 === App Overview
@@ -86,7 +86,7 @@ image:app-overview2.png[]
 
 NOTE: Os detalhes abaixo não devem ser executados. Servem só para ilustrar como o Openshift lida com imagem que rodem como `root`.
 
-Se a imagem escolhida rodar como root, o Openshift te avisa na Web Console (por meio de uma tarja laranja) que ela pode eventualmente não executar conforme o esperado. 
+Se a imagem escolhida rodar como root, o Openshift te avisa na Web Console (por meio de uma tarja laranja) que ela pode eventualmente não executar conforme o esperado.
 
 image:image-root.png[]
 

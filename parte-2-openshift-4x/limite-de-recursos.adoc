@@ -24,7 +24,7 @@ O Openshift permite que você limite a quantidade de recursos que serão disponi
 [[configurando-limite-de-recursos-na-nossa-aplicação]]
 == Configurando limites na nossa app
 
-Podemos limitar a quantidade de CPU e memória que nossa aplicação irá consumir. Para isso, precisamos executar
+Podemos limitar a quantidade de CPU e memória que nossa aplicação consumirá. Para isso, precisamos executar
 
 [source,bash,role=copypaste]
 ----
@@ -71,7 +71,7 @@ Agora abra a URL da nossa aplicação e adicione no final da url `/forkbomb.php`
 
 Podemos acompanhar o uso de recursos da aplicação pela Web Console do Openshift.
 
-Clique sob o circulo do `workshop-ocp-git` conforme imagem abaixo:
+Clique sob o círculo do `workshop-ocp-git` conforme imagem abaixo:
 
 image:limite-recursos.png[]
 
