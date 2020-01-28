@@ -120,7 +120,7 @@ A partir do menu esquerdo `Topology`, acesse os detalhes da aplicação, e em `O
 
 image:scale-to-4.gif[image]
 
-TIP: Este procedimento simples mostra a facilidade para escalar uma aplicação recém criada.
+TIP: Este procedimento simples mostra a facilidade para escalar uma aplicação recém-criada.
 
 [[source-to-image-utilizando-o-quarkus]]
 = Source-to-Image utilizando o Quarkus

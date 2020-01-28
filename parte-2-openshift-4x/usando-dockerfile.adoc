@@ -89,7 +89,7 @@ Será indicado que o build está acontecendo como pode ser visto na imagem abaix
 
 image:build-running-dockerfile.png[]
 
-Quando o build estiver completado, a console irá indicar conforme imagem abaixo:
+Quando o build estiver completado, a console indicará conforme imagem abaixo:
 
 image:build-completed.png[]
 
