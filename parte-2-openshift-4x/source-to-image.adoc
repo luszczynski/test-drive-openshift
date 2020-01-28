@@ -21,7 +21,7 @@ echo $_SERVER['SERVER_ADDR'];
 ?>
 ----
 
-NOTE: Essa linha com o conteudo $_SERVER é opcional, ela irá mostrar na tela o IP do pod em que está sendo executada.
+NOTE: Essa linha com o conteudo $_SERVER é opcional, ela mostrará na tela o IP do pod em que está sendo executada.
 
 image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_240.png[image]
 
@@ -37,7 +37,7 @@ image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/git
 
 Os passos mostrados acima também podem ser feitos pela linha de comando conforme abaixo:
 
-CAUTION:  Atenção. Só execute os comandos do `git` abaixo caso vocẽ *não* tenha criado os arquivos pela web console conforme <<criar-nova-aplicação-no-github,mostrado nas imagens acima>>.
+CAUTION:  Atenção. Só execute os comandos do `git` abaixo caso você *não* tenha criado os arquivos pela web console conforme <<criar-nova-aplicação-no-github,mostrado nas imagens acima>>.
 
 Faça o clone deste novo repositório e crie a página inicial `index.php`
 
