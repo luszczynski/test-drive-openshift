@@ -8,7 +8,7 @@
 
 O Openshift permite que imagens docker sejam construídas automaticamente, informando somente o repositório do código-fonte por meio do Source-to-Image como você pode ver no lab anterior. Mas existem casos que você já tem o binário da sua aplicação compilado e pronto em um repositório como o Nexus. O Openshift também permite executar o processo do source-to-image utilizando esse binário, só que ao invés de utilizar o código-fonte, ele utilizará o seu binário.
 
-Para demonstrar isso, iremos criar um JBoss EAP 7 com um aplicação chamada contador.
+Para demonstrar isso, criaremos um JBoss EAP 7 com uma aplicação chamada contador.
 
 [[importando-a-image-stream-do-eap-7]]
 == Importando a Image Stream do EAP 7
@@ -38,7 +38,7 @@ Crie os `secrets` usados pelos templates do EAP 7.0
 oc create -f https://raw.githubusercontent.com/jboss-openshift/application-templates/master/secrets/eap7-app-secret.json
 ----
 
-NOTE: Iremos abordar com mais detalhes o que são os secrets em labs posteriores
+NOTE: Abordaremos com mais detalhes o que são os secrets em labs posteriores
 
 [[download-da-app-de-exemplo]]
 == Download da app contador
@@ -136,14 +136,14 @@ oc new-app binary-deployment
 
 image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/new-app-binary-deployment.gif[image]
 
-Preciamos por último criar uma rota para que nossa aplicação possa ser acessada por fora do Openshift.
+Precisamos por último criar uma rota para que nossa aplicação possa ser acessada por fora do Openshift.
 
 [source,bash,role=copypaste]
 ----
 oc expose svc binary-deployment --path=/contador
 ----
 
-Esse comando expõe o seu app, criando uma rota para o mesmo. Para abrir a url, basta clicar no icone abaixo:
+Esse comando expõe o seu app, criando uma rota para o mesmo. Para abrir a url, basta clicar no ícone abaixo:
 
 image:binary-build-url.png[]
 
