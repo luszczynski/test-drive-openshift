@@ -18,10 +18,10 @@ são as mesmas utilizadas para acessar o console do OpenShift desse workshop:
 ----
 Login: userXX
 
-Senha: openShift 
+Senha: openShift
 ----
 
-Siga os passos do vídeo asseguir para acessar o console do Kibana (agregador de logs) no seu browser.
+Siga os passos do vídeo a seguir para acessar o console do Kibana (agregador de logs) no seu browser.
 
 As credenciais de acesso ao console do Kibana
 
@@ -35,7 +35,7 @@ No seu caso, utilize:
 ----
 Login: userXX
 
-Senha: openShift 
+Senha: openShift
 ----
 
 Abaixo segue destaque de onde devemos clicar:

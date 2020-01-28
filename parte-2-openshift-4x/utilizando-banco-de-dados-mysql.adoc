@@ -46,7 +46,7 @@ image:database-5.gif[image]
 === Preparando o codigo
 
 Vamos mostrar uma lista de cidades cadastradas no banco de dados com essa aplicação. +
-Para isso o primeiro passo será conectar a nossa aplicação já existente neste banco de dados, para isso precisamos adicionar o trecho de código abaixo ao arquivo `index.php` já existente. 
+Para isso o primeiro passo será conectar a nossa aplicação já existente neste banco de dados, para isso precisamos adicionar o trecho de código abaixo ao arquivo `index.php` já existente.
 
 [source,php,role=copypaste]
 ----
@@ -122,7 +122,7 @@ mysql -u redhat -h 127.0.0.1 -P 3306 --password=redhat --execute="USE workshop; 
 
 [[a-partir-da-console]]
 === A partir da Web Console
-Voce pode também utilizar a console conforme demonstrado no item anterior <<corrigindo-problema-autenticacao>> e executar os seguintes comandos na console.
+Você pode também utilizar a console conforme demonstrado no item anterior <<corrigindo-problema-autenticacao>> e executar os seguintes comandos na console.
 
 
 [source,bash]
@@ -134,7 +134,7 @@ image:database-6.gif[image]
 
 == Acessando a aplicação
 
-Ao acessar novamente a interface de nossas aplicação a mesma deverá estar mostrando a lista de cidades incluídas neste passo.
+Ao acessar novamente a interface de nossa aplicação a mesma deverá mostrar a lista de cidades incluídas neste passo.
 
 image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_281.png[image]
 
@@ -143,20 +143,20 @@ Assim que todos os exercícios tiverem terminados, podemos parar o port-forward.
 image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_164.png[image]
 
 
-== Organizando a aplicacao na Web Console
+== Organizando a aplicação na Web Console
 
 O Openshift 4 vem com algumas funções novas que permitem organizar sua aplicação para tornar-se mais intuitiva para operadores ou mesmo para outros desenvolvedores que participam do projeto. Vamos inserir o banco de dados dentro do contexto da aplicação e criar um link entre a App e o Banco para demonstrar o fluxo da informação.
 
 === Inserindo o DB na aplicação
 
-Para isso, basta arrastar o BD para a aplicacao do Workshop conforme demonstrado abaixo:
+Para isso, basta arrastar o BD para a aplicação do Workshop conforme demonstrado abaixo:
 
 image:database-7.gif[image]
 
 
 === Demonstrando o fluxo da comunicação
 
-Ao passar com o mouse sobre o pod da aplicacao, uma seta deve aparecer. Arraste-a para o BD.
+Ao passar com o mouse sobre o pod da aplicação, uma seta deve aparecer. Arraste-a para o BD.
 
 image:database-8.gif[image]
 
