@@ -6,7 +6,7 @@
 
 == Introdução
 
-O Openshift controla todas as versões da sua aplicações e de seus respectivos artefatos. Toda vez que é lançada uma nova versão da aplicação ou quando é realizada alguma alteração como por exemplo a quantidade de recursos do container, o Openshift mantém o histórico de todas elas.
+O Openshift controla todas as versões da sua aplicação e de seus respectivos artefatos. Toda vez que é lançada uma nova versão da aplicação ou quando é realizada alguma alteração como por exemplo a quantidade de recursos do container, o Openshift mantém o histórico de todas elas.
 
 == Histórico de versões
 
@@ -61,7 +61,7 @@ REVISION	STATUS		CAUSE
 [[executando-o-rollback]]
 == Executando o rollback
 
-Vamos fazer o rollback para versão 2.0. Para isso iremos utilizar o comando abaixo:
+Vamos fazer o rollback para versão 2.0. Para isso utilizaremos o comando abaixo:
 
 [source,bash,role=copypaste]
 ----

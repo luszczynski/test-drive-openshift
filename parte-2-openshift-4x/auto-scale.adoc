@@ -47,7 +47,7 @@ NOTE: Como existe um terminal já sendo utilizado pelo `ab`, será necessário a
 
 == Acompanhando pela Web Console
 
-Você pode acompanhar o auto scale pela Web Console clicando em `Topology` no menu lateral esquerdo e depois em cima do circulo da aplicação.
+Você pode acompanhar o auto scale pela Web Console clicando em `Topology` no menu lateral esquerdo e depois em cima do círculo da aplicação.
 
 image:auto-scale.png[]
 

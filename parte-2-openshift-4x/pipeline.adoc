@@ -86,7 +86,7 @@ Clique agora em `Instantiate Template` e deixe os campos com seus valores defaul
 
 image:jenkins-form.png[]
 
-Agora volte para página da Topologia clicando em `Topology` no menu lateral esquerdo. Aguarde até que o circulo do Jenkins fique azul escuro.
+Agora volte para página da Topologia clicando em `Topology` no menu lateral esquerdo. Aguarde até que o círculo do Jenkins fique azul escuro.
 
 TIP: O Jenkins pode demorar até uns 8 minutos para subir. Aproveite e busque uma xícara de café.
 
