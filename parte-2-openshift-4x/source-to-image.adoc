@@ -188,7 +188,7 @@ git push -u origin master
 
 1.  No menu superior clique em *Search Catalog*
 2.  Na busca, digite *openjdk*
-3.  Selecione o template *OpenJDK* versão *11*
+3.  Selecione o template *Red Hat OpenJDK 8* que executará a versão *11* do Java
 
 Logo em seguida, preencha os valores conforme abaixo:
 
