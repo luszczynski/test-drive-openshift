@@ -64,6 +64,7 @@ oc new-app quay.io/osevg/workshopper --name=workshopper \
       -e OPENSHIFT_MASTER_URL=https://console-openshift-console.apps.cluster-brasilia-d6ec.brasilia-d6ec.example.opentlc.com/ \
       -e ETHERPAD_URL=http://etherpad-etherpad.apps.cluster-brasilia-d6ec.brasilia-d6ec.example.opentlc.com/p/workshop \
       -e TERMINAL_URL=https://terminal-terminal.apps.cluster-brasilia-d6ec.brasilia-d6ec.example.opentlc.com/ \
+      -e OPENSHIFT_API_URL=https://api.cluster-brasilia-da5c.brasilia-da5c.example.opentlc.com:6443 \
       -e LOG_TO_STDOUT=true -n workshopper
 
 oc expose svc/workshopper -n workshopper
