@@ -21,7 +21,7 @@ echo $_SERVER['SERVER_ADDR'];
 ?>
 ----
 
-NOTE: Essa linha com o conteudo $_SERVER é opcional, ela irá mostrar na tela o IP do pod em que está sendo executada.
+NOTE: Essa linha com o conteudo $_SERVER é opcional, ela mostrará na tela o IP do pod em que está sendo executada.
 
 image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/selection_240.png[image]
 
@@ -37,7 +37,7 @@ image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/git
 
 Os passos mostrados acima também podem ser feitos pela linha de comando conforme abaixo:
 
-CAUTION:  Atenção. Só execute os comandos do `git` abaixo caso vocẽ *não* tenha criado os arquivos pela web console conforme <<criar-nova-aplicação-no-github,mostrado nas imagens acima>>.
+CAUTION:  Atenção. Só execute os comandos do `git` abaixo caso você *não* tenha criado os arquivos pela web console conforme <<criar-nova-aplicação-no-github,mostrado nas imagens acima>>.
 
 Faça o clone deste novo repositório e crie a página inicial `index.php`
 
@@ -120,7 +120,7 @@ A partir do menu esquerdo `Topology`, acesse os detalhes da aplicação, e em `O
 
 image:scale-to-4.gif[image]
 
-TIP: Este procedimento simples mostra a facilidade para escalar uma aplicação recém criada.
+TIP: Este procedimento simples mostra a facilidade para escalar uma aplicação recém-criada.
 
 [[source-to-image-utilizando-o-quarkus]]
 = Source-to-Image utilizando o Quarkus
@@ -188,7 +188,7 @@ git push -u origin master
 
 1.  No menu superior clique em *Search Catalog*
 2.  Na busca, digite *openjdk*
-3.  Selecione o template *OpenJDK* versão *11*
+3.  Selecione o template *Red Hat OpenJDK 8* que executará a versão *11* do Java
 
 Logo em seguida, preencha os valores conforme abaixo:
 

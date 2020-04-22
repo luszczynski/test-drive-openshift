@@ -150,7 +150,7 @@ oc delete pod -l app=workshop-ocp-git
 
 Perceba que adicionamos um delay inicial para o health check do liveness. Fizemos isso para evitar que o Openshift fique matando o container enquanto o mesmo estiver "subindo".
 
-O Openshift informa para nós por meio da console web que a aplicação não está pronta para receber requisição por meio da cor azul clara. Se o circulo ficar azul claro, quer dizer que o seu POD não passou no teste de readiness.
+O Openshift informa para nós por meio da console web que a aplicação não está pronta para receber requisição por meio da cor azul clara. Se o círculo ficar azul claro, quer dizer que o seu POD não passou no teste de readiness.
 
 IMPORTANT: Caso o círculo do container apareça laranja, isso quer dizer que o teste de readiness ficou mais de 5 minutos sem passar no teste.
 

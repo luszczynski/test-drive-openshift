@@ -31,7 +31,7 @@ oc idle workshop-ocp-git
 
 image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/idle.gif[image]
 
-Depois de colocar em idle a nossa app, a web console irá mostrar que não temos nenhum pod mais rodando
+Depois de colocar em idle a nossa app, a web console mostrará que não temos nenhum pod mais rodando
 
 image:idle.png[]
 
