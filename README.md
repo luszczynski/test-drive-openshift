@@ -90,3 +90,10 @@ oc new-app -f https://raw.githubusercontent.com/wkulhanek/docker-openshift-ether
 ```
 
 * https://github.com/wkulhanek/docker-openshift-etherpad
+
+### Terminal
+
+```bash
+oc new-project terminal-workshop
+oc process -f https://raw.githubusercontent.com/openshift-homeroom/workshop-spawner/develop/templates/terminal-server-production.json --param SPAWNER_NAMESPACE=`oc project --short` --param CLUSTER_SUBDOMAIN=apps.cluster-brasilia-da5c.brasilia-da5c.example.opentlc.com | oc apply -f -
+```
