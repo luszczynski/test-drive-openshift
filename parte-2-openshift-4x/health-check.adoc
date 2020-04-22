@@ -91,7 +91,7 @@ git push
 O Openshift não tem como saber que nosso código foi alterado no repositório github pois não configuramos os `webhooks`. Isso será feito na próxima lição. Enquanto isso, vamos criar um novo build da nossa aplicação de maneira manual.
 
 1.  Selecione no menu vertical esquerdo a opção *Builds*
-2.  Clique no *workshop-ocp-git* na tabela apresentada
+2.  Clique no *workshop-ocp* na tabela apresentada
 3.  No menu superior direito, clique em *Actions* -> *Start Build*
 
 image:start-new-build.gif[image]
@@ -109,11 +109,11 @@ image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/git
 
 Também podemos configurar o `liveness` e `readiness` por meio da linha de comando.
 
-Antes, veja qual o nome do deploymentconfig usando o comando:
+Antes, veja qual o nome do deployment usando o comando:
 
 [source,bash,role=copypaste]
 ----
-oc get dc
+oc get deploy
 ----
 
 Substitua ele no comando abaixo para configurar o `readiness`:
@@ -122,7 +122,7 @@ CAUTION: No comando abaixo o parametro `--get-url=http://:8080/readiness.php` es
 
 [source,bash,role=copypaste]
 ----
-oc set probe dc/workshop-ocp-git --readiness --get-url=http://:8080/readiness.php
+oc set probe deploy/workshop-ocp --readiness --get-url=http://:8080/readiness.php
 ----
 
 image:oc-set-readiness.gif[image]
@@ -133,7 +133,7 @@ CAUTION: No comando abaixo o parametro `--get-url=http://:8080/liveness.php` est
 
 [source,bash,role=copypaste]
 ----
-oc set probe dc/workshop-ocp-git --initial-delay-seconds=20 --liveness --get-url=http://:8080/liveness.php
+oc set probe deploy/workshop-ocp --initial-delay-seconds=20 --liveness --get-url=http://:8080/liveness.php
 ----
 
 image:oc-set-liveness.gif[image]
@@ -168,7 +168,10 @@ Para testarmos o readiness, vamos executar um comando que cria um arquivo na pas
 ----
 # Veja o nome do seu pod
 oc get po
+----
 
+[source,bash,role=copypaste]
+----
 # Crie o arquivo dentro do pod
 oc exec <nome-do-pod> touch /tmp/readiness
 ----
@@ -188,7 +191,10 @@ O mesmo passo executado no passo anterior pode ser feito para o liveness.
 ----
 # Veja o nome do seu pod
 oc get po
+----
 
+[source,bash,role=copypaste]
+----
 # Crie o arquivo dentro do pod
 oc exec <nome-do-pod> touch /tmp/liveness
 ----
