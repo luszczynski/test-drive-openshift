@@ -14,7 +14,7 @@ Para ver todo o histórico das versões executamos:
 
 [source,bash,role=copypaste]
 ----
-oc rollout history dc/workshop-ocp-git
+oc rollout history dc/workshop-ocp
 ----
 
 Teremos um resultado semelhante ao abaixo:
@@ -65,7 +65,7 @@ Vamos fazer o rollback para versão 2.0. Para isso utilizaremos o comando abaixo
 
 [source,bash,role=copypaste]
 ----
-oc rollout undo dc/workshop-ocp-git --to-revision=10
+oc rollout undo dc/workshop-ocp --to-revision=10
 ----
 
 [[mais-informações]]

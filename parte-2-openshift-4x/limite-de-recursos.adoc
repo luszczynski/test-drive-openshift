@@ -28,7 +28,7 @@ Podemos limitar a quantidade de CPU e memória que nossa aplicação consumirá.
 
 [source,bash,role=copypaste]
 ----
-oc set resources deploymentconfig/workshop-ocp-git --limits=cpu=200m,memory=100Mi --requests=cpu=200m,memory=100Mi
+oc set resources deploymentconfig/workshop-ocp --limits=cpu=200m,memory=100Mi --requests=cpu=200m,memory=100Mi
 ----
 
 Nesse caso estamos colocando os limites e requests conforme abaixo:
@@ -71,7 +71,7 @@ Agora abra a URL da nossa aplicação e adicione no final da url `/forkbomb.php`
 
 Podemos acompanhar o uso de recursos da aplicação pela Web Console do Openshift.
 
-Clique sob o círculo do `workshop-ocp-git` conforme imagem abaixo:
+Clique sob o círculo do `workshop-ocp` conforme imagem abaixo:
 
 image:limite-recursos.png[]
 

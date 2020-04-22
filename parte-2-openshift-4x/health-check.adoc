@@ -144,7 +144,7 @@ Para visualizar o efeito na console, vamos matar o pod. Pode usar o comando abai
 
 [source,bash,role=copypaste]
 ----
-oc delete pod -l app=workshop-ocp-git
+oc delete pod -l app=workshop-ocp
 ----
 
 

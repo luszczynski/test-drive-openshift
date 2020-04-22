@@ -129,7 +129,7 @@ Vamos apagar nossa aplicação criada com base no Dockerfile. Dessa forma, deixa
 
 [source,bash,role=copypaste]
 ----
-oc delete all -l app=workshop-ocp-git && oc delete secrets workshop-ocp-git-generic-webhook-secret workshop-ocp-git-github-webhook-secret
+oc delete all -l app=workshop-ocp && oc delete secrets workshop-ocp-generic-webhook-secret workshop-ocp-github-webhook-secret
 ----
 
 [[mais-informações]]

@@ -77,7 +77,7 @@ image:s2i-deploy.gif[image]
 * Selecione `Create Application`
 * Selecione o template `PHP` na versão `7.2`.
 * Preencha o campo `Git Repo URL` com o valor `https://github.com/<seu-usuario-do-github>/workshop-ocp.git`
-* Preencha o campo `Name` com o valor `workshop-ocp` ou aceite os valores padroes
+* Preencha o campo `Name` com o valor `workshop-ocp`
 * Deixe o item `Create a route to the application` marcada
 
 CAUTION: Repare que no campo Git Repository URL você deve trocar o <seu-usuario-do-github> pelo usuário da sua conta do github.

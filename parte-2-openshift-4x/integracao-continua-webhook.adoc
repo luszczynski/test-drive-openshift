@@ -15,7 +15,7 @@ Acesse a opcao `Builds` no menu esquerdo.
 
 image:webhook-1.png[image]
 
-Depois selecione `workshop-ocp-git` ou equivalente
+Depois selecione `workshop-ocp` ou equivalente
 
 image:webhook-2.png[image]
 

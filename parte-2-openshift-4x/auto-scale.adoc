@@ -19,7 +19,7 @@ Para criar o autoscale, execute o seguinte comando:
 
 [source,bash,role=copypaste]
 ----
-oc autoscale dc/workshop-ocp-git --min 1 --max 3 --cpu-percent=20
+oc autoscale dc/workshop-ocp --min 1 --max 3 --cpu-percent=20
 ----
 
 [[estressando-a-aplicação]]
@@ -29,7 +29,7 @@ Vamos gerar uma carga agora na aplicação para ver como ela se comporta. Utiliz
 
 [source,bash,role=copypaste]
 ----
-ab -n 100000 -c 50 $(oc get --no-headers route workshop-ocp-git | awk '{print $2"/"}')
+ab -n 100000 -c 50 $(oc get --no-headers route workshop-ocp | awk '{print $2"/"}')
 ----
 
 O Autoscale pode demorar um pouco para acontecer. Openshift demora aproximadamente 1 minuto para coletar as métricas necessárias para tomar uma decisão de escalar a aplicação.
@@ -61,7 +61,7 @@ Ao final desse lab, precisamos remover o auto scale. Para isso, basta apagar o `
 
 [source,bash,role=copypaste]
 ----
-oc delete hpa workshop-ocp-git
+oc delete hpa workshop-ocp
 ----
 
 [[mais-informações]]
