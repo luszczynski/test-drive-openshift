@@ -16,27 +16,6 @@ Este trabalho está licenciado sob a [**Licença Atribuição-NãoComercial-Comp
 
 **Se você tiver interesse de participar de um workshop com o time Red Hat Brasil, entre em contato com o seu time de contas/parceiro!**
 
-Para conseguir aproveitar o material, nossa recomendação é:
-
-* _Reserve entre **4-8 horas** para discussão dos assuntos e execução das atividades._
-* _Acesso à **Internet é indispensável**._
-* _Caso opte por usar uma VM local recomendamos que os participantes utilizem **um PC capaz de rodar máquinas virtuais**:_
-  * _**Processador dual-core de 2GHz**_
-  * _**8GB de memória RAM**_
-  * _**40GB de disco livre**_
-  * _**Virtualizador \(QEMU/KVM, Oracle VirtualBox, VMware Workstation\)**_
-
-## Por onde começar?
-
-Esse material é dividido em 2 partes:
-
-* [**Parte 1 - Linux Containers:**](parte-1-containers/) _Material dedicado à discussão introdutória sobre a tecnologia de containers Linux._
-* [**Parte 2 - OpenShift**](parte-2-openshift/)**:** _Material dedicado à discussão sobre o OpenShift na perspectiva de desenvolvimento e também infraestrutura._
-
-## Posso contribuir?
-
-**Aceitamos contribuições de todas as formas!** Você pode fazer uso da funcionalidade de "Issues" direto do repositório fonte no [**Github**](https://github.com/redhat-sa-brazil/workshop-openshift). Uma outra alternativa é através das funcionalidades de colaboração do próprio [**GitBook**](https://redhat-sa-brazil.gitbooks.io/workshop-openshift). Fique a vontade de usar qualquer um dos dois!
-
 
 ## Observação
 
@@ -46,6 +25,8 @@ Esse material é dividido em 2 partes:
 
 ### Local
 
+#### Using podman
+
 ```bash
 podman run -it --rm -p 8080:8080 -v $(pwd)/parte-2-openshift-4x:/app-data \
               -e CONTENT_URL_PREFIX="file:///app-data" \
@@ -54,7 +35,19 @@ podman run -it --rm -p 8080:8080 -v $(pwd)/parte-2-openshift-4x:/app-data \
               quay.io/osevg/workshopper
 ```
 
+#### Using docker
+
+```bash
+docker run -it --rm -p 8080:8080 -v $(pwd)/parte-2-openshift-4x:/app-data \
+              -e CONTENT_URL_PREFIX="file:///app-data" \
+              -e LOG_TO_STDOUT=true \
+              -e WORKSHOPS_URLS="file:///app-data/_workshop1.yml" \
+              quay.io/osevg/workshopper
+```
+
 ### Install on Openshift
+
+Remember to change the URLs below according to your environment.
 
 ```bash
 oc new-project workshopper --display-name="Workshopper"
@@ -78,20 +71,11 @@ doc=configmap-e-secrets; podman run -v `pwd`:/source jagregory/pandoc --atx-head
 
 ### Etherpad
 
-```bash
-oc new-project etherpad --display-name "Shared Etherpad"
-
-oc new-app mysql-persistent --param MYSQL_USER=ether --param MYSQL_PASSWORD=ether --param MYSQL_DATABASE=ether --param VOLUME_CAPACITY=2Gi --param MYSQL_VERSION=5.7 -n etherpad
-
-sleep 15
-
-# oc new-app -f etherpad-template.yaml -p DB_USER=ether -p DB_PASS=ether -p DB_DBID=ether -p DB_PORT=3306 -p DB_HOST=mysql -p ADMIN_PASSWORD=secret
-oc new-app -f https://raw.githubusercontent.com/wkulhanek/docker-openshift-etherpad/master/etherpad-template.yaml -p DB_USER=ether -p DB_PASS=ether -p DB_DBID=ether -p DB_PORT=3306 -p DB_HOST=mysql -p ADMIN_PASSWORD=secret -n etherpad
-```
-
-* https://github.com/wkulhanek/docker-openshift-etherpad
+To install etherpad go to https://github.com/luszczynski/openshift-etherpad
 
 ### Terminal
+
+If you need a terminal inside Openshift, run:
 
 ```bash
 oc new-project terminal-workshop
