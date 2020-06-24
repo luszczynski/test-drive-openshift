@@ -153,7 +153,7 @@ Para isso, execute:
 [source,bash,role=copypaste]
 ----
 mkdir .s2i
-touch environment
+touch .s2i/environment
 ----
 
 O conteúdo do arquivo environment deve ser:
