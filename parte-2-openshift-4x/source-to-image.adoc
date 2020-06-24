@@ -133,10 +133,10 @@ Crie o projeto do quarkus `getting-started` a partir do terminal através do com
 
 [source,bash,role=copypaste]
 ----
-mvn io.quarkus:quarkus-maven-plugin:1.0.0.CR1:create \
+mvn io.quarkus:quarkus-maven-plugin:1.5.2.Final:create \
     -DprojectGroupId=org.acme \
     -DprojectArtifactId=getting-started \
-    -DclassName="org.acme.quickstart.GreetingResource" \
+    -DclassName="org.acme.getting.started.GreetingResource" \
     -Dpath="/hello"
 ----
 
@@ -145,6 +145,26 @@ Acesse a pasta do projeto que foi criada:
 [source,bash,role=copypaste]
 ----
 cd getting-started
+----
+
+Crie uma pasta chamada `.s2i` contendo um arquivo com nome de `environment`.
+Para isso, execute:
+
+[source,bash,role=copypaste]
+----
+mkdir .s2i
+touch environment
+----
+
+O conteúdo do arquivo environment deve ser:
+
+.environment
+[source,bash,role=copypaste]
+----
+MAVEN_S2I_ARTIFACT_DIRS=target
+S2I_SOURCE_DEPLOYMENTS_FILTER=*-runner.jar lib
+JAVA_OPTIONS=-Dquarkus.http.host=0.0.0.0
+AB_JOLOKIA_OFF=true
 ----
 
 Como iremos utilizar o cliente git para acessar o github, configure seu email e nome/sobrenome de acordo com seu usuário no github:
