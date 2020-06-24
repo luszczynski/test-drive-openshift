@@ -27,7 +27,13 @@ Este trabalho está licenciado sob a [**Licença Atribuição-NãoComercial-Comp
 
 #### Using podman
 
+If you want to check the documentation locally, run:
+
 ```bash
+# Clone this project
+git clone https://github.com/luszczynski/test-drive-openshift.git && cd test-drive-openshift.git
+
+# Run the workshopper container
 podman run -it --rm -p 8080:8080 -v $(pwd)/parte-2-openshift-4x:/app-data \
               -e CONTENT_URL_PREFIX="file:///app-data" \
               -e LOG_TO_STDOUT=true \
@@ -38,6 +44,10 @@ podman run -it --rm -p 8080:8080 -v $(pwd)/parte-2-openshift-4x:/app-data \
 #### Using docker
 
 ```bash
+# Clone this project
+git clone https://github.com/luszczynski/test-drive-openshift.git && cd test-drive-openshift.git
+
+# Run the workshopper container
 docker run -it --rm -p 8080:8080 -v $(pwd)/parte-2-openshift-4x:/app-data \
               -e CONTENT_URL_PREFIX="file:///app-data" \
               -e LOG_TO_STDOUT=true \
@@ -50,23 +60,28 @@ docker run -it --rm -p 8080:8080 -v $(pwd)/parte-2-openshift-4x:/app-data \
 Remember to change the URLs below according to your environment.
 
 ```bash
+# Usually you do not need to change this URLs
+WORKSHOP_URLS="https://raw.githubusercontent.com/luszczynski/test-drive-openshift/master/parte-2-openshift-4x/_workshop1.yml"
+ISSUES_URL="https://github.com/luszczynski/test-drive-openshift/issues"
+
+# Change these vars according to your environment
+OPENSHIFT_MASTER_URL="https://console-openshift-console.apps.cluster-brasilia-d6ec.brasilia-d6ec.example.opentlc.com/"
+ETHERPAD_URL="http://etherpad-etherpad.apps.cluster-brasilia-d6ec.brasilia-d6ec.example.opentlc.com/p/workshop"
+TERMINAL_URL="https://terminal-terminal.apps.cluster-brasilia-d6ec.brasilia-d6ec.example.opentlc.com/"
+OPENSHIFT_API_URL="https://api.cluster-brasilia-da5c.brasilia-da5c.example.opentlc.com:6443"
+
 oc new-project workshopper --display-name="Workshopper"
+
 oc new-app quay.io/osevg/workshopper --name=workshopper \
-      -e WORKSHOPS_URLS="https://raw.githubusercontent.com/luszczynski/test-drive-openshift/master/parte-2-openshift-4x/_workshop1.yml" \
-      -e ISSUES_URL=https://github.com/luszczynski/test-drive-openshift/issues \
-      -e OPENSHIFT_MASTER_URL=https://console-openshift-console.apps.cluster-brasilia-d6ec.brasilia-d6ec.example.opentlc.com/ \
-      -e ETHERPAD_URL=http://etherpad-etherpad.apps.cluster-brasilia-d6ec.brasilia-d6ec.example.opentlc.com/p/workshop \
-      -e TERMINAL_URL=https://terminal-terminal.apps.cluster-brasilia-d6ec.brasilia-d6ec.example.opentlc.com/ \
-      -e OPENSHIFT_API_URL=https://api.cluster-brasilia-da5c.brasilia-da5c.example.opentlc.com:6443 \
+      -e WORKSHOPS_URLS=$WORKSHOP_URLS \
+      -e ISSUES_URL=$ISSUES_URL \
+      -e OPENSHIFT_MASTER_URL=$OPENSHIFT_MASTER_URL \
+      -e ETHERPAD_URL=$ETHERPAD_URL \
+      -e TERMINAL_URL=$TERMINAL_URL \
+      -e OPENSHIFT_API_URL=$OPENSHIFT_API_URL \
       -e LOG_TO_STDOUT=true -n workshopper
 
 oc expose svc/workshopper -n workshopper
-```
-
-### Convert Markdown to Asciidoc
-
-```bash
-doc=configmap-e-secrets; podman run -v `pwd`:/source jagregory/pandoc --atx-headers --normalize --verbose --wrap=none --reference-links -s -S -t asciidoc -o parte-2-openshift-4x/$doc.adoc parte-2-openshift-4x/$doc.md
 ```
 
 ### Etherpad
@@ -75,7 +90,9 @@ To install etherpad go to https://github.com/luszczynski/openshift-etherpad
 
 ### Terminal
 
-If you need a terminal inside Openshift, run:
+If you created the Openshift environment using RHPDS, you problably have a project called `terminal`. Use it.
+
+Or you can also create a terminal inside Openshift by running:
 
 ```bash
 oc new-project terminal-workshop
