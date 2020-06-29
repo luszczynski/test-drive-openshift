@@ -21,9 +21,28 @@ Este trabalho está licenciado sob a [**Licença Atribuição-NãoComercial-Comp
 
 **Para o S2I com o Quarkus** funcionar importar o template template-openjdk11-rhel8-s2i.yaml para o namespace **openshift**. Após isso importar também a secret para a service account default em cada projeto para fazer pulling da imagem do **registry.redhat.io**.
 
+## Etherpad
+
+To install etherpad on Openshift go to https://github.com/luszczynski/openshift-etherpad for instructions
+
+## Terminal
+
+If you created your Openshift environment using RHPDS, you problably have a project called `terminal`. Use it.
+
+Or you can also create a terminal inside Openshift by running:
+
+```bash
+oc new-project terminal-workshop
+oc process -f https://raw.githubusercontent.com/openshift-homeroom/workshop-spawner/develop/templates/terminal-server-production.json --param SPAWNER_NAMESPACE=`oc project --short` --param CLUSTER_SUBDOMAIN=apps.cluster-brasilia-da5c.brasilia-da5c.example.opentlc.com | oc apply -f -
+```
+
 ## Workshopper
 
+This is the documentation every customer/student will see during the labs. It must be deployed as a container inside Openshift.
+
 ### Local
+
+If you want to develop and improve the docs, you can run it locally using one of the two methods below:
 
 #### Using podman
 
@@ -57,7 +76,9 @@ docker run -it --rm -p 8080:8080 -v $(pwd)/parte-2-openshift-4x:/app-data \
 
 ### Install on Openshift
 
-Remember to change the URLs below according to your environment.
+Before beginning your workshop, install the documentation in your Openshift environment by running the following commands:
+
+NOTE: Remember to change the URLs below according to your environment.
 
 ```bash
 # Usually you do not need to change this URLs
@@ -82,19 +103,4 @@ oc new-app quay.io/osevg/workshopper --name=workshopper \
       -e LOG_TO_STDOUT=true -n workshopper
 
 oc expose svc/workshopper -n workshopper
-```
-
-### Etherpad
-
-To install etherpad go to https://github.com/luszczynski/openshift-etherpad
-
-### Terminal
-
-If you created the Openshift environment using RHPDS, you problably have a project called `terminal`. Use it.
-
-Or you can also create a terminal inside Openshift by running:
-
-```bash
-oc new-project terminal-workshop
-oc process -f https://raw.githubusercontent.com/openshift-homeroom/workshop-spawner/develop/templates/terminal-server-production.json --param SPAWNER_NAMESPACE=`oc project --short` --param CLUSTER_SUBDOMAIN=apps.cluster-brasilia-da5c.brasilia-da5c.example.opentlc.com | oc apply -f -
 ```
