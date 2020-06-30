@@ -253,7 +253,7 @@ Os pipelines, assim como as tarefas, são projetados para serem reutilizáveis. 
 
 Aqui está um diagrama do pipeline que você criará.
 
-image::images/pipeline-diagram.png[width=100%]
+image:pipeline-diagram.png[width=100%]
 
 Na caixa à direita, você vê o pipeline com as seguintes etapas:
 
