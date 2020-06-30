@@ -15,6 +15,7 @@ vars:
   OPENSHIFT_PASSWORD: "password"
   JAVA_APP: true
   USER: ""
+  LOGGING_URL: "my-logging-url"
 
 modules:
   activate:

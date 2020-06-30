@@ -265,6 +265,7 @@ OPENSHIFT_MASTER_URL="https://console-openshift-console.apps.cluster-brasilia-d6
 ETHERPAD_URL="http://etherpad-etherpad.apps.cluster-brasilia-d6ec.brasilia-d6ec.example.opentlc.com/p/workshop"
 TERMINAL_URL="https://terminal-terminal.apps.cluster-brasilia-d6ec.brasilia-d6ec.example.opentlc.com/"
 OPENSHIFT_API_URL="https://api.cluster-brasilia-da5c.brasilia-da5c.example.opentlc.com:6443"
+LOGGING_URL="https://kibana-openshift-logging.apps.cluster-brasilia-325f.brasilia-325f.example.opentlc.com/"
 
 oc new-project workshopper --display-name="Workshopper"
 
@@ -275,6 +276,7 @@ oc new-app quay.io/osevg/workshopper --name=workshopper \
       -e ETHERPAD_URL=$ETHERPAD_URL \
       -e TERMINAL_URL=$TERMINAL_URL \
       -e OPENSHIFT_API_URL=$OPENSHIFT_API_URL \
+      -e LOGGING_URL=$LOGGING_URL
       -e LOG_TO_STDOUT=true -n workshopper
 
 oc expose svc/workshopper -n workshopper
