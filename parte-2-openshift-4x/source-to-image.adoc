@@ -16,10 +16,12 @@ Crie o arquivo `index.php` no GitHub com o seguinte conteúdo
 [source,php,role=copypaste]
 ----
 <?php
-echo "<h1>Openshift Workshop v1.0</h1> ";
-echo $_SERVER['SERVER_ADDR'];
+echo "<h1>Openshift Workshop v1.0</h1>"; <1>
+echo $_SERVER['SERVER_ADDR']; <2>
 ?>
 ----
+<1> Escreve na tela o cabeçalho <h1>
+<2> Mostra o ip do servidor (pod)
 
 NOTE: Essa linha com o conteudo $_SERVER é opcional, ela mostrará na tela o IP do pod em que está sendo executada.
 
@@ -123,22 +125,24 @@ image:scale-to-4.gif[image]
 TIP: Este procedimento simples mostra a facilidade para escalar uma aplicação recém-criada.
 
 [[source-to-image-utilizando-o-quarkus]]
-= Source-to-Image utilizando o Quarkus
+== Source-to-Image utilizando o Quarkus
 
-Iremos agora utilizar o Source to Image com uma aplicação Java que utiliza o Quarkus. Primeiro criaremos a aplicação e depois publicaremos no Openshift.
+Iremos agora utilizar o Source to Image com uma aplicação Java que utiliza o http://quarkus.io[Quarkus]. Primeiro criaremos a aplicação e depois publicaremos no Openshift.
 
-Crie um novo repositório no seu github de nome: *quarkus-app*
+Crie um novo repositório no seu github de nome: *quarkus-app*. Para isso siga os mesmos passos descritos no guia <<criar-nova-aplicação-no-github>>
 
-Crie o projeto do quarkus `getting-started` a partir do terminal através do comando maven:
+Agora crie o projeto do quarkus `getting-started` a partir do terminal através do comando maven:
 
 [source,bash,role=copypaste]
 ----
-mvn io.quarkus:quarkus-maven-plugin:1.5.2.Final:create \
+mvn io.quarkus:quarkus-maven-plugin:1.2.0.Final:create \
     -DprojectGroupId=org.acme \
     -DprojectArtifactId=getting-started \
     -DclassName="org.acme.getting.started.GreetingResource" \
     -Dpath="/hello"
 ----
+
+TIP: Ele irá criar uma nova pasta contendo todos os arquivos necessários para que o projeto do quarkus funcione corretamente.
 
 Acesse a pasta do projeto que foi criada:
 
@@ -147,13 +151,12 @@ Acesse a pasta do projeto que foi criada:
 cd getting-started
 ----
 
-Crie uma pasta chamada `.s2i` contendo um arquivo com nome de `environment`.
-Para isso, execute:
+A imagem oficial do java procura por um arquivo jar dentro da pasta target depois que o projeto for compilado no processo Source-to-Image. O Quarkus irá gerar dois arquivos JARs, o que acaba confundindo o Openshift na hora do deploy. Com o intuito de contornar isto, vamos instruir o Openshift por qual arquivo ele deve buscar. 
+Crie uma pasta chamada `.s2i` contendo um arquivo com nome de `environment`. Execute:
 
 [source,bash,role=copypaste]
 ----
-mkdir .s2i
-touch .s2i/environment
+mkdir .s2i && touch .s2i/environment
 ----
 
 O conteúdo do arquivo environment deve ser:
@@ -161,11 +164,15 @@ O conteúdo do arquivo environment deve ser:
 .environment
 [source,bash,role=copypaste]
 ----
-MAVEN_S2I_ARTIFACT_DIRS=target
-S2I_SOURCE_DEPLOYMENTS_FILTER=*-runner.jar lib
-JAVA_OPTIONS=-Dquarkus.http.host=0.0.0.0
-AB_JOLOKIA_OFF=true
+MAVEN_S2I_ARTIFACT_DIRS=target <1>
+S2I_SOURCE_DEPLOYMENTS_FILTER=*-runner.jar lib <2>
+JAVA_OPTIONS=-Dquarkus.http.host=0.0.0.0 <3>
+AB_JOLOKIA_OFF=true <4>
 ----
+<1> Diretório que ele deve buscar o binário final (JAR)
+<2> Filtro que ele utiliza para buscar somente os JARs que contenham `-runner.jar` no nome.
+<3> Java Option que são passadas na hora da inicialização
+<4> Desabilita o Jolokia já que não utilizaremos ele agora
 
 Como iremos utilizar o cliente git para acessar o github, configure seu email e nome/sobrenome de acordo com seu usuário no github:
 
@@ -198,26 +205,35 @@ Adicione o endereço do seu repositório que acabou de criar e faça o push:
 
 [source,bash,role=copypaste]
 ----
-git remote add origin https://github.com/seu_usuario/quarkus-app.git
+git remote add origin https://github.com/<seu_usuario>/quarkus-app.git
 ----
+
+NOTE: Lembre-se de alterar o `<seu_usuario>` para o seu usuário do github
 
 [source,bash,role=copypaste]
 ----
 git push -u origin master
 ----
 
-1.  No menu superior clique em *Search Catalog*
-2.  Na busca, digite *openjdk*
-3.  Selecione o template *Red Hat OpenJDK 8* que executará a versão *11* do Java
+Agora vamos criar a aplicação no Openshift.
+
+1. No menu esquerdo superior clique em *+Add*
+2. Depois selecione *From Catalog*
+3. Na busca, digite *openjdk*
+4. Selecione o template *Red Hat OpenJDK 8* que executará a versão *11* do Java
+5. Clique em *Create Application*
 
 Logo em seguida, preencha os valores conforme abaixo:
 
-* Application Name: *quarkus-app*
-* Git Repository URL: *`https://github.com/<usuario_github>/quarkus-app.git`*
+* Git Repo URL: `https://github.com/<usuario_github>/quarkus-app.git`
+* Application: `quarkus-app`
+* Name: `app`
+
+Agora clique em `Create` no fim da tela.
 
 Em poucos segundos sua aplicação já deverá estar disponível.
 
-Clique na URL gerada para acessá-la.
+=== Limpeza do ambiente
 
 Para limpar nosso ambiente, execute o seguinte comando:
 
