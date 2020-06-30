@@ -46,7 +46,7 @@ modules:
     name: "Pipelines com Jenkins"
     vars: 
   pipeline-tekton:
-    name: "Pipelines com Tekton (Coming soon)"
+    name: "Pipelines com Tekton"
   limite-de-recursos:
     name: "Limite de Recursos"
     vars: 
