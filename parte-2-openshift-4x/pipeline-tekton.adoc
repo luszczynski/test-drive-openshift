@@ -1,4 +1,4 @@
-[[pipeline tekton]]
+[[pipeline-tekton]]
 = Pipeline Tekton
 :imagesdir: images
 :toc:
@@ -9,6 +9,7 @@
 Este laboratório explora o uso dos pipelines OpenShift na plataforma OpenShift Container.
 
 == Configuração dos repositórios de código-fonte
+
 Você usará um aplicativo simples neste laboratório, que possui front-end e back-end. Embora você possa implantar os aplicativos aplicando os artefatos disponíveis no diretório k8s do respectivo repositório, você usará uma tarefa de pipeline para criar o aplicativo, caso ainda não exista.
 
 1.No seu terminal, clone os dois repositórios de código-fonte que compõem o aplicativo no diretório `$HOME/pipelines`:
@@ -36,16 +37,16 @@ git push gogs master
 ----
 
 3.Criar um novo projeto `workshop-pipeline`
-+
+
 [source,sh]
 ----
 oc new-project workshop-pipeline
 ----
 
 4.O OpenShift Pipelines adiciona e configura automaticamente um ServiceAccount chamado pipeline em cada projeto. Essa conta de serviço tem permissões suficientes para criar e enviar uma imagem.
-+
+
 execute o seguinte comando para ver a conta do serviço de pipeline:
-+
+
 [source,sh]
 ----
 oc get serviceaccount pipeline
@@ -54,12 +55,12 @@ oc get serviceaccount pipeline
 == Instalando as Tarefas Customizadas
 
 1.O OpenShift Pipelines já instala alguns aplicativos comuns *ClusterTasks* no cluster OpenShift. Você pode listar as tarefas de cluster disponíveis usando o utilitário de linha de comando `tkn`:
-+
+
 [source,sh]
 ----
 tkn clustertasks ls
 ----
-+
+
 .Saída
 [source,texinfo]
 ----
@@ -95,12 +96,12 @@ s2i-v0-11-3                5 days ago
 tkn                        5 days ago
 ----
 2.Examine a tarefa de cluster `openshift-client`:
-+
+
 [source,sh]
 ----
 oc get clustertask openshift-client -o yaml
 ----
-+
+
 Saída
 [source,texinfo]
 ----
@@ -178,7 +179,7 @@ EOF
 6.Examine a definição da tarefa para entender o que ela faz.
 
 7.Crie uma segunda tarefa que atualizará a imagem do contêiner em uma implantação:
-+
+
 [source,sh]
 ----
 cat << 'EOF' >$HOME/pipelines/task_update_deployment.yaml
@@ -210,19 +211,19 @@ EOF
 ----
 8.Mais uma vez, examine a definição da tarefa para entender como ela funciona.
 9.Crie as duas tarefas:
-+
+
 [source,sh]
 ----
 oc create -f $HOME/pipelines/task_apply_manifests.yaml
 oc create -f $HOME/pipelines/task_update_deployment.yaml
 ----
 10.Valide que suas tarefas foram criadas:
-+
+
 [source,sh]
 ----
 tkn task ls
 ----
-+
+
 .Saída
 [source,texinfo]
 ----
@@ -231,12 +232,12 @@ apply-manifests     5 seconds ago
 update-deployment   5 seconds ago
 ----
 11.Como as tarefas são recursos do Kubernetes, você também pode usar a CLI do OpenShift para validar que suas tarefas foram criadas:
-+
+
 [source,sh]
 ----
 oc get tasks
 ----
-+
+
 Saída
 [source,texinfo]
 ----
@@ -326,19 +327,19 @@ EOF
 .. A ordem de execução da tarefa é determinada pelas dependências definidas entre as tarefas por meio de entradas e saídas, bem como por ordens explícitas definidas por runAfter.
 
 3.Criar o pipeline:
-+
+
 [source,sh]
 ----
 oc create -f $HOME/pipelines/pipeline.yaml
 ----
 
 4.Verifique se o pipeline foi criado:
-+
+
 [source,sh]
 ----
 tkn pipeline ls
 ----
-+
+
 .Saída
 [source,texinfo]
 ----
