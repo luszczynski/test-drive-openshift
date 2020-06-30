@@ -122,7 +122,7 @@ CAUTION: No comando abaixo o parametro `--get-url=http://:8080/readiness.php` es
 
 [source,bash,role=copypaste]
 ----
-oc set probe deploy/workshop-ocp --readiness --get-url=http://:8080/readiness.php
+oc set probe dc/workshop-ocp --readiness --get-url=http://:8080/readiness.php
 ----
 
 image:oc-set-readiness.gif[image]
@@ -133,7 +133,7 @@ CAUTION: No comando abaixo o parametro `--get-url=http://:8080/liveness.php` est
 
 [source,bash,role=copypaste]
 ----
-oc set probe deploy/workshop-ocp --initial-delay-seconds=20 --liveness --get-url=http://:8080/liveness.php
+oc set probe dc/workshop-ocp --initial-delay-seconds=20 --liveness --get-url=http://:8080/liveness.php
 ----
 
 image:oc-set-liveness.gif[image]
