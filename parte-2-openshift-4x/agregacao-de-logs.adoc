@@ -6,30 +6,12 @@
 
 Devido a facilidade de criar e escalar aplicações, torna-se praticamente impossível rastrear algum erro de forma individual procurando em cada container. Para resolver este problema o Openshift possui uma solução de agregação de logs baseada no ElasticSearch, Fluentd e Kibana (EFK). O acesso aos logs é feito através da console gráfica do Kibana.
 
-[[na-console-do-openshift]]
-== Na console do Openshift
+[[link-do-kibana]]
+== Acessando a interface do Kibana 
 
-* Navegue até a tab de logs de um dos pods.
-* Selecione a opção `Archive`
+Acesse a {{ LOGGING_URL }}[Interface do Kibana,window="_blank"]
 
-são as mesmas utilizadas para acessar o console do OpenShift desse workshop:
-
-[source,text]
-----
-Login: userXX
-
-Senha: openShift
-----
-
-Siga os passos do vídeo a seguir para acessar o console do Kibana (agregador de logs) no seu browser.
-
-As credenciais de acesso ao console do Kibana
-
-image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/kibana.gif[image]
-
-As credenciais de acesso ao Kibana no vídeo são diferentes, pois foi utilizado outro ambiente para acesso ao OpenShift.
-
-No seu caso, utilize:
+Faça login na interface do Kibana. As credenciais são as mesmas utilizadas anteriormente:
 
 [source,text]
 ----
@@ -38,18 +20,162 @@ Login: userXX
 Senha: openShift
 ----
 
-Abaixo segue destaque de onde devemos clicar:
+Ao acessar essa interface pela primeira vez, aceite as permissões
 
-image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/kibana-click.png[image]
+image:authkibana.png[]
 
-Assim que acessar, a tela do Kibana estará semelhante a foto abaixo:
+Após aceitar as permissões chegamos à interface do Kibana
 
-image:https://raw.githubusercontent.com/guaxinim/test-drive-openshift/master/gitbook/assets/log-aggregation.png[image]
+[[explorando-interface]]
+== Explorando a interface do Kibana
 
-É possível criar relatórios e consolidar em dashboards, com informações mostrando o crescimento de erros da aplicação `x` nos últimos meses ou semanas, etc…
+image:kibanadash.png[]
+
+. O Discover permite explorar seus dados, encontrar idéias e relacionamentos ocultos e obter respostas para suas perguntas.
+. Visualizar permite criar visualizações dos dados a partir dos índices do Elasticsearch. Futuramente você poderá adicionar as visualizações à dashboards para análise.
+. Uma dashboard é uma coleção de visualizações, pesquisas e mapas, normalmente em tempo real. As dashboards fornecem informações imediatas sobre seus dados e permitem que você faça uma pesquisa detalhada.
+. O Timelion é um visualizador de dados de séries temporais que permite combinar fontes de dados totalmente independentes em uma única visualização. Ele é orientado por uma linguagem de expressão simples usada para recuperar dados de séries temporais, realizar cálculos para apresentar as respostas a perguntas complexas e visualizar os resultados.
+. O Dev Tools contém ferramentas que você pode usar para interagir com seus dados.
+. O gerenciamento é o local das interfaces para gerenciar tudo o que é do Elastic Stack - índices, clusters, licenças, configurações da UI, padrões de índice, espaços e muito mais.
+
+[[criando-filtro]]
+== Criando nosso primeiro filtro no Kibana
+
+image:timerangekibana.png[]
+
+Selecione o dia em que os LABs foram executados (Today ou Yesterday).
+
+Ou selecione uma range de tempo personalizada à sua escolha desde que haja atividade do cluster de OpenShift que tenha gerado logs nesse tempo escolhido.
+
+Para o caso desse exemplo, foi escolhido "Yesterday"
+
+image:todaykibana.png[]
+
+
+Caso não tenha aparecido nenhum log, clique na lupa com o campo de pesquisa ainda em branco. Isso retornará todos os logs disponíveis.
+
+image:kibanafirstsearch.png[]
+
+Essa busca foi realizada sem nenhum filtro, por isso retornará todos os logs do cluster, observe o gráfico de barras. O eixo x (horizontal) representa o tempo espaçado em intervalos de 30 minutos. O eixo y (vertical) representa a contagem de número de logs.
+
+TIP: Posicionando o cursor do mouse sobre as barras do gráfico é possível verificar as informações dos eixos.
+
+image:kibanacount.png[]
+
+
+Vamos criar uma vista personalizada dos nossos logs, para isso posicione o cursor do mouse sobre os campos a seguir e clique em "add": 
+
+- kubernetes.labels.deployment
+- kubernetes.namespace_name
+- kubernetes.pod_name 
+- message
+
+image:addkibana.png[]
+
+Após adicionar todos os campos, teremos um painel personalizado como abaixo:
+
+image:kibanapersonalized.png[]
+
+Posicionando o mouse sobre o nome dos parâmetros, temos opções para "apagar", "alterar posição" ou "organizar por saída do parâmetro":
+
+image:kibanaoptions.png[]
+
+Com o cursor sobre o parâmetro "message", selecione o triângulo (opção de "sort by"). Dessa forma conseguiremos perceber caso pods diferentes apresentem o mesmo erro
+
+Com o cursor sobre o parâmetro "Time", selecione o triângulo (opção de "sort by"). Dessa forma temos uma visão cronológica dos logs.
+
+[[deploys-sucesso]]
+== Filtrando por deploys realizados com sucesso
+
+no campo de busca, insira o valor 
+
+[source,text]
+----
+message: "success"
+----
+
+Clique na lupa para pesquisar.
+
+image:kibanasearch.png[]
+
+Dessa forma filtramos as as mensagens que apresentam "success" no texto. observe que essas mensagens aparecem em pods de deploy, mostrando que o deploy foi efetuado com sucesso, ou seja, a aplicação está disponível no cluster:
+
+
+image:successkibana.png[]
+
+Não é necessário inserir filtro manualmente (como fizemos), para isso basta posicionar o mouse sobre a mensagem de log, nesse caso há duas lupas:
+
+image:lupakibana.png[]
+
+. Insere a mensagem de log no filtro
+. Remove a mensagem de log no filtro
+
+Para inserir um filtro dessa maneira existe uma dificuldade: as vezes não é fácil encontrar a mensagem de log que queremos sem utilizar filtros manuais. (Nesses casos inserir o filtro manualmente é uma boa opção para diminuir o número de logs na tela)
+
+No caso do exemplo, surgiu uma mensagem indesejada, que não tem relação com pods de deploy. Se isso também aconteceu com você, clique na lupa (2) para remover as mensagens indesejadas. (No nosso exemplo, são aquelas que não tem relação com deploy)
+
+Perceba que aparece uma regra em vermelho e a mensagem indesejada desaparece da lista de logs.
+
+image:filteroutkibana.png[]
+
+Passando o mouse sobre a regra que apareceu, percebemos um botão de edição, nele podemos observar a regra que foi adicionada
+
+image:kibanaisnotfilteredit.png[]
+
+nesse caso essa regra poderia ter sido inserida na busca como:
+
+[source,text]
+----
+NOT message "<texto da mensagem>"
+----
+
+Para mais exemplos de sintaxe de filtro de mensagens acesse:
+
+https://www.elastic.co/guide/en/beats/packetbeat/current/kibana-queries-filters.html
+
+
+[[salvando-filtro]]
+== Salvando Filtro:
+
+Vamos salvar nosso filtro para criar uma view.
+
+No canto superior direito clique em "Save"
+
+image:kibanasave.png[]
+
+Selecione o nome "deploy-efetuado" e clique em "Save"
+
+image:kibanadeploy-efetuado.png[]
+
+
+[[novo-filtro]]
+== Criando novo Filtro: 
+
+Realize uma busca por:
+
+[source,text]
+----
+message: "push successful"
+----
+
+Observe o resultado: Agora os campos kubernetes.pod_name são do tipo "build" e a mensagem "push successful" mostra que a imagem foi salva no registry do OpenShift.
+
+WARNING: [red yellow-background]#Marque a caixa de seleção "Save as new search" para não sobrescrever o filtro anterior#
+
+Salve esse filtro com o nome "push-efetuado"
+
+image:kibananewfilter.png[]
+
+
 
 [[mais-informações]]
 == Mais informações:
 
 * https://docs.openshift.com/container-platform/3.11/install_config/aggregate_logging.html
 * https://blog.openshift.com/splunk-connect-for-openshift-logging-part/
+
+
+
+
+
+
