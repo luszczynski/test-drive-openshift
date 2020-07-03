@@ -37,7 +37,7 @@ modules:
     name: "Integracao Continua com Webhook"
     vars: 
   agregacao-de-logs:
-    name: "Agregação de Logs"
+    name: "Agregação de Logs (Comming Soon)"
     vars: 
   utilizando-banco-de-dados-mysql:
     name: "Banco de Dados MySql"
@@ -46,7 +46,7 @@ modules:
     name: "Pipelines com Jenkins"
     vars: 
   pipeline-tekton:
-    name: "Pipelines com Tekton"
+    name: "Pipelines com Tekton (Comming Soon)"
   limite-de-recursos:
     name: "Limite de Recursos"
     vars: 
