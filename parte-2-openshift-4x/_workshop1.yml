@@ -19,6 +19,7 @@ vars:
 
 modules:
   activate:
+  - overview
   - acesso-ao-ambiente
   #- criacao-do-ambiente
   - deploy-imagem-external-registry

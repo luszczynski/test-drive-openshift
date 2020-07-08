@@ -2,6 +2,10 @@ config:
   renderer: asciidoc
 
 modules:
+  overview:
+    name: "Overview"
+    vars: 
+    requires:
   criacao-do-ambiente:
     name: "Criação do Ambiente"
     vars: 
