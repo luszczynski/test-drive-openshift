@@ -25,7 +25,7 @@ modules:
   integracao-continua-webhook:
     name: "Integracao Continua com Webhook"
   agregacao-de-logs:
-    name: "Agregação de Logs (Comming Soon)"
+    name: "Agregação de Logs"
   utilizando-banco-de-dados-mysql:
     name: "Banco de Dados MySql"
   pipeline:
