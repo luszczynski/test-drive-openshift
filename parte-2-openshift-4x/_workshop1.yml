@@ -2,7 +2,7 @@ id: "openshift"
 name: "Openshift Workshop"
 
 content:
-  url: https://raw.githubusercontent.com/luszczynski/test-drive-openshift/master/parte-2-openshift-4x
+  url: https://raw.githubusercontent.com/luszczynski/test-drive-openshift/v4.5/parte-2-openshift-4x/_workshop1.yml
 
 vars:
   ETHERPAD_URL: "https://my-etherpad.com"
@@ -34,11 +34,11 @@ modules:
   - utilizando-banco-de-dados-mysql
   - pipeline
   - pipeline-tekton
-  - limite-de-recursos 
+  - limite-de-recursos
   - auto-scale
   - auto-scale-knative
   - rollback
   - idle
   - idle-knative
   - image-stream
-  - configmap-e-secrets		
+  - configmap-e-secrets
