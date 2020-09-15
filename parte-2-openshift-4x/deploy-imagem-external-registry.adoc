@@ -52,8 +52,19 @@ Caso queira usar a linha de comando, execute:
 
 [source,bash,role=copypaste]
 ----
-oc new-app --docker-image=quay.io/gluszczy/workshop-openshift
+oc new-app --docker-image=quay.io/gluszczy/workshop-openshift --name=workshop-openshift
 ----
+
+Agora crie a rota da sua aplicação com o comando:
+
+[source,bash,role=copypaste]
+----
+oc expose svc workshop-openshift
+----
+
+Agora, na tela de topologia, você deve ser a seguinte imagem:
+
+image::2-9-2020-15-43-38-PM.png[]
 
 === Limpeza do ambiente
 
