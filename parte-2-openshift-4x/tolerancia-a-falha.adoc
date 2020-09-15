@@ -6,7 +6,7 @@
 
 == Introdução
 
-O Openshift garante que a quantidade de instâncias (Pods) definidas para uma aplicação seja respeitada mesmo que um problema aconteça. O responsável por fazer este controle é o `Replication Controller` ou o `Replica Set`.
+O Openshift/Kubernetes garante que a quantidade de instâncias (Pods) definidas para uma aplicação seja respeitada mesmo que um problema aconteça. O responsável por fazer este controle é o https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller/[`Replication Controller`] ou o https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/[`Replica Set`].
 
 Neste laboratório vamos testar esse recurso.
 
@@ -39,7 +39,7 @@ O mesmo que fizemos na Web Console pode também ser feito usando a linha de coma
 
 [source,bash,role=copypaste]
 ----
-oc scale dc/workshop-openshift --replicas=2
+oc scale deploy/workshop-openshift --replicas=2
 ----
 
 [[garantia-do-número-de-réplicas]]
