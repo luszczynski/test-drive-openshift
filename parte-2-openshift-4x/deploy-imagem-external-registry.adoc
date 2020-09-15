@@ -59,12 +59,12 @@ oc new-app --docker-image=quay.io/gluszczy/workshop-openshift
 
 Caso você tenha errado na criação da sua aplicação nos passos anteriores, para deletá-la execute o seguinte comando no terminal:
 
+WARNING: Só delete a aplicação caso tenha acontecido algum problema na criação da sua aplicação
+
 [source,bash,role=copypaste]
 ----
 oc delete all -l app=workshop-openshift
 ----
-
-NOTE: Só delete a aplicação caso tenha acontecido algum problema na criação da sua aplicação
 
 Se você deletou sua aplicação, pode criá-la  novamente <<deploy-cli,usando o CLI>> ou a <<deploy-web-console,Web Console>> conforme já mostrado nos passos anteriores
 
