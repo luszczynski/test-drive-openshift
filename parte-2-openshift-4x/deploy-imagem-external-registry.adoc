@@ -6,15 +6,16 @@
 
 == Introdução
 
-Vamos agora implantar uma imagem existente no Quay. O quay.io é um registry externo semelhante ao Docker Hub.
+Vamos agora implantar uma imagem existente no http://quay.io[Quay]. O Quay é um registry externo semelhante ao https://hub.docker.com/[Docker Hub].
 
-A imagem que vamos utilizar, foi criada usando Java e o framework Quarkus. Ela é extremamente pequena e roda consumindo poucos recursos.
+A imagem que vamos utilizar, foi criada usando Java e o framework https://quarkus.io/[Quarkus]. Ela é extremamente pequena e roda consumindo poucos recursos.
 
 Para executar a imagem no Openshift, siga os passos abaixo:
 
 [[escolha-a-imagem]]
 == Usando uma imagem do Quarkus
 
+[[deploy-web-console]]
 === Deploy pela Web Console
 
 Utilizaremos a imagem do exemplo abaixo:
@@ -28,17 +29,20 @@ Para criar um container com base em uma image externa ao Openshift, selecione a 
 
 image:deploy-image-01.png[]
 
-Depois preencha o campo `Image Name` com o valor da sua imagem, no nosso caso o valor é `quay.io/gluszczy/workshop-openshift` e depois clique na `lupa` a direita para que seja feita a busca dos metadados necessários.
+Depois preencha o campo `Image name from external registry` com o valor da sua imagem, no nosso caso o valor é `quay.io/gluszczy/workshop-openshift`. Logo em seguida, tire o foco (cursor) do campo da imagem e ele irá validar se o dado informado está correto.
 
-Logo em seguida clique em `Create` no fim da tela.
+image::2-9-2020-15-26-41-PM.png[]
 
-O gif abaixo resume o passo que deve ser feito.
+Agora deixe todos os campos com os valores padrão e clique em `Create` no fim da tela.
 
-image:deploy-image.gif[]
+// O gif abaixo resume o passo que deve ser feito.
 
+// image:deploy-image.gif[]
+
+[[deploy-cli]]
 === Deploy pela CLI
 
-NOTE: Só execute o comando abaixo caso não tenha feito o deploy pela web console no passo anterior.
+NOTE: Só execute o comando abaixo caso não tenha feito o <<deploy-web-console,deploy pela web console>> no passo anterior.
 
 Caso queira usar a linha de comando, execute:
 
@@ -49,14 +53,16 @@ oc new-app --docker-image=quay.io/gluszczy/workshop-openshift
 
 === Limpeza do ambiente
 
-Caso você tenha errado na criação da sua aplicação, para deletá-la execute o seguinte comando no terminal:
+Caso você tenha errado na criação da sua aplicação nos passos anteriores, para deletá-la execute o seguinte comando no terminal:
 
 [source,bash,role=copypaste]
 ----
 oc delete all -l app=workshop-openshift
 ----
 
-Agora basta executar novamente o deploy ou usando CLI ou a Web Console
+NOTE: Só delete a aplicação caso tenha acontecido algum problema na criação da sua aplicação
+
+Se você deletou sua aplicação, pode criá-la  novamente <<deploy-cli,usando o CLI>> ou a <<deploy-web-console,Web Console>> conforme já mostrado nos passos anteriores
 
 [[explorando-a-gui-do-pod]]
 == Explorando a Web Console
