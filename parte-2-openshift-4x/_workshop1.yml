@@ -2,7 +2,7 @@ id: "openshift"
 name: "Openshift Workshop"
 
 content:
-  url: https://raw.githubusercontent.com/luszczynski/test-drive-openshift/v4.5/parte-2-openshift-4x/_workshop1.yml
+  url: https://raw.githubusercontent.com/luszczynski/test-drive-openshift/v4.5/parte-2-openshift-4x/_modules.yml
 
 vars:
   ETHERPAD_URL: "https://my-etherpad.com"
@@ -19,9 +19,7 @@ vars:
 
 modules:
   activate:
-  #- overview
   - acesso-ao-ambiente
-  #- criacao-do-ambiente
   - deploy-imagem-external-registry
   - tolerancia-a-falha
   - usando-dockerfile

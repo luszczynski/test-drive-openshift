@@ -2,75 +2,50 @@ config:
   renderer: asciidoc
 
 modules:
-  # overview:
-  #   name: "Overview"
-  #   vars: 
-  #   requires:
-  # criacao-do-ambiente:
-  #   name: "Criação do Ambiente"
-  #   vars: 
-  #   requires:
   acesso-ao-ambiente:
     name: "Acesso ao Ambiente"
-    vars: 
     exit_sign: Próximo
   deploy-imagem-external-registry:
     name: "Deploy de imagem de um Registry externo"
-    vars: 
   tolerancia-a-falha:
     name: "Tolerância à Falha"
-    vars: 
     requires: 
       - acesso-ao-ambiente
       - deploy-imagem-external-registry
   source-to-image:
     name: "Source To Image"
-    vars: 
   usando-dockerfile:
     name: "Usando Dockerfile"
-    vars: 
   binary-deployment:
     name: "Binary Deployment"
-    vars: 
   helm-chart-deployment:
     name: "Helm Chart Deployment (Coming Soon)"
   health-check:
     name: "Health Check"
-    vars: 
   integracao-continua-webhook:
     name: "Integracao Continua com Webhook"
-    vars: 
   agregacao-de-logs:
     name: "Agregação de Logs (Comming Soon)"
-    vars: 
   utilizando-banco-de-dados-mysql:
     name: "Banco de Dados MySql"
-    vars: 
   pipeline:
     name: "Pipelines com Jenkins"
-    vars: 
   pipeline-tekton:
     name: "Pipelines com Tekton (Comming Soon)"
   limite-de-recursos:
     name: "Limite de Recursos"
-    vars: 
   auto-scale:
     name: "Auto Scale"
-    vars: 
   auto-scale-knative:
     name: "Auto Scale com Knative (Coming soon)"
   rollback:
     name: "Rollback"
-    vars: 
   idle:
     name: "Idle"
-    vars: 
   idle-knative: 
     name: "Idle com Knative (Coming soon)"
   image-stream:
     name: "Image Stream"
-    vars: 
   configmap-e-secrets:
     name: "Configmap e Secrets"
-    vars: 
   
