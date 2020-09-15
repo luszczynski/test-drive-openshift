@@ -39,6 +39,10 @@ Agora deixe todos os campos com os valores padrão e clique em `Create` no fim d
 
 // image:deploy-image.gif[]
 
+Agora, na tela de topologia, você deve ser a seguinte imagem:
+
+image::2-9-2020-15-43-38-PM.png[]
+
 [[deploy-cli]]
 === Deploy pela CLI
 
