@@ -2,14 +2,14 @@ config:
   renderer: asciidoc
 
 modules:
-  overview:
-    name: "Overview"
-    vars: 
-    requires:
-  criacao-do-ambiente:
-    name: "Criação do Ambiente"
-    vars: 
-    requires:
+  # overview:
+  #   name: "Overview"
+  #   vars: 
+  #   requires:
+  # criacao-do-ambiente:
+  #   name: "Criação do Ambiente"
+  #   vars: 
+  #   requires:
   acesso-ao-ambiente:
     name: "Acesso ao Ambiente"
     vars: 
