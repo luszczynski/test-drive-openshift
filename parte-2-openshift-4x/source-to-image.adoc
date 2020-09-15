@@ -135,7 +135,7 @@ Agora crie o projeto do quarkus `getting-started` a partir do terminal através 
 
 [source,bash,role=copypaste]
 ----
-mvn io.quarkus:quarkus-maven-plugin:1.2.0.Final:create \
+mvn io.quarkus:quarkus-maven-plugin:0.28.1:create \
     -DprojectGroupId=org.acme \
     -DprojectArtifactId=getting-started \
     -DclassName="org.acme.getting.started.GreetingResource" \
