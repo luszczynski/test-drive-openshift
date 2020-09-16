@@ -35,7 +35,9 @@ Or you can also create a terminal inside Openshift by running:
 [source,bash]
 ----
 oc new-project terminal-workshop
-oc process -f https://raw.githubusercontent.com/openshift-homeroom/workshop-spawner/develop/templates/terminal-server-production.json --param SPAWNER_NAMESPACE=`oc project --short` --param CLUSTER_SUBDOMAIN=apps.cluster-brasilia-da5c.brasilia-da5c.example.opentlc.com | oc apply -f 
+oc process -f https://raw.githubusercontent.com/openshift-homeroom/workshop-spawner/develop/templates/terminal-server-production.json \
+  --param SPAWNER_NAMESPACE=`oc project --short` \
+  --param CLUSTER_SUBDOMAIN=apps.cluster-dd3e.dd3e.example.opentlc.com | oc apply -f -
 ----
 
 === Serverless
@@ -333,7 +335,7 @@ NOTE: Remember to change the URLs below according to your environment.
 
 ```bash
 # Usually you do not need to change this URLs
-WORKSHOP_URLS="https://raw.githubusercontent.com/luszczynski/test-drive-openshift/master/parte-2-openshift-4x/_workshop1.yml"
+WORKSHOP_URLS="https://raw.githubusercontent.com/luszczynski/test-drive-openshift/v4.5/parte-2-openshift-4x/_workshop1.yml"
 ISSUES_URL="https://github.com/luszczynski/test-drive-openshift/issues"
 
 # Change these vars according to your environment
