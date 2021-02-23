@@ -38,6 +38,20 @@ image:kibanadash.png[]
 . O Dev Tools contém ferramentas que você pode usar para interagir com seus dados.
 . O gerenciamento é o local das interfaces para gerenciar tudo o que é do Elastic Stack - índices, clusters, licenças, configurações da UI, padrões de índice, espaços e muito mais.
 
+[[criando-index-pattern]]
+
+== Criando index pattern
+
+O seu index name deve ser app*
+
+Clique em "Next Step"
+
+Selecione @timestamp no dropbox
+
+Clique em "create index pattern"
+
+Clique em "Discover"
+
 [[criando-filtro]]
 == Criando nosso primeiro filtro no Kibana
 
