@@ -79,6 +79,8 @@ image:kibanacount.png[]
 
 Vamos criar uma vista personalizada dos nossos logs, para isso posicione o cursor do mouse sobre os campos a seguir e clique em "add": 
 
+WARNING: Os campos podem mudar dependendo da versão do Kibana em que o Test Drive está sendo executado, selecione os campos que achar interessantes para uma boa visualização dos logs. Os seus campos não precisam ser iguais aos do exemplo.
+
 - kubernetes.labels.deployment
 - kubernetes.namespace_name
 - kubernetes.pod_name 
