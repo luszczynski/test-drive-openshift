@@ -396,7 +396,7 @@ oc new-app quay.io/osevg/workshopper --name=workshopper \
       -e ETHERPAD_URL=$ETHERPAD_URL \
       -e TERMINAL_URL=$TERMINAL_URL \
       -e OPENSHIFT_API_URL=$OPENSHIFT_API_URL \
-      -e LOGGING_URL=$LOGGING_URL
+      -e LOGGING_URL=$LOGGING_URL \
       -e LOG_TO_STDOUT=true -n workshopper
 
 oc expose svc/workshopper -n workshopper
