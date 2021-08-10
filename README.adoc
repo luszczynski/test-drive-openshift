@@ -6,7 +6,7 @@
 
 == O que é isso?
 
-Esse material é usado para capacitação e transferência de conhecimento de clientes e parceiros da Red Hat Brasil em **OpenShift**, aplicável tanto ao [**Red Hat OpenShift Container Platform**](https://www.openshift.com/container-platform/index.html) (enterprise) quanto ao [**Openshift OKD**](https://www.okd.io/) (community).
+Esse material é usado para capacitação e transferência de conhecimento de clientes e parceiros da Red Hat Brasil em **OpenShift**, aplicável tanto ao [**Red Hat OpenShift Container Platform**](https://www.openshift.com/container-platform/index.html) (enterprise) quanto ao [**OpenShift OKD**](https://www.okd.io/) (community).
 
 == Por que dessa forma?
 
@@ -24,20 +24,26 @@ Este trabalho está licenciado sob a [**Licença Atribuição-NãoComercial-Comp
 
 === Etherpad
 
-To install etherpad on Openshift go to https://github.com/luszczynski/openshift-etherpad for instructions
+To install etherpad on OpenShift go to https://github.com/luszczynski/openshift-etherpad for instructions.
 
 === Terminal
 
-If you created your Openshift environment using RHPDS, you problably have a project called `terminal`. Use it.
+If you created your OpenShift environment using RHPDS, you problably have a project called `terminal`. Use it.
 
-Or you can also create a terminal inside Openshift by running:
+Or you can also create a terminal inside OpenShift by running:
 
 [source,bash]
 ----
+# You must change this var according your environment
+SUBDOMAIN=apps.cluster-dd3e.dd3e.example.opentlc.com
+
+# Create a new project
 oc new-project terminal-workshop
+
+# Create terminal
 oc process -f https://raw.githubusercontent.com/openshift-homeroom/workshop-spawner/develop/templates/terminal-server-production.json \
   --param SPAWNER_NAMESPACE=`oc project --short` \
-  --param CLUSTER_SUBDOMAIN=apps.cluster-dd3e.dd3e.example.opentlc.com | oc apply -f -
+  --param CLUSTER_SUBDOMAIN=$SUBDOMAIN | oc apply -f - -n terminal-workshop
 ----
 
 === Serverless
@@ -327,7 +333,7 @@ EOF
 
 === Workshopper
 
-This is the documentation every customer/student will see during the labs. It must be deployed as a container inside Openshift.
+This is the documentation every customer/student will see during the labs. It must be deployed as a container inside OpenShift.
 
 ==== Local
 
@@ -369,9 +375,9 @@ docker run -it --rm -p 8080:8080 -v $(pwd)/parte-2-openshift-4x:/app-data \
               quay.io/jamesfalkner/workshopper
 ```
 
-==== Install doc on Openshift
+==== Install doc on OpenShift
 
-Before beginning your workshop, install the documentation in your Openshift environment by running the following commands:
+Before beginning your workshop, install the documentation in your OpenShift environment by running the following commands:
 
 NOTE: Remember to change the URLs below according to your environment.
 
